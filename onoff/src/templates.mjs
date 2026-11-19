@@ -199,6 +199,24 @@ b{font-weight:800}
 .outro.mag .cta span{border-color:rgba(0,0,0,.25)}
 .outro.mag .next{color:#666}
 
+/* ===== 말풍선 (classic 에서도 사용) ===== */
+.bub{position:absolute;z-index:4;transform:rotate(var(--rot,0deg))}
+.cover .bub .say{font-size:36px;box-shadow:6px 6px 0 rgba(0,0,0,.85)}
+.body figure .bub .say{font-size:26px;padding:10px 18px}
+/* ===== 갤러리 (사진 2~4장) ===== */
+.gal{display:grid;gap:14px;flex:none}
+.gal.n2{grid-template-columns:1fr 1fr;height:640px}
+.gal.n3{grid-template-columns:1.25fr 1fr;grid-template-rows:1fr 1fr;height:700px}
+.gal.n3 .cell:first-child{grid-row:1 / 3}
+.gal.n4{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;height:740px}
+.gal .cell{position:relative;overflow:hidden;border-radius:6px;background:#ddd}
+.gal .cell .photo{position:absolute;inset:0}
+.gal .cell .cr{position:absolute;right:8px;bottom:8px;font-size:16px;color:#fff;background:rgba(0,0,0,.5);padding:2px 8px;border-radius:4px;z-index:3}
+.gal .cell .lbl{position:absolute;left:12px;top:12px;z-index:3;font-weight:800;font-size:22px;background:var(--acc,#111);color:var(--acf,#fff);padding:4px 12px}
+.gal .cell .bub .say{font-size:24px;padding:8px 14px}
+.body.gallery h2{margin:20px 0 26px}
+.body.gallery p{font-size:30px;margin-top:26px}
+
 `;
 
 // image.src: http(s) URL 또는 onoff/ 기준 로컬 경로 (예: posts/2026-11-20-am/images/01.jpg)
@@ -207,6 +225,15 @@ const photo = (img, cls = '') =>
   img && img.src
     ? `<div class="photo ${cls}" style="background-image:url('${srcURL(img.src)}');background-position:${img.pos || 'center'};background-size:${img.fit === 'contain' ? 'contain' : img.zoom ? `${img.zoom * 100}% auto` : 'cover'};background-repeat:no-repeat;background-color:${img.bg || '#111'}"></div>`
     : `<div class="photo ph ${cls}"><span class="phl">PHOTO</span><span class="phd">${esc(img?.hint || '실사 이미지 영역')}</span></div>`;
+
+
+// 말풍선: [{text, x, y, rot}]  x·y 는 % (왼쪽 위 기준), rot 은 기울기(도)
+const bubbles = (list = []) =>
+  (Array.isArray(list) ? list : [list]).map((b, k) => {
+    const o = typeof b === 'string' ? { text: b } : b;
+    const x = o.x ?? (k % 2 ? 46 : 6), y = o.y ?? 30 + k * 12, rot = o.rot ?? (k % 2 ? 2 : -2);
+    return `<div class="bub" style="left:${x}%;top:${y}%;--rot:${rot}deg"><div class="say">${rich(o.text)}</div></div>`;
+  }).join('');
 
 const credit = (img) => (img?.credit ? `사진 | ${esc(img.credit)}` : '');
 
@@ -266,9 +293,10 @@ function meme(s, d, S, i, n) {
 
 function cover(s, d, S) {
   if (d.style === 'mag') return coverMag(s, d, S);
-  return `<div class="card cover" style="--acc:${S.accent};--acf:${S.fg}">
+  return `<div class="card cover" style="--acc:${S.accent};--acf:${S.fg};--dp:${S.deep}">
   ${photo(s.image)}
   <div class="shade"></div>
+  ${bubbles(s.says)}
   <div class="top">${logo(1)}<span class="date">${esc(d.dateLabel)} · ${S.slot}</span></div>
   ${s.sticker ? `<div class="sticker ${s.stickerSide === 'left' ? 'left' : ''}">${esc(s.sticker)}</div>` : ''}
   <div class="bottom">
@@ -293,7 +321,7 @@ function bodyShell(inner, s, d, S, i, n, noimg) {
 
 function body(s, d, S, i, n) {
   const fig = s.image
-    ? `<figure>${photo(s.image)}</figure><figcaption>${credit(s.image)}</figcaption>`
+    ? `<figure style="--dp:${S.deep}">${photo(s.image)}${bubbles(s.says)}</figure><figcaption>${credit(s.image)}</figcaption>`
     : '';
   const paras = (s.text || []).map((t) => `<p>${rich(t)}</p>`).join('');
   return bodyShell(`${fig}<h2>${rich(s.title)}</h2>${paras}`, s, d, S, i, n, !s.image);
@@ -329,7 +357,15 @@ function outro(s, d, S) {
 </div>`;
 }
 
-const RENDER = { cover, body, compare, points, outro, letter, meme };
+function gallery(s, d, S, i, n) {
+  const ims = s.images || [];
+  const cells = ims.map((im) => `<div class="cell">${photo(im)}${im.label ? `<span class="lbl">${esc(im.label)}</span>` : ''}${bubbles(im.says)}${im.credit ? `<span class="cr">${esc(im.credit)}</span>` : ''}</div>`).join('');
+  const paras = (s.text || []).map((t) => `<p>${rich(t)}</p>`).join('');
+  const inner = `<h2>${rich(s.title)}</h2><div class="gal n${ims.length}" style="--acc:${S.accent};--acf:${S.fg};--dp:${S.deep}">${cells}</div>${paras}`;
+  return bodyShell(inner, s, d, S, i, n, true).replace('class="card body', 'class="card body gallery');
+}
+
+const RENDER = { cover, body, compare, points, outro, letter, meme, gallery };
 
 export function slideHTML(doc, i) {
   const S = SERIES[doc.series];
