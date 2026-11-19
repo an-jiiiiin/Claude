@@ -1,6 +1,9 @@
 {
-  "state": "pending_review",
+  "state": "approved",
   "builtAt": "2026-11-19T23:18:01.663Z",
   "problems": [],
-  "missingImages": 0
+  "missingImages": 0,
+  "approvedAt": "2026-11-19T23:21:07.298078+00:00",
+  "publishMode": "manual (인스타 API 미연결)",
+  "reel": "reels/2026-11-20-am/reel.mp4"
 }
