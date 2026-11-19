@@ -29,8 +29,10 @@ export function validate(doc) {
       if (!(s.panels?.length >= 2 && s.panels.length <= 3)) p.push(`${at}: 밈 보드는 사진 2~3칸`);
       s.panels?.forEach((pp, k) => { if (!pp.image?.src) p.push(`${at}: ${k + 1}번째 칸 사진 없음`); else if (!pp.image.credit) p.push(`${at}: ${k + 1}번째 칸 출처 없음`); });
     }
-    if (s.type === 'cover' && doc.style === 'mag' && [...s.title.replace(/==|\*\*/g, '')].length > 30) p.push(`${at}: MAG 표지 제목 30자 이내`);
     if (s.type === 'cover') {
+      if (s.says) p.push(`${at}: 표지(썸네일)는 고정 — 말풍선 대신 chips 사용`);
+      if ((s.chips || []).length > 3) p.push(`${at}: 칩은 최대 3개`);
+      (s.chips || []).forEach((c) => { const t = typeof c === 'string' ? c : c.text; if ([...t].length > 8) p.push(`${at}: 칩은 8자 이내 (${t})`); });
       if (!s.image) p.push(`${at}: 표지는 실사 이미지(image) 필수`);
       if (s.sticker && [...s.sticker].length > 8) p.push(`${at}: 스티커 문구 8자 이내 (${s.sticker})`);
       if (s.title.split('\n').length > 3) p.push(`${at}: 표지 제목 3줄 이내`);
