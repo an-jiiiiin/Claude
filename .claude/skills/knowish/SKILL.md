@@ -22,6 +22,7 @@ argument-hint: <주제나 링크> [KNOW|-ISH] [장수] [톤·요청사항]
 | 시리즈 | 시사·경제·정치·정책·사회 → `on`(KNOW, 하늘). 마케팅·브랜드·캠페인·트렌드·밈·팝업 → `off`(-ISH, 마젠타). 애매하면 깊이로 판단: "왜/영향" 설명이 핵심이면 KNOW |
 | 장수 | KNOW 7장, -ISH 6장 (요청 시 KNOW 6~9, -ISH 5~7 안에서) |
 | 톤 | 시리즈 기본 톤. 사용자가 원하는 톤("더 가볍게", "숫자 위주", "비교 위주")이 있으면 반영 |
+| 스타일 | 같은 시리즈 직전 게시물과 다른 것(`classic` ↔ `mag`). 사용자가 "매거진 톤", "밈 스타일", "정보형" 등으로 말하면 그대로. 자세한 건 런북 '디자인 스타일' |
 | 게시물 ID | `YYYY-MM-DD-req-<영문슬러그>` (KST 날짜, 예: `2026-11-20-req-gongcha-hp`) |
 
 ## 2. 리서치 (정기 회차보다 깊게)
@@ -32,7 +33,7 @@ argument-hint: <주제나 링크> [KNOW|-ISH] [장수] [톤·요청사항]
 
 ## 3. 만들기
 1. `onoff/posts/<id>/content.json` 작성 — 형식은 `onoff/content/2026-11-19-am.json`(KNOW), `onoff/posts/2026-11-19-pm/content.json`(-ISH) 참고. `caption`(해시태그 정확히 5개, 마지막 `#knowish`), `commentTags`(유입용 15~20개), `sources` 필수.
-2. 사진: 런북의 이미지 규칙대로. 기사에 "<기업명> 제공"으로 실린 보도자료 사진은 `node src/fetch-image.mjs <기사 URL> posts/<id>/images/01` 로 받는다. 받은 사진은 직접 열어 보고 고른다(사진 속 글자가 스티커·제목과 겹치면 다른 사진 또는 `image.pos`).
+2. 사진: 런북의 이미지 규칙대로. **사진 있는 장이 절반 이상**이 되게 여러 장 모으고(`gallery` 활용), 가벼운 주제면 표지·사진에 말풍선(`says`)을 가끔 얹는다. 기사에 "<기업명> 제공"으로 실린 보도자료 사진은 `node src/fetch-image.mjs <기사 URL> posts/<id>/images/01` 로 받는다. 받은 사진은 직접 열어 보고 고른다(사진 속 글자가 스티커·제목과 겹치면 다른 사진 또는 `image.pos`).
 3. `node src/build.mjs posts/<id>` → `problems` 0개가 될 때까지 고친다.
 4. `review.png` 와 슬라이드를 직접 보고 글자 넘침·겹침·오타를 고친다.
 

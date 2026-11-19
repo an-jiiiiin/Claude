@@ -20,8 +20,9 @@ export const BRAND = {
 
 export const SERIES = {
   // accent: 면(스티커·배지)  fg: accent 위 글자색  deep: 밝은 종이 위 글자·선 색  hl: 형광펜
-  on: { key: 'on', label: 'KNOW', desc: '시사·경제', slot: 'AM', accent: BRAND.sky, fg: BRAND.ink, deep: '#0B72C9', hl: 'rgba(92,211,255,.38)' },
-  off: { key: 'off', label: '-ISH', desc: '마케팅', slot: 'PM', accent: BRAND.mag, fg: '#fff', deep: '#D1009E', hl: 'rgba(255,30,200,.20)' },
+  // pastel: MAG 스타일 본문 바탕
+  on: { key: 'on', label: 'KNOW', desc: '시사·경제', slot: 'AM', accent: BRAND.sky, fg: BRAND.ink, deep: '#0B72C9', hl: 'rgba(92,211,255,.38)', pastel: '#DCF4FF' },
+  off: { key: 'off', label: '-ISH', desc: '마케팅', slot: 'PM', accent: BRAND.mag, fg: '#fff', deep: '#D1009E', hl: 'rgba(255,30,200,.20)', pastel: '#FFE6F7' },
 };
 
 const esc = (s = '') => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -39,6 +40,7 @@ const css = `
 @import url('${nm('pretendard/dist/web/static/pretendard.css')}');
 @import url('${nm('@fontsource/black-han-sans/index.css')}');
 @import url('${nm('@fontsource/permanent-marker/index.css')}');
+@import url('${nm('@fontsource/nanum-gothic-coding/index.css')}');
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{background:#888}
 .card{width:1080px;height:1350px;position:relative;overflow:hidden;
@@ -137,6 +139,84 @@ b{font-weight:800}
 .outro .cta span.p{background:var(--acc);color:var(--acf);border-color:var(--acc)}
 .outro .bot{margin-top:60px;display:flex;justify-content:space-between;align-items:center}
 .outro .next{font-size:24px;color:rgba(255,255,255,.6);font-weight:600}
+/* ================= MAG 스타일 (에디터 매거진 톤) ================= */
+.mono{font-family:'Nanum Gothic Coding',monospace;letter-spacing:0}
+.mcover{color:#fff;background:#111}
+.mcover .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 16%,rgba(0,0,0,0) 45%,rgba(0,0,0,.72) 78%,rgba(0,0,0,.85) 100%)}
+.mcover .lab{position:absolute;top:44px;left:48px;right:48px;display:flex;justify-content:space-between;font-size:30px;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.55)}
+.mcover .lab span:first-child::before{content:'';display:inline-block;width:14px;height:14px;background:var(--acc);margin-right:10px;vertical-align:2px}
+.mcover .bottom{position:absolute;left:48px;right:60px;bottom:118px}
+.mcover .tag{display:inline-flex;align-items:center;gap:14px;margin-bottom:26px;font-weight:800;font-size:30px}
+.mcover .tag i{width:22px;height:22px;background:var(--acc);display:block}
+.mcover .tag span{background:var(--acc);color:var(--acf);padding:2px 12px}
+.mcover h1{font-weight:600;font-size:96px;line-height:1.22;letter-spacing:-0.035em;text-shadow:0 2px 20px rgba(0,0,0,.35)}
+.mcover h1 mark{background:none;color:var(--acc)}
+.mcover .src{position:absolute;left:48px;bottom:40px;font-size:20px;opacity:.75}
+.mcover .mlogo{position:absolute;right:48px;bottom:34px;opacity:.95}
+.stack{display:inline-flex;flex-direction:column;align-items:flex-start;--s:1}
+.stack .kn{background:${BRAND.sky};color:${BRAND.ink};font-weight:900;letter-spacing:-0.05em;line-height:1;font-size:calc(30px*var(--s));padding:calc(5px*var(--s)) calc(9px*var(--s)) calc(3px*var(--s));transform:rotate(-3deg)}
+.stack .ish{align-self:flex-end;margin:calc(-3px*var(--s)) calc(-10px*var(--s)) 0 0;background:${BRAND.mag};color:#fff;font-weight:900;font-style:italic;line-height:1;font-size:calc(26px*var(--s));padding:calc(4px*var(--s)) calc(9px*var(--s));border:calc(2px*var(--s)) solid #fff;border-radius:calc(5px*var(--s));transform:rotate(7deg)}
+
+/* 파스텔 본문 (letter / meme / mag 본문 공통) */
+.pastel{background:var(--pa)}
+.pastel .mtop{position:absolute;top:44px;left:60px;right:60px;display:flex;justify-content:space-between;align-items:center;font-size:24px;color:#555;z-index:2}
+.pastel .mtop .pg{font-weight:700;background:rgba(0,0,0,.55);color:#fff;border-radius:999px;padding:6px 16px;font-family:'Pretendard'}
+.pastel .msrc{position:absolute;left:60px;bottom:44px;font-size:20px;color:#8a8a8a;z-index:2}
+.pastel .mfoot{position:absolute;right:60px;bottom:36px;z-index:2}
+.letter .in{position:absolute;top:170px;left:60px;right:60px}
+.letter h2{font-weight:800;font-size:54px;line-height:1.35;letter-spacing:-0.035em;margin-bottom:40px}
+.letter p{font-size:31px;line-height:1.75;color:#222;font-weight:500}
+.letter p + p{margin-top:28px}
+.letter b{font-weight:800;color:#111}
+.letter mark{background:linear-gradient(transparent 58%, var(--hl) 58%);color:inherit}
+.letter .pic{position:relative;margin-top:44px;width:600px;height:400px;overflow:hidden;border-radius:4px}
+.letter .pic .photo{position:absolute;inset:0}
+.say{display:inline-block;background:#fff;border:3px solid #111;padding:14px 22px;font-size:30px;line-height:1.45;font-weight:600;text-align:center;color:#111;letter-spacing:-0.02em}
+.say mark{background:none;color:var(--dp);font-weight:900}
+.say b{font-weight:900}
+.letter .say{position:absolute;left:560px;margin-top:-330px}
+/* meme board */
+.meme{background:#111}
+.meme .panel{position:absolute;left:0;right:0;overflow:hidden;border-bottom:4px solid #111}
+.meme .panel .photo{position:absolute;inset:0}
+.meme .panel .cap{position:absolute;display:flex;flex-direction:column;gap:12px;max-width:62%}
+.meme .panel .cap.l{left:36px}.meme .panel .cap.r{right:36px;align-items:flex-end}
+.meme .panel .cap .say:nth-child(2){margin-left:120px}
+.meme .panel .cap.r .say:nth-child(2){margin-left:0;margin-right:110px}
+.meme .ttl{position:absolute;top:30px;left:0;right:0;text-align:center;z-index:3}
+.meme .ttl span{font-family:'Black Han Sans';font-size:58px;color:#fff;-webkit-text-stroke:3px #111;paint-order:stroke fill;text-shadow:4px 4px 0 var(--dp)}
+.meme .msrc{color:#fff;background:rgba(0,0,0,.55);padding:4px 12px;border-radius:6px;left:24px;bottom:16px}
+/* mag 본문(body/points/compare) 오버라이드 */
+.body.mag{background:var(--pa)}
+.body.mag::after{display:none}
+.body.mag h2{border-left:none;padding-left:0}
+.body.mag p{padding-left:0}
+.body.mag .kicker{font-family:'Nanum Gothic Coding',monospace;font-weight:700}
+.outro.mag{background:var(--pa);color:${BRAND.ink}}
+.outro.mag .lbl{color:var(--dp)}
+.outro.mag h2 mark{color:var(--dp)}
+.outro.mag .sub{color:#333}
+.outro.mag .cta span{border-color:rgba(0,0,0,.25)}
+.outro.mag .next{color:#666}
+
+/* ===== 말풍선 (classic 에서도 사용) ===== */
+.bub{position:absolute;z-index:4;transform:rotate(var(--rot,0deg))}
+.cover .bub .say{font-size:36px;box-shadow:6px 6px 0 rgba(0,0,0,.85)}
+.body figure .bub .say{font-size:26px;padding:10px 18px}
+/* ===== 갤러리 (사진 2~4장) ===== */
+.gal{display:grid;gap:14px;flex:none}
+.gal.n2{grid-template-columns:1fr 1fr;height:640px}
+.gal.n3{grid-template-columns:1.25fr 1fr;grid-template-rows:1fr 1fr;height:700px}
+.gal.n3 .cell:first-child{grid-row:1 / 3}
+.gal.n4{grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;height:740px}
+.gal .cell{position:relative;overflow:hidden;border-radius:6px;background:#ddd}
+.gal .cell .photo{position:absolute;inset:0}
+.gal .cell .cr{position:absolute;right:8px;bottom:8px;font-size:16px;color:#fff;background:rgba(0,0,0,.5);padding:2px 8px;border-radius:4px;z-index:3}
+.gal .cell .lbl{position:absolute;left:12px;top:12px;z-index:3;font-weight:800;font-size:22px;background:var(--acc,#111);color:var(--acf,#fff);padding:4px 12px}
+.gal .cell .bub .say{font-size:24px;padding:8px 14px}
+.body.gallery h2{margin:20px 0 26px}
+.body.gallery p{font-size:30px;margin-top:26px}
+
 `;
 
 // image.src: http(s) URL 또는 onoff/ 기준 로컬 경로 (예: posts/2026-11-20-am/images/01.jpg)
@@ -146,12 +226,77 @@ const photo = (img, cls = '') =>
     ? `<div class="photo ${cls}" style="background-image:url('${srcURL(img.src)}');background-position:${img.pos || 'center'};background-size:${img.fit === 'contain' ? 'contain' : img.zoom ? `${img.zoom * 100}% auto` : 'cover'};background-repeat:no-repeat;background-color:${img.bg || '#111'}"></div>`
     : `<div class="photo ph ${cls}"><span class="phl">PHOTO</span><span class="phd">${esc(img?.hint || '실사 이미지 영역')}</span></div>`;
 
+
+// 말풍선: [{text, x, y, rot}]  x·y 는 % (왼쪽 위 기준), rot 은 기울기(도)
+const bubbles = (list = []) =>
+  (Array.isArray(list) ? list : [list]).map((b, k) => {
+    const o = typeof b === 'string' ? { text: b } : b;
+    const x = o.x ?? (k % 2 ? 46 : 6), y = o.y ?? 30 + k * 12, rot = o.rot ?? (k % 2 ? 2 : -2);
+    return `<div class="bub" style="left:${x}%;top:${y}%;--rot:${rot}deg"><div class="say">${rich(o.text)}</div></div>`;
+  }).join('');
+
 const credit = (img) => (img?.credit ? `사진 | ${esc(img.credit)}` : '');
 
-function cover(s, d, S) {
-  return `<div class="card cover" style="--acc:${S.accent};--acf:${S.fg}">
+const pad = (n) => String(n).padStart(2, '0');
+const vol = (d) => (d.vol ? `vol. ${String(d.vol).padStart(3, '0')}` : esc(d.dateLabel || ''));
+const stackLogo = (sz = 1) => `<span class="stack" style="--s:${sz}"><span class="kn">KNOW</span><span class="ish">-ish</span></span>`;
+const magVars = (S) => `--acc:${S.accent};--acf:${S.fg};--pa:${S.pastel};--dp:${S.deep};--hl:${S.hl}`;
+
+function coverMag(s, d, S) {
+  return `<div class="card mcover" style="${magVars(S)}">
   ${photo(s.image)}
   <div class="shade"></div>
+  <div class="lab mono"><span>${vol(d)}</span><span>editor_ 노이쉬</span></div>
+  <div class="bottom">
+    <div class="tag"><i></i><span>${esc(s.tag || d.category || S.desc)}</span></div>
+    <h1>${rich(s.title)}</h1>
+  </div>
+  <div class="src">${s.image?.credit ? '출처 | ' + esc(s.image.credit) : ''}</div>
+  <div class="mlogo">${stackLogo(1)}</div>
+</div>`;
+}
+
+function magTop(d, S, i, n, label) {
+  return `<div class="mtop"><span class="mono">${esc(label || `${vol(d)} · ${S.label} ${d.category || S.desc}`)}</span><span class="pg">${i + 1}/${n}</span></div>`;
+}
+
+function letter(s, d, S, i, n) {
+  const paras = (s.text || []).map((t) => `<p>${rich(t)}</p>`).join('');
+  return `<div class="card pastel letter" style="${magVars(S)}">
+  ${magTop(d, S, i, n, s.label)}
+  <div class="in"><h2>${rich(s.title)}</h2>${paras}
+  ${s.image ? `<div class="pic">${photo(s.image)}</div>` : ''}
+  ${s.say ? `<div class="say">${rich(s.say)}</div>` : ''}</div>
+  <div class="msrc">${s.image?.credit ? '출처 | ' + esc(s.image.credit) : s.ref ? 'Ref. ' + esc(s.ref) : ''}</div>
+  <div class="mfoot">${stackLogo(0.8)}</div>
+</div>`;
+}
+
+// 밈 보드: 사진 2~3장을 위아래로 쌓고, 말풍선 박스 2개씩(말 → 반응)
+function meme(s, d, S, i, n) {
+  const ps = s.panels || [];
+  const top = s.title ? 120 : 0;
+  const h = (1350 - top) / ps.length;
+  const panels = ps.map((p, k) => {
+    const side = p.side || (k % 2 ? 'l' : 'r');
+    const caps = [p.say, p.react].filter(Boolean).map((t) => `<div class="say">${rich(t)}</div>`).join('');
+    return `<div class="panel" style="top:${top + k * h}px;height:${h}px">${photo(p.image)}
+      <div class="cap ${side}" style="${p.capTop != null ? `top:${p.capTop}px` : 'bottom:40px'}">${caps}</div></div>`;
+  }).join('');
+  const credits = [...new Set(ps.map((p) => p.image?.credit).filter(Boolean))].join(', ');
+  return `<div class="card pastel meme" style="${magVars(S)}">
+  ${s.title ? `<div class="ttl"><span>${esc(s.title)}</span></div>` : ''}
+  ${panels}
+  <div class="msrc">${credits ? '출처 | ' + esc(credits) : ''}</div>
+</div>`;
+}
+
+function cover(s, d, S) {
+  if (d.style === 'mag') return coverMag(s, d, S);
+  return `<div class="card cover" style="--acc:${S.accent};--acf:${S.fg};--dp:${S.deep}">
+  ${photo(s.image)}
+  <div class="shade"></div>
+  ${bubbles(s.says)}
   <div class="top">${logo(1)}<span class="date">${esc(d.dateLabel)} · ${S.slot}</span></div>
   ${s.sticker ? `<div class="sticker ${s.stickerSide === 'left' ? 'left' : ''}">${esc(s.sticker)}</div>` : ''}
   <div class="bottom">
@@ -164,7 +309,7 @@ function cover(s, d, S) {
 }
 
 function bodyShell(inner, s, d, S, i, n, noimg) {
-  return `<div class="card body ${noimg ? 'noimg' : ''}" style="--ac:${S.deep};--hl:${S.hl}">
+  return `<div class="card body ${noimg ? 'noimg' : ''} ${d.style === 'mag' ? 'mag' : ''}" style="--ac:${S.deep};--hl:${S.hl};--pa:${S.pastel}">
   <div class="head">
     <span class="kicker"><span class="dot" style="background:${S.accent}"></span>${S.label} | ${esc(d.category || S.desc)}</span>
     <span class="pno"><b>${String(i + 1).padStart(2, '0')}</b> / ${String(n).padStart(2, '0')}</span>
@@ -176,7 +321,7 @@ function bodyShell(inner, s, d, S, i, n, noimg) {
 
 function body(s, d, S, i, n) {
   const fig = s.image
-    ? `<figure>${photo(s.image)}</figure><figcaption>${credit(s.image)}</figcaption>`
+    ? `<figure style="--dp:${S.deep}">${photo(s.image)}${bubbles(s.says)}</figure><figcaption>${credit(s.image)}</figcaption>`
     : '';
   const paras = (s.text || []).map((t) => `<p>${rich(t)}</p>`).join('');
   return bodyShell(`${fig}<h2>${rich(s.title)}</h2>${paras}`, s, d, S, i, n, !s.image);
@@ -203,7 +348,7 @@ function points(s, d, S, i, n) {
 }
 
 function outro(s, d, S) {
-  return `<div class="card outro" style="--acc:${S.accent};--acf:${S.fg}">
+  return `<div class="card outro ${d.style === 'mag' ? 'mag' : ''}" style="${magVars(S)}">
   <div class="lbl">KNOW-ISH 한 줄 정리</div>
   <h2>${rich(s.title)}</h2>
   ${s.text ? `<div class="sub">${rich(s.text)}</div>` : ''}
@@ -212,7 +357,15 @@ function outro(s, d, S) {
 </div>`;
 }
 
-const RENDER = { cover, body, compare, points, outro };
+function gallery(s, d, S, i, n) {
+  const ims = s.images || [];
+  const cells = ims.map((im) => `<div class="cell">${photo(im)}${im.label ? `<span class="lbl">${esc(im.label)}</span>` : ''}${bubbles(im.says)}${im.credit ? `<span class="cr">${esc(im.credit)}</span>` : ''}</div>`).join('');
+  const paras = (s.text || []).map((t) => `<p>${rich(t)}</p>`).join('');
+  const inner = `<h2>${rich(s.title)}</h2><div class="gal n${ims.length}" style="--acc:${S.accent};--acf:${S.fg};--dp:${S.deep}">${cells}</div>${paras}`;
+  return bodyShell(inner, s, d, S, i, n, true).replace('class="card body', 'class="card body gallery');
+}
+
+const RENDER = { cover, body, compare, points, outro, letter, meme, gallery };
 
 export function slideHTML(doc, i) {
   const S = SERIES[doc.series];

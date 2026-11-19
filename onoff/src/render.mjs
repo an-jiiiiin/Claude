@@ -8,6 +8,12 @@ import { slideHTML } from './templates.mjs';
 
 export async function renderDoc(file, outDir) {
   const doc = JSON.parse(await fs.readFile(file, 'utf8'));
+  // vol 자동 번호: posts/<id>/content.json 이면 posts 폴더 안 순서
+  if (!doc.vol && path.basename(path.dirname(path.dirname(path.resolve(file)))) === 'posts') {
+    const postsDir = path.dirname(path.dirname(path.resolve(file)));
+    const ids = (await fs.readdir(postsDir, { withFileTypes: true })).filter((e) => e.isDirectory()).map((e) => e.name).sort();
+    doc.vol = ids.indexOf(path.basename(path.dirname(path.resolve(file)))) + 1;
+  }
   const base = path.basename(file, '.json');
   outDir = outDir || path.join('out', base);
   await fs.mkdir(outDir, { recursive: true });
