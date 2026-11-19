@@ -26,7 +26,14 @@ export function validate(doc) {
   });
   if (!doc.caption) p.push('caption 없음');
   else if (doc.caption.length > 2200) p.push('캡션 2,200자 초과');
-  if ((doc.caption?.match(/#/g) || []).length > 30) p.push('해시태그 30개 초과');
+  const capTags = (doc.caption?.match(/#[^\s#]+/g) || []).length;
+  if (capTags > 5) p.push(`캡션 해시태그 ${capTags}개 — 5개 이내 (나머지는 commentTags 로)`);
+  const ct = doc.commentTags || [];
+  if (!ct.length) p.push('commentTags(댓글용 유입 태그) 없음');
+  if (ct.length > 25) p.push(`댓글 태그 ${ct.length}개 — 25개 이내`);
+  if (ct.some((t) => !/^#[^\s#]+$/.test(t))) p.push('commentTags 는 공백 없는 "#태그" 형식');
+  const dup = ct.filter((t) => doc.caption?.includes(t + ' ') || doc.caption?.endsWith(t));
+  if (dup.length) p.push(`캡션과 댓글 태그 중복: ${dup.join(' ')}`);
   if (!doc.sources?.length) p.push('sources(근거 링크) 없음');
   return p;
 }

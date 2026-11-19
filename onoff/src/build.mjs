@@ -52,7 +52,8 @@ const html = `<div class="rv">
   <div class="meta">${esc(path.basename(dir))} · 슬라이드 ${slides.length}장 · 게시 예정 ${doc.series === 'on' ? '08:00' : '18:00'} KST</div>
   <div class="g">${grid}</div>
   <div class="two">
-    <div class="box"><h2>캡션</h2><pre>${esc(doc.caption || '')}</pre></div>
+    <div class="box"><h2>캡션</h2><pre>${esc(doc.caption || '')}</pre>
+      <h2 style="margin-top:22px">첫 댓글 (유입용 태그)</h2><pre>${esc((doc.commentTags || []).join(' '))}</pre></div>
     <div class="box"><h2>검수 체크</h2>
       ${problems.length ? problems.map((p) => `<div class="warn">⚠ ${esc(p)}</div>`).join('') : '<div class="ok">✓ 형식 검사 통과</div>'}
       ${missing.length ? `<div class="warn">⚠ 실사 이미지 미지정 ${missing.length}장 (회색 자리) — 이미지 지정 후 재빌드 필요</div>` : '<div class="ok">✓ 실사 이미지 모두 지정됨</div>'}
@@ -83,6 +84,11 @@ const md = `# [승인 요청] ${S.label} · ${doc.category || S.desc}
 ${doc.caption || ''}
 \`\`\`
 
+## 첫 댓글 (유입용 태그)
+\`\`\`
+${(doc.commentTags || []).join(' ')}
+\`\`\`
+
 ## 출처
 ${(doc.sources || []).map((u) => `- ${u}`).join('\n')}
 
@@ -92,6 +98,8 @@ ${photos.map((s) => `- ${s.image.credit || '?'} · ${s.image.license || '라이�
 승인하려면 이 세션에 **"승인"**, 수정하려면 바꿀 내용을 적어주세요.
 `;
 await fs.writeFile(path.join(dir, 'review.md'), md);
+await fs.writeFile(path.join(dir, 'caption.txt'), (doc.caption || '') + '\n');
+await fs.writeFile(path.join(dir, 'comment.txt'), (doc.commentTags || []).join(' ') + '\n');
 const statusPath = path.join(dir, 'status.json');
 let status = {};
 try { status = JSON.parse(await fs.readFile(statusPath, 'utf8')); } catch {}

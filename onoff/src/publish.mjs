@@ -33,7 +33,7 @@ const base = process.env.IMAGE_BASE_URL || `https://raw.githubusercontent.com/${
 const urls = slides.map((f) => `${base}/${path.relative(repoRoot, path.join(dir, 'slides', f)).split(path.sep).join('/')}`);
 
 if (dry) {
-  console.log(JSON.stringify({ dryRun: true, igUser: process.env.IG_USER_ID || '(미설정)', urls, caption: doc.caption }, null, 2));
+  console.log(JSON.stringify({ dryRun: true, igUser: process.env.IG_USER_ID || '(미설정)', urls, caption: doc.caption, firstComment: (doc.commentTags || []).join(' ') }, null, 2));
   process.exit(0);
 }
 
@@ -68,5 +68,7 @@ for (let i = 0; i < 30; i++) {
 }
 const pub = await api(`${IG}/media_publish`, { creation_id: container.id });
 const info = await api(`${pub.id}?fields=permalink`, null, 'GET').catch(() => ({}));
+// 유입용 태그는 첫 댓글로
+if (doc.commentTags?.length) await api(`${pub.id}/comments`, { message: doc.commentTags.join(' ') }).catch((e) => console.error('댓글 실패:', e.message));
 await fs.writeFile(statusPath, JSON.stringify({ ...status, state: 'published', mediaId: pub.id, permalink: info.permalink, publishedAt: new Date().toISOString() }, null, 2));
 console.log('게시 완료:', info.permalink || pub.id);
