@@ -143,7 +143,7 @@ b{font-weight:800}
 const srcURL = (src) => (/^(https?|file):/.test(src) ? src : pathToFileURL(path.resolve(ROOT, src)).href);
 const photo = (img, cls = '') =>
   img && img.src
-    ? `<div class="photo ${cls}" style="background-image:url('${srcURL(img.src)}');background-position:${img.pos || 'center'};background-size:${img.fit === 'contain' ? 'contain' : 'cover'};background-repeat:no-repeat;background-color:${img.bg || '#111'}"></div>`
+    ? `<div class="photo ${cls}" style="background-image:url('${srcURL(img.src)}');background-position:${img.pos || 'center'};background-size:${img.fit === 'contain' ? 'contain' : img.zoom ? `${img.zoom * 100}% auto` : 'cover'};background-repeat:no-repeat;background-color:${img.bg || '#111'}"></div>`
     : `<div class="photo ph ${cls}"><span class="phl">PHOTO</span><span class="phd">${esc(img?.hint || '실사 이미지 영역')}</span></div>`;
 
 const credit = (img) => (img?.credit ? `사진 | ${esc(img.credit)}` : '');
