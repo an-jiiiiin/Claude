@@ -139,9 +139,11 @@ b{font-weight:800}
 .outro .next{font-size:24px;color:rgba(255,255,255,.6);font-weight:600}
 `;
 
+// image.src: http(s) URL 또는 onoff/ 기준 로컬 경로 (예: posts/2026-11-20-am/images/01.jpg)
+const srcURL = (src) => (/^(https?|file):/.test(src) ? src : pathToFileURL(path.resolve(ROOT, src)).href);
 const photo = (img, cls = '') =>
   img && img.src
-    ? `<div class="photo ${cls}" style="background-image:url('${img.src}')"></div>`
+    ? `<div class="photo ${cls}" style="background-image:url('${srcURL(img.src)}')"></div>`
     : `<div class="photo ph ${cls}"><span class="phl">PHOTO</span><span class="phd">${esc(img?.hint || '실사 이미지 영역')}</span></div>`;
 
 const credit = (img) => (img?.credit ? `사진 | ${esc(img.credit)}` : '');

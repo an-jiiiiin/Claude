@@ -17,3 +17,10 @@ node src/render.mjs content/2026-11-19-am.json samples/2026-11-19-am
 ```
 
 슬라이드의 `image.src`에 사진 경로나 URL을 넣으면 플레이스홀더 대신 실사 이미지가 들어갑니다. 출처는 `image.credit`에 적습니다.
+
+## 자동화
+- 하루 두 번 예약 작업이 새 세션을 열어 `AUTOMATION.md` 런북대로 수집, 원고, 이미지, 빌드, 승인 요청까지 진행합니다.
+- 게시물 하나 = `posts/<YYYY-MM-DD-am|pm>/` (content.json, images/, slides/, review.png, status.json)
+- `node src/build.mjs posts/<id>`: 렌더링, 형식 검사, 검수 시트 생성
+- `node src/publish.mjs posts/<id> [--dry-run]`: 승인된 게시물만 인스타 캐러셀로 게시
+- 인스타 연결: `docs/INSTAGRAM_SETUP.md`
