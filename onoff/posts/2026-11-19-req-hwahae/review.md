@@ -14,7 +14,7 @@
 화해 앱 얼리버드 티켓은 9,900원(현장 15,000원), 선착순 9,000장.
 작년엔 무료였던 화해 팝업이 왜 유료가 됐는지, 마케터 포인트까지 정리했어요 🎟️
 
-이미지 출처 | 화해 공식 홍보 이미지 (@hwahae_global_official)
+이미지 출처 | 화해 공식 홍보 이미지 (@hwahae_global_official), Unsplash / Maria Lupan
 Ref. 화해 공식 광고 게시물, 화해 비즈니스 블로그, 팝가
 
 #화해 #화해팝업 #피부랑화해하자 #성수팝업 #knowish
@@ -30,9 +30,10 @@ Ref. 화해 공식 광고 게시물, 화해 비즈니스 블로그, 팝가
 - https://business.hwahae.co.kr/insight/event-2025-hwahae-thehyundai-popup/
 - https://popga.co.kr/popup/3909
 - https://www.newstap.co.kr/news/articleView.html?idxno=312400
+- https://unsplash.com/photos/BlcA2-o-7IM
 
 ## 이미지
 - 화해 · @hwahae_global_official · 공식 홍보 이미지
-- 화해 · @hwahae_global_official · 공식 홍보 이미지
+- Unsplash / Maria Lupan · Unsplash License
 
 승인하려면 이 세션에 **"승인"**, 수정하려면 바꿀 내용을 적어주세요.
