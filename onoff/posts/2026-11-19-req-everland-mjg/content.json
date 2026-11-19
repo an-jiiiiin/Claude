@@ -1,0 +1,158 @@
+{
+  "series": "off",
+  "style": "mag",
+  "dateLabel": "11.19 THU",
+  "category": "콜라보",
+  "caption": "[에버랜드에 먼작귀가 온다 ❄️]\n\n에버랜드와 대원미디어 공식 계정이 함께 띄운 티저.\nEverland × 먼작귀 ‘홀리데이 위시’, 2026년 12월 19일부터 2027년 3월 24일까지.\n\n극장판 누적 296만, 오픈런·되팔기까지 부른 그 캐릭터가 테마파크로 갑니다.\n세부 내용은 아직 미공개 — 공지 뜨면 바로 알려드릴게요 🧣\n\n이미지 출처 | 에버랜드·대원미디어 공식 SNS(©nagano), 대원미디어, 삼성물산\nRef. @witheverland, @popcon_daewonmedia, 일간스포츠, 뉴스플릭스, 톱스타뉴스, 삼성물산 뉴스룸\n\n#에버랜드 #먼작귀 #치이카와 #홀리데이위시 #knowish",
+  "commentTags": [
+    "#에버랜드먼작귀",
+    "#에버랜드치이카와",
+    "#치이카와콜라보",
+    "#하치와레",
+    "#우사기",
+    "#치이카와굿즈",
+    "#에버랜드겨울축제",
+    "#겨울축제",
+    "#겨울데이트",
+    "#용인에버랜드",
+    "#테마파크",
+    "#캐릭터콜라보",
+    "#IP마케팅",
+    "#팬덤마케팅",
+    "#마케팅",
+    "#마케팅인사이트",
+    "#마케팅트렌드",
+    "#브랜딩",
+    "#카드뉴스",
+    "#트렌드"
+  ],
+  "sources": [
+    "https://www.instagram.com/witheverland/",
+    "https://www.instagram.com/popcon_daewonmedia/",
+    "https://isplus.com/article/view/isp202610120049",
+    "https://newsflix.co.kr/news/articleView.html?idxno=33180",
+    "https://www.swtvnews.com/news/newsview.php?ncode=1065574714551921",
+    "https://www.topstarnews.net/news/articleView.html?idxno=16280064",
+    "https://news.samsungcnt.com/ko/%EC%A0%84%EC%B2%B4%EA%B8%B0%EC%82%AC/%EB%A6%AC%EC%A1%B0%ED%8A%B8%EB%B6%80%EB%AC%B8/2024-12-%EC%BA%90%EB%A6%AC%EB%B9%84%EC%95%88-%EB%B2%A0%EC%9D%B4-%EB%AC%B4%EB%AF%BC-%EC%BD%9C%EB%9D%BC%EB%B3%B4-%EC%9C%88%ED%84%B0-%EC%8A%A4%ED%8C%8C-%EC%BA%90%EB%B9%84-%EC%98%A4%ED%94%88/",
+    "https://www.fnnews.com/news/202611161001064692"
+  ],
+  "slides": [
+    {
+      "type": "cover",
+      "tag": "콜라보",
+      "title": "에버랜드에\n==먼작귀==가 온다",
+      "image": {
+        "src": "posts/2026-11-19-req-everland-mjg/images/01-teaser.jpg",
+        "credit": "에버랜드 × 대원미디어 공식 SNS · ©nagano",
+        "license": "공식 홍보 이미지",
+        "pos": "center 75%"
+      }
+    },
+    {
+      "type": "letter",
+      "label": "에디터의 콜라보 노트",
+      "title": "공식 계정이 직접 띄웠어요",
+      "text": [
+        "에버랜드와 대원미디어 공식 계정이 함께 올린 티저. 이름은 **Everland × 먼작귀 ‘홀리데이 위시’**.",
+        "기간은 ==2026.12.19(토) ~ 2027.3.24(수)==. 지금은 ‘Coming Soon’ 단계예요."
+      ],
+      "image": {
+        "src": "posts/2026-11-19-req-everland-mjg/images/01-teaser.jpg",
+        "credit": "에버랜드 × 대원미디어 공식 SNS · ©nagano",
+        "license": "공식 홍보 이미지",
+        "pos": "center 30%"
+      },
+      "say": "목도리 맨 3인방 ㅠㅠ",
+      "ref": "@witheverland, @popcon_daewonmedia"
+    },
+    {
+      "type": "meme",
+      "title": "왜 하필 지금 먼작귀?",
+      "panels": [
+        {
+          "image": {
+            "src": "posts/2026-11-19-req-everland-mjg/images/02-movie.png",
+            "credit": "대원미디어 제공",
+            "license": "보도자료",
+            "pos": "center 30%"
+          },
+          "say": "극장판 ‘인어 섬의 비밀’",
+          "react": "→ 누적 ==296만== (11.18)",
+          "side": "r"
+        },
+        {
+          "image": {
+            "src": "posts/2026-11-19-req-everland-mjg/images/03-movie2.jpg",
+            "credit": "대원미디어 제공",
+            "license": "보도자료",
+            "pos": "center 50%"
+          },
+          "say": "용산 매장 신상 굿즈 입고 날",
+          "react": "→ 최대 대기 ==1,200명+==",
+          "side": "l"
+        }
+      ]
+    },
+    {
+      "type": "body",
+      "title": "에버랜드의 겨울은\n원래 ‘캐릭터 맛집’",
+      "image": {
+        "src": "posts/2026-11-19-req-everland-mjg/images/04-moomin.jpg",
+        "credit": "삼성물산 리조트부문 제공",
+        "license": "보도자료",
+        "pos": "center 60%"
+      },
+      "text": [
+        "2024년 겨울엔 **무민**과 ‘윈터토피아’를 열고 캐리비안 베이 스파까지 무민으로 꾸몄어요. 이번엔 기간이 ==3월 24일까지==, 겨울 시즌을 통째로 먼작귀가 맡아요."
+      ],
+      "ref": "삼성물산 뉴스룸"
+    },
+    {
+      "type": "points",
+      "title": "가기 전에 체크",
+      "points": [
+        {
+          "title": "확인된 것",
+          "text": "행사명 ‘홀리데이 위시’ · 2026.12.19 ~ 2027.3.24"
+        },
+        {
+          "title": "아직 미공개",
+          "text": "존 위치, 어트랙션·포토존, 굿즈, 예약 방식"
+        },
+        {
+          "title": "SNS에 도는 회전목마 사진",
+          "text": "해외 행사 사진이에요. 에버랜드 실제 모습은 공개 전."
+        },
+        {
+          "title": "공지 채널",
+          "text": "@witheverland · @popcon_daewonmedia"
+        }
+      ],
+      "ref": "에버랜드·대원미디어 공식 SNS"
+    },
+    {
+      "type": "points",
+      "title": "마케터 포인트 3",
+      "points": [
+        {
+          "title": "흥행 IP는 ‘다음 공간’이 필요하다",
+          "text": "극장 → 팝업 → 테마파크.\n팬이 머무는 시간이 점점 길어진다."
+        },
+        {
+          "title": "티저는 정보보다 ‘기간’",
+          "text": "내용은 비워 두고 날짜만 박아도\n저장·공유가 먼저 터진다."
+        },
+        {
+          "title": "겨울 비수기를 IP로 채운다",
+          "text": "3개월짜리 시즌 콜라보는\n한 번이 아니라 ‘또 갈 이유’를 만든다."
+        }
+      ],
+      "ref": "KNOW-ISH 에디터"
+    },
+    {
+      "type": "outro",
+      "title": "올겨울 에버랜드는\n==먼작귀 시즌==",
+      "text": "세부 공지가 뜨면 KNOW-ISH가 바로 정리해 드릴게요.\n같이 갈 친구 태그해 두기 🧣"
+    }
+  ]
+}
