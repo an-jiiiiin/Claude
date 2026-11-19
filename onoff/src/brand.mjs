@@ -74,7 +74,7 @@ const sw = (bg, fg, name, hex, role, border) =>
   `<div class="sw" style="background:${bg};color:${fg};${border ? 'box-shadow:inset 0 0 0 2px #ddd' : ''}">${name}<small>${hex} · ${role}</small></div>`;
 
 const sheet = `<div class="sheet">
-  <h1>KNOW-ISH · 노이쉬 · @know.ish</h1>
+  <h1>KNOW-ISH · 노이쉬 · @knowish.mag</h1>
   <div class="row">
     <div class="hero">${logo(3)}<p>우리, 아는 척 좀 해봅시다.<br>아침엔 <span class="a">KNOW</span> — 시사·경제를 제대로 알고,<br>오후엔 <span class="b">-ISH</span> — 마케팅·트렌드로 센스 있게 아는 척.</p></div>
     <div class="pfs"><div class="pf"><img src="profile-sky.png"></div><small>프로필 ② 하늘 배경</small><div class="pf"><img src="profile-mag.png"></div><small>프로필 ③ 마젠타 배경</small></div>
@@ -104,7 +104,7 @@ const sheet = `<div class="sheet">
 
 const igMock = (key, covers) => `<div class="ig">
   <div class="hd"><div class="av"><img src="profile-${key}.png"></div>
-    <div><div class="nm">know.ish</div><div class="sub">노이쉬 | 시사·경제·마케팅 인사이트</div>
+    <div><div class="nm">knowish.mag</div><div class="sub">노이쉬 | 시사·경제·마케팅 인사이트</div>
       <div class="st"><span>게시물 <b>6</b></span><span>팔로워 <b>0</b></span><span>팔로우 <b>0</b></span></div>
       <div class="bio">우리, 아는 척 좀 해봅시다 🤓<br>☀️ AM 8시 KNOW — 시사·경제 제대로 알기<br>🌙 PM 6시 -ISH — 마케팅·트렌드 센스 있게</div></div></div>
   <div class="btn"><span class="f">팔로우</span><span>메시지 보내기</span></div>
