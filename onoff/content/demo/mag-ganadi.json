@@ -37,13 +37,23 @@
   "slides": [
     {
       "type": "cover",
-      "tag": "팝업",
       "title": "오픈런 그 강아지,\n더현대에 ==또 온다==",
       "image": {
         "src": "samples/mag-demo/images/ganadi-post.png",
         "credit": "GANADI · @keshop.official",
         "license": "공식 홍보 이미지"
-      }
+      },
+      "sticker": "편지 왔어요",
+      "chips": [
+        {
+          "text": "D-26",
+          "kind": "dot"
+        },
+        {
+          "text": "12/15~31",
+          "kind": "dark"
+        }
+      ]
     },
     {
       "type": "letter",

@@ -217,6 +217,15 @@ b{font-weight:800}
 .body.gallery h2{margin:20px 0 26px}
 .body.gallery p{font-size:30px;margin-top:26px}
 
+/* ===== 표지 어그로 칩 (썸네일 유일한 변형) ===== */
+.cover .chips{position:absolute;top:128px;left:60px;display:flex;flex-wrap:wrap;gap:12px;max-width:56%;z-index:3}
+.cover .chips.right{left:auto;right:60px;justify-content:flex-end}
+.cover .chip{display:inline-flex;align-items:center;gap:8px;font-weight:900;font-size:30px;letter-spacing:-0.03em;line-height:1;
+  padding:12px 20px 11px;border-radius:999px;background:#fff;color:${BRAND.ink};box-shadow:4px 4px 0 ${BRAND.ink}}
+.cover .chip.hot{background:var(--acc);color:var(--acf);box-shadow:4px 4px 0 ${BRAND.ink},0 0 26px color-mix(in srgb,var(--acc) 55%,transparent)}
+.cover .chip.dark{background:${BRAND.ink};color:#fff;box-shadow:none;border:3px solid #fff}
+.cover .chip.dot::before{content:'';width:12px;height:12px;border-radius:50%;background:#FF2D2D;box-shadow:0 0 10px #FF2D2D}
+
 `;
 
 // image.src: http(s) URL 또는 onoff/ 기준 로컬 경로 (예: posts/2026-11-20-am/images/01.jpg)
@@ -291,12 +300,19 @@ function meme(s, d, S, i, n) {
 </div>`;
 }
 
+// 칩: ["D-8", {"text":"품절 주의","kind":"hot|dark|dot"}]  최대 3개
+const chips = (list = [], right = false) =>
+  list.length ? `<div class="chips ${right ? 'right' : ''}">${list.map((c) => {
+    const o = typeof c === 'string' ? { text: c } : c;
+    return `<span class="chip ${o.kind || ''}">${esc(o.text)}</span>`;
+  }).join('')}</div>` : '';
+
+// 썸네일은 스타일과 상관없이 항상 classic 고정 (변형은 chips 만)
 function cover(s, d, S) {
-  if (d.style === 'mag') return coverMag(s, d, S);
   return `<div class="card cover" style="--acc:${S.accent};--acf:${S.fg};--dp:${S.deep}">
   ${photo(s.image)}
   <div class="shade"></div>
-  ${bubbles(s.says)}
+  ${chips(s.chips, s.stickerSide === 'left')}
   <div class="top">${logo(1)}<span class="date">${esc(d.dateLabel)} · ${S.slot}</span></div>
   ${s.sticker ? `<div class="sticker ${s.stickerSide === 'left' ? 'left' : ''}">${esc(s.sticker)}</div>` : ''}
   <div class="bottom">
