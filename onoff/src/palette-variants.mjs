@@ -7,21 +7,21 @@ import { page } from './templates.mjs';
 
 const ink = '#0E0E10';
 const P = {
-  y: { name: '① Signal Yellow', main: '#FFE500', stk: '#2B4BFF', stkTx: '#fff', on: '#2B4BFF', off: '#FF4D8D',
-       desc: '뉴스 속보 자막·경고 표지의 노랑. 시사 톤에 신뢰감, 검정과 대비 최강' },
-  p: { name: '② Hot Pink', main: '#FF3D9A', stk: '#FFE500', stkTx: ink, on: '#2B4BFF', off: '#FF3D9A',
-       desc: '마케팅·트렌드 계정 중 핑크 메인은 드묾. 가장 MZ스럽고 저장욕구 자극' },
-  o: { name: '③ Blaze Orange', main: '#FF5A1F', stk: '#FFFFFF', stkTx: ink, on: '#2B4BFF', off: '#FF5A1F',
-       desc: '에너지·속도감. 블루(KNOW)와 보색이라 오전/오후 대비가 가장 선명' },
-  v: { name: '④ Electric Violet', main: '#A66BFF', stk: '#FFE500', stkTx: ink, on: '#3B5BFF', off: '#FF5A8A',
-       desc: '경제·테크 느낌의 세련된 보라. 형광 감은 덜하지만 겹치는 브랜드가 적음' },
+  y: { name: '① Neon Yellow', main: '#FFF000', stk: '#FF1EC8', stkTx: '#fff', on: '#2B4BFF', off: '#FF1EC8',
+       desc: '형광펜 노랑. 연두 기가 없는 따뜻한 순노랑이라 겹침 회피 + 검정 대비 최강' },
+  p: { name: '② Neon Magenta', main: '#FF1EC8', stk: '#FFF000', stkTx: ink, on: '#2B4BFF', off: '#FF1EC8',
+       desc: '형광 마젠타. 피드에서 가장 쨍하고, 마케팅 계정 중 겹치는 곳이 거의 없음' },
+  o: { name: '③ Neon Orange', main: '#FF6400', stk: '#00E5FF', stkTx: ink, on: '#2B4BFF', off: '#FF6400',
+       desc: '형광 주황 + 시안 스티커. 보색 대비로 가장 에너지 넘침' },
+  c: { name: '④ Neon Cyan', main: '#00E5FF', stk: '#FF1EC8', stkTx: '#fff', on: '#2B4BFF', off: '#FF1EC8',
+       desc: '형광 시안. 매우 쨍하지만 레퍼런스 2EZ 메인색과 비슷해 차별화는 약함' },
 };
 
 const css = `
 .L{position:relative;display:inline-flex;flex-direction:column;align-items:flex-start;white-space:nowrap;--s:1}
 .L .k{display:inline-block;background:var(--m);color:${ink};font-weight:900;letter-spacing:-0.05em;line-height:1;
   font-size:calc(64px*var(--s));padding:calc(10px*var(--s)) calc(18px*var(--s)) calc(6px*var(--s));transform:rotate(-3deg);
-  box-shadow:calc(6px*var(--s)) calc(6px*var(--s)) 0 ${ink}, calc(6px*var(--s)) calc(6px*var(--s)) 0 calc(2px*var(--s)) #fff}
+  box-shadow:calc(6px*var(--s)) calc(6px*var(--s)) 0 ${ink}, calc(6px*var(--s)) calc(6px*var(--s)) 0 calc(2px*var(--s)) #fff, 0 0 calc(40px*var(--s)) color-mix(in srgb, var(--m) 55%, transparent)}
 .L .i{position:relative;align-self:flex-end;margin-top:calc(-6px*var(--s));margin-right:calc(-24px*var(--s));
   background:var(--st);color:var(--stt);transform:rotate(8deg);border:calc(4px*var(--s)) solid #fff;border-radius:calc(10px*var(--s));
   box-shadow:calc(5px*var(--s)) calc(5px*var(--s)) 0 ${ink};font-weight:900;font-style:italic;letter-spacing:-0.03em;line-height:1;
@@ -39,10 +39,10 @@ const css = `
   background:radial-gradient(120% 80% at 30% 20%, #5a5f6b 0%, #2a2d33 55%, #15161a 100%)}
 .cov::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.9) 100%)}
 .cov .stk{position:absolute;top:70px;right:24px;transform:rotate(4deg);font-family:'Black Han Sans';font-size:40px;padding:10px 14px 6px;
-  background:var(--m);color:${ink};box-shadow:5px 5px 0 ${ink};z-index:1}
+  background:var(--m);color:${ink};box-shadow:5px 5px 0 ${ink},0 0 30px color-mix(in srgb, var(--m) 50%, transparent);z-index:1}
 .cov .bd{position:absolute;left:24px;bottom:146px;z-index:1;font-weight:800;font-size:16px;padding:6px 12px;border-radius:99px}
 .cov h3{position:absolute;left:24px;right:24px;bottom:30px;z-index:1;font-weight:900;font-size:36px;line-height:1.22;letter-spacing:-0.045em}
-.cov h3 em{font-style:normal;color:var(--m)}
+.cov h3 em{font-style:normal;color:var(--m);text-shadow:0 0 18px color-mix(in srgb, var(--m) 60%, transparent)}
 .cov .lg{position:absolute;top:22px;left:22px;z-index:1}
 .feed{display:flex;gap:14px;justify-content:center;align-items:center;background:#fff;border:1px solid #eee;border-radius:20px;padding:20px}
 .feed .c{width:90px;height:90px;border-radius:50%;overflow:hidden;flex:none;background:#2a2a2a}
