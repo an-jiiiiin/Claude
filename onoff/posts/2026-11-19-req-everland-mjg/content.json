@@ -39,14 +39,20 @@
   "slides": [
     {
       "type": "cover",
-      "tag": "콜라보",
-      "title": "에버랜드에\n==먼작귀==가 온다",
+      "coverStyle": "classic",
+      "sticker": "12.19 오픈",
+      "tags": [
+        "#홀리데이위시",
+        "~ 2027.3.24"
+      ],
+      "title": "치이카와가\n==에버랜드==에 온다",
       "image": {
         "src": "posts/2026-11-19-req-everland-mjg/images/01-teaser.jpg",
         "credit": "에버랜드 × 대원미디어 공식 SNS · ©nagano",
         "license": "공식 홍보 이미지",
         "pos": "center 75%"
-      }
+      },
+      "stickerTop": 745
     },
     {
       "type": "letter",

@@ -81,6 +81,10 @@ b{font-weight:800}
 .cover .bottom{position:absolute;left:60px;right:60px;bottom:96px}
 .cover .badge{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:28px;
   padding:10px 22px;border-radius:999px;color:var(--acf);margin-bottom:28px}
+.cover .badges{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+.cover .badges .badge{margin-bottom:0}
+.cover .badge.chip{color:#fff;background:rgba(255,255,255,.14);box-shadow:inset 0 0 0 2px rgba(255,255,255,.75);backdrop-filter:blur(6px)}
+.cover .badge.chip::before{display:none}
 .cover .badge::before{content:'';width:12px;height:12px;border-radius:50%;background:currentColor}
 .cover h1{font-weight:900;font-size:86px;line-height:1.2;letter-spacing:-0.045em;text-shadow:0 2px 24px rgba(0,0,0,.35)}
 .cover h1 mark{background:none;color:var(--acc);text-shadow:0 0 28px color-mix(in srgb,var(--acc) 55%,transparent)}
@@ -292,15 +296,15 @@ function meme(s, d, S, i, n) {
 }
 
 function cover(s, d, S) {
-  if (d.style === 'mag') return coverMag(s, d, S);
+  if (d.style === 'mag' && s.coverStyle !== 'classic') return coverMag(s, d, S);
   return `<div class="card cover" style="--acc:${S.accent};--acf:${S.fg};--dp:${S.deep}">
   ${photo(s.image)}
   <div class="shade"></div>
   ${bubbles(s.says)}
   <div class="top">${logo(1)}<span class="date">${esc(d.dateLabel)} · ${S.slot}</span></div>
-  ${s.sticker ? `<div class="sticker ${s.stickerSide === 'left' ? 'left' : ''}">${esc(s.sticker)}</div>` : ''}
+  ${s.sticker ? `<div class="sticker ${s.stickerSide === 'left' ? 'left' : ''}"${s.stickerTop ? ` style="top:${Number(s.stickerTop)}px"` : ''}>${esc(s.sticker)}</div>` : ''}
   <div class="bottom">
-    <span class="badge" style="background:${S.accent}">${S.label} · ${esc(d.category || S.desc)}</span>
+    <div class="badges"><span class="badge" style="background:${S.accent}">${S.label} · ${esc(d.category || S.desc)}</span>${(s.tags || []).map((t) => `<span class="badge chip">${esc(t)}</span>`).join('')}</div>
     <h1>${rich(s.title)}</h1>
   </div>
   <div class="swipe">SWIPE →</div>
