@@ -292,7 +292,7 @@ function meme(s, d, S, i, n) {
 }
 
 function cover(s, d, S) {
-  if (d.style === 'mag') return coverMag(s, d, S);
+  if (d.style === 'mag' && s.style !== 'classic') return coverMag(s, d, S);
   return `<div class="card cover" style="--acc:${S.accent};--acf:${S.fg};--dp:${S.deep}">
   ${photo(s.image)}
   <div class="shade"></div>

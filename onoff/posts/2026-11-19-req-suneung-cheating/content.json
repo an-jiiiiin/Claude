@@ -38,13 +38,14 @@
   "slides": [
     {
       "type": "cover",
-      "tag": "수능",
       "title": "수능 날 울린 재난문자,\n==98명==이 걸렸다",
       "image": {
         "src": "posts/2026-11-19-req-suneung-cheating/images/classroom.jpg",
         "credit": "Unsplash / Ivan Aleksic",
         "license": "Unsplash License"
-      }
+      },
+      "style": "classic",
+      "sticker": "수능 부정행위"
     },
     {
       "type": "letter",

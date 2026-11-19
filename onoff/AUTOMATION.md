@@ -55,6 +55,7 @@
 | `mag` | 에디터 매거진 톤. 말 걸듯 가볍게, 밈 감성 | `vol. NNN` · `editor_ 노이쉬` 라벨, ■ 태그, 얇은 큰 제목, 스티커 없음 | **letter**(파스텔 바탕 에디터 노트), **meme**(사진 2~3칸 + 말풍선), gallery, body, points |
 
 - mag 표지: `tag`(태그 한 단어), 제목 30자 이내. vol 번호는 posts 순서로 자동.
+- mag 게시물이라도 표지만 classic 썸네일(스티커 + 굵은 제목)로 쓰려면 cover 에 `"style": "classic"` 과 `sticker` 를 넣는다.
 - `letter`: `label`(예: "에디터의 팝업 노트"), `title`, `text`(사진 있으면 200자, 없으면 330자), 선택 `image` + `say`(사진 옆 말풍선 한 줄).
 - `meme`: `title`(검은 띠 제목), `panels` 2~3칸 — 각 칸 `image`, `say`(상황), `react`(→ 반응, `==강조==`는 시리즈 진한색), `side`(l/r).
 - meme 사진도 라이선스 규칙 그대로. 출처 불명 밈 짤(핀터레스트 등)은 쓰지 않는다 — 보도자료·공식 이미지·라이선스 스톡·AI 생성 이미지만.
