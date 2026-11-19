@@ -1,0 +1,43 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gaegu:wght@700&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0}
+.c{position:relative;width:966px;height:300px;overflow:hidden;background:#FFF8E9;font-family:'Jua',sans-serif;
+ background-image:radial-gradient(#F3E3C2 1.6px,transparent 1.8px);background-size:22px 22px}
+.wob{filter:url(#wobble)}
+.row{position:absolute;left:0;right:0;display:flex;justify-content:center;gap:10px}
+.t{display:flex;align-items:center;justify-content:center;color:#fff;border-radius:16px;
+ box-shadow:0 5px 0 rgba(60,45,30,.18)}
+.s{width:58px;height:58px;font-size:36px;color:#FFF3B8}
+.b{width:86px;height:86px;font-size:62px;border-radius:20px}
+.r1{top:42px}.r2{top:116px;gap:14px}
+.sub{position:absolute;left:0;right:0;top:226px;text-align:center}
+.sub span{display:inline-block;padding:7px 20px 6px;background:#fff;border:2.5px solid #4A3F35;border-radius:999px;
+ font-family:'Gaegu';font-size:21px;color:#4A3F35;box-shadow:0 4px 0 #4A3F35}
+.ico{position:absolute}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="5"/></filter></svg>
+<div class="c">
+ <!-- left deco: cloud + sparkle -->
+ <svg class="ico wob" style="left:60px;top:40px" width="150" height="90" viewBox="0 0 150 90"><path d="M30 70c-16 0-24-18-12-28 2-16 22-22 32-12 8-18 38-18 44 4 18-4 30 14 22 28-2 6-8 8-14 8z" fill="#fff" stroke="#4A3F35" stroke-width="3"/><circle cx="62" cy="54" r="3" fill="#4A3F35"/><circle cx="86" cy="54" r="3" fill="#4A3F35"/><path d="M68 62q6 6 12 0" stroke="#4A3F35" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="55" cy="62" r="5" fill="#FFB3C1"/><circle cx="93" cy="62" r="5" fill="#FFB3C1"/></svg>
+ <svg class="ico" style="left:200px;top:150px" width="36" height="36" viewBox="0 0 36 36"><path d="M18 2q3 13 16 16q-13 3-16 16q-3-13-16-16q13-3 16-16z" fill="#FFD25C" stroke="#4A3F35" stroke-width="2.5" stroke-linejoin="round"/></svg>
+ <svg class="ico" style="left:110px;top:200px" width="20" height="20" viewBox="0 0 36 36"><path d="M18 2q3 13 16 16q-13 3-16 16q-3-13-16-16q13-3 16-16z" fill="#8FD3F4"/></svg>
+ <!-- right deco: badge check + heart + leaf -->
+ <svg class="ico wob" style="right:70px;top:46px" width="120" height="120" viewBox="-5 -5 120 120"><path d="M55 6l12 9 15-2 5 14 14 6-2 15 9 12-9 12 2 15-14 6-5 14-15-2-12 9-12-9-15 2-5-14-14-6 2-15-9-12 9-12-2-15 14-6 5-14 15 2z" fill="#7BC8A4" stroke="#4A3F35" stroke-width="3" stroke-linejoin="round"/><path d="M36 56l13 13 25-27" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+ <svg class="ico" style="right:200px;top:170px" width="40" height="36" viewBox="0 0 40 36"><path d="M20 33C6 23 2 16 2 10 2 5 6 2 11 2c4 0 7 3 9 6 2-3 5-6 9-6 5 0 9 3 9 8 0 6-4 13-18 23z" fill="#FF8FA3" stroke="#4A3F35" stroke-width="2.5"/></svg>
+ <svg class="ico" style="right:90px;top:190px" width="22" height="22" viewBox="0 0 36 36"><path d="M18 2q3 13 16 16q-13 3-16 16q-3-13-16-16q13-3 16-16z" fill="#FFB3C1"/></svg>
+ <!-- title -->
+ <div class="row r1 wob">
+  <div class="t s" style="background:#5BAE7C;transform:rotate(-5deg)">모</div>
+  <div class="t s" style="background:#4FA3C7;transform:rotate(4deg) translateY(-4px)">여</div>
+  <div class="t s" style="background:#5BAE7C;transform:rotate(-3deg)">봐</div>
+  <div class="t s" style="background:#4FA3C7;transform:rotate(5deg) translateY(-3px)">요</div>
+ </div>
+ <div class="row r2 wob">
+  <div class="t b" style="background:#FF7FA8;transform:rotate(-4deg)">B</div>
+  <div class="t b" style="background:#5DB7F5;transform:rotate(3deg) translateY(6px)">L</div>
+  <div class="t b" style="background:#FFB938;transform:rotate(-2deg)">O</div>
+  <div class="t b" style="background:#5BC48E;border-radius:50%;transform:rotate(5deg) translateY(4px)">G</div>
+ </div>
+ <div class="sub"><span>오늘도 알찬 생활 Tip, 함께 모여봐요 ♡</span></div>
+</div></body></html>
