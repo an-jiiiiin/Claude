@@ -1,0 +1,9 @@
+{
+  "state": "approved",
+  "builtAt": "2026-11-19T03:39:47.011Z",
+  "problems": [],
+  "missingImages": 0,
+  "approvedAt": "2026-11-19T03:04:26.071208Z",
+  "publishMode": "manual (인스타 API 미연결)",
+  "note": "태그 분리(캡션 5개 + 첫 댓글) 후 재빌드, 사용자 요청 변경이라 승인 유지"
+}
