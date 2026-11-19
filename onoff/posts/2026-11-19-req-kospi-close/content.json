@@ -1,0 +1,121 @@
+{
+  "series": "on",
+  "dateLabel": "11.19 THU",
+  "slotLabel": "PM",
+  "category": "증시",
+  "caption": "[5천 깨졌다가 역전 마감, 오늘 증시 정리]\n\n수능날이라 10시에 문을 연 코스피, 장중 4,963까지 밀렸다가 오후에 뒤집어 5,137.89(+1.39%)로 마감했습니다.\n코스닥은 3.32% 뛰어 684.81.\n\n외국인은 4천억 원 넘게 팔았는데, 누가 받았고 어떤 종목이 오르고 내렸는지 KNOW-ISH가 정리했어요.\n\n※ 투자 권유가 아닌 시황 정리입니다.\n이미지 출처 | Unsplash (Maxim Hopman, Nicholas Cappello)\nRef. 한국거래소 시황 보도 종합(뉴스핌, 파이낸셜뉴스, 시사저널e, 비즈니스코리아, 신아일보, 이데일리, 아주경제)\n\n#코스피 #코스닥 #마감시황 #오늘의증시 #knowish",
+  "commentTags": [
+    "#코스피5000",
+    "#앤트로픽",
+    "#앤트로픽상장",
+    "#한한령",
+    "#삼성전기",
+    "#SK하이닉스",
+    "#하이브",
+    "#스튜디오드래곤",
+    "#주식시황",
+    "#증시마감",
+    "#외국인순매도",
+    "#국내주식",
+    "#주식공부",
+    "#경제뉴스",
+    "#시사",
+    "#경제공부",
+    "#뉴스요약",
+    "#재테크",
+    "#카드뉴스",
+    "#시사상식"
+  ],
+  "sources": [
+    "https://www.newspim.com/news/view/20261119001168",
+    "https://www.fnnews.com/news/202611191701284704",
+    "https://www.sisajournal-e.com/news/articleView.html?idxno=425165",
+    "https://www.businesskorea.co.kr/news/articleView.html?idxno=281733",
+    "https://www.shinailbo.co.kr/news/articleView.html?idxno=5085632",
+    "https://edaily.co.kr/News/Read?mediaCodeNo=257&newsId=03037286645647360",
+    "https://www.ajunews.com/view/20261119141229084",
+    "https://m.news.nate.com/view/20261119n30958",
+    "https://unsplash.com/photos/stock-market-candlestick-chart-on-dark-screen-fiXLQXAhCfk",
+    "https://unsplash.com/photos/close-up-photo-of-monitor-displaying-graph-Wb63zqJ5gnE"
+  ],
+  "slides": [
+    {
+      "type": "cover",
+      "sticker": "오늘 마감",
+      "title": "5천 깨졌던 코스피,\n막판 ==역전 마감==",
+      "image": {
+        "src": "posts/2026-11-19-req-kospi-close/images/01.jpg",
+        "credit": "Unsplash / Maxim Hopman",
+        "license": "Unsplash License"
+      }
+    },
+    {
+      "type": "points",
+      "title": "오늘 숫자 3줄 요약",
+      "points": [
+        { "title": "코스피 5,137.89", "text": "+70.45p (+1.39%), 이틀 연속 상승" },
+        { "title": "코스닥 684.81", "text": "+22.00p (+3.32%), 장중 저점 650.39에서 반등" },
+        { "title": "원·달러 1,330.0원", "text": "3.0원 내려 나흘 연속 하락 (주간 종가)" }
+      ],
+      "ref": "한국거래소 · 뉴스핌, 비즈니스코리아"
+    },
+    {
+      "type": "body",
+      "title": "오전: 10시 개장,\n곧바로 5천 아래로",
+      "text": [
+        "수능날이라 개장이 1시간 늦은 **10시**. 코스피는 **5,090.04(+0.45%)**로 출발했지만 곧 하락으로 돌아서 장중 ==4,963.61까지== 밀렸어요.",
+        "간밤 **엔비디아발 규제 불확실성**과 미국 연준의 추가 긴축 우려, 이어지는 ==외국인 매도==가 발목을 잡았습니다."
+      ],
+      "ref": "뉴스핌, 파이낸셜뉴스, 신아일보"
+    },
+    {
+      "type": "body",
+      "title": "오후: 막판에 뒤집었다",
+      "image": {
+        "src": "posts/2026-11-19-req-kospi-close/images/02.jpg",
+        "credit": "Unsplash / Nicholas Cappello",
+        "license": "Unsplash License"
+      },
+      "text": [
+        "오후 **2시 50분**께부터 상승세를 굳혔어요. ==앤트로픽 나스닥 상장==(공모가 **83달러**) 기대와 한한령 완화 기대가 힘을 보탰습니다."
+      ],
+      "ref": "파이낸셜뉴스, 뉴스핌"
+    },
+    {
+      "type": "compare",
+      "title": "누가 팔고, 누가 샀나",
+      "columns": [
+        { "tag": "판 쪽", "color": "#0E0E10", "title": "외국인", "text": "코스피에서\n**4천억 원** 넘게\n순매도" },
+        { "tag": "산 쪽", "color": "#0B72C9", "title": "기관·기타법인", "text": "코스피 기타법인 약 **4,500억**\n코스닥 기관 약 **2,100억**\n순매수" }
+      ],
+      "note": "외국인 매도를 ==국내 기관이 받아낸== 하루였습니다.",
+      "ref": "한국거래소 · 시사저널e, 신아일보 (집계 시점별로 금액 소폭 차이)"
+    },
+    {
+      "type": "points",
+      "title": "오른 종목",
+      "points": [
+        { "title": "한한령 완화 기대", "text": "스튜디오드래곤 **+29.96%** · 하이브 **+13.69%**\n아모레퍼시픽 **+9.03%**" },
+        { "title": "AI·반도체", "text": "삼성전기 **+9.26%** · SK하이닉스 **+3.41%**\n삼성전자 **+1.13%** · HPSP **+11.76%**" },
+        { "title": "업종 1위", "text": "오락·문화 **+9.39%**, 의료·정밀기기 **+4.60%**" }
+      ],
+      "ref": "한국거래소 · 시사저널e, 뉴스핌, 신아일보"
+    },
+    {
+      "type": "points",
+      "title": "내린 종목",
+      "points": [
+        { "title": "SK텔레콤 -2.91%", "text": "앤트로픽 지분 보유로 먼저 올랐던 만큼\n상장 직전 차익실현, 장중 **-7%대**까지" },
+        { "title": "금융주", "text": "KB금융 **-2.24%** · 신한지주 **-1.61%**" },
+        { "title": "2차전지", "text": "LG에너지솔루션 **-0.98%**" },
+        { "title": "업종 꼴찌", "text": "통신 **-3.14%**, IT서비스 **-1.52%**, 보험 **-1.04%**" }
+      ],
+      "ref": "아주경제, 뉴스핌, 파이낸셜뉴스"
+    },
+    {
+      "type": "outro",
+      "title": "외국인은 팔았지만\n==기관이 받아낸== 역전승",
+      "text": "오늘 밤 앤트로픽 나스닥 첫 거래 결과가 내일 장의 변수예요.\n투자 판단은 본인 몫, 흐름은 KNOW-ISH가 정리할게요."
+    }
+  ]
+}

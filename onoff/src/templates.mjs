@@ -152,7 +152,7 @@ function cover(s, d, S) {
   return `<div class="card cover" style="--acc:${S.accent};--acf:${S.fg}">
   ${photo(s.image)}
   <div class="shade"></div>
-  <div class="top">${logo(1)}<span class="date">${esc(d.dateLabel)} · ${S.slot}</span></div>
+  <div class="top">${logo(1)}<span class="date">${esc(d.dateLabel)} · ${esc(d.slotLabel || S.slot)}</span></div>
   ${s.sticker ? `<div class="sticker ${s.stickerSide === 'left' ? 'left' : ''}">${esc(s.sticker)}</div>` : ''}
   <div class="bottom">
     <span class="badge" style="background:${S.accent}">${S.label} · ${esc(d.category || S.desc)}</span>
