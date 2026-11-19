@@ -24,3 +24,9 @@ node src/render.mjs content/2026-11-19-am.json samples/2026-11-19-am
 - `node src/build.mjs posts/<id>`: 렌더링, 형식 검사, 검수 시트 생성
 - `node src/publish.mjs posts/<id> [--dry-run]`: 승인된 게시물만 인스타 캐러셀로 게시
 - 인스타 연결: `docs/INSTAGRAM_SETUP.md`
+
+## 원할 때 만들기 (요청형)
+- 이 저장소로 연 세션에서 `/knowish <주제나 링크> [KNOW|-ISH] [장수] [요청사항]`
+  - 예: `/knowish 스타벅스 겨울 프리퀀시 굿즈 반응`
+  - 예: `/knowish https://기사링크 KNOW 숫자 위주로`
+- 스킬 정의: `.claude/skills/knowish/SKILL.md` — 게시물은 `posts/YYYY-MM-DD-req-<슬러그>/`
