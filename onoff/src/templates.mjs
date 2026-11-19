@@ -1,4 +1,4 @@
-// ONOFF 카드뉴스 템플릿 — 1080 x 1350 (인스타그램 4:5)
+// KNOW-ISH 카드뉴스 템플릿 — 1080 x 1350 (인스타그램 4:5)
 // 콘텐츠 JSON의 각 slide.type 에 맞는 HTML 을 만든다.
 // 텍스트 문법: **굵게**  ==형광펜 강조==  줄바꿈은 \n
 import { pathToFileURL } from 'node:url';
@@ -8,7 +8,7 @@ const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..')
 const nm = (p) => pathToFileURL(path.join(ROOT, 'node_modules', p)).href;
 
 export const BRAND = {
-  name: 'ONOFF',
+  name: 'KNOW-ISH',
   ink: '#0E0E10',
   paper: '#F5F3EE',
   lime: '#D4FF3A',
@@ -18,8 +18,8 @@ export const BRAND = {
 };
 
 export const SERIES = {
-  on: { key: 'on', label: 'ON', desc: '시사·경제', slot: 'AM', accent: BRAND.on },
-  off: { key: 'off', label: 'OFF', desc: '마케팅', slot: 'PM', accent: BRAND.off },
+  on: { key: 'on', label: 'KNOW', desc: '시사·경제', slot: 'AM', accent: BRAND.on },
+  off: { key: 'off', label: '-ISH', desc: '마케팅', slot: 'PM', accent: BRAND.off },
 };
 
 const esc = (s = '') => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -29,14 +29,14 @@ export const rich = (s = '') =>
     .replace(/==(.+?)==/g, '<mark>$1</mark>')
     .replace(/\n/g, '<br>');
 
-export const logo = (size = 1) => `
-<span class="logo" style="--s:${size}">
-  <span class="tg">ON<i></i></span><span class="lt">OFF</span>
-</span>`;
+// light=true: 밝은 배경용 (-ish 를 잉크색 + 라임 형광펜으로)
+export const logo = (size = 1, light = false) => `
+<span class="logo ${light ? 'light' : ''}" style="--s:${size}"><span class="kn">KNOW</span><span class="ish">-ish</span></span>`;
 
 const css = `
 @import url('${nm('pretendard/dist/web/static/pretendard.css')}');
 @import url('${nm('@fontsource/black-han-sans/index.css')}');
+@import url('${nm('@fontsource/permanent-marker/index.css')}');
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{background:#888}
 .card{width:1080px;height:1350px;position:relative;overflow:hidden;
@@ -45,12 +45,12 @@ html,body{background:#888}
 b{font-weight:800}
 
 /* ---------- logo ---------- */
-.logo{display:inline-flex;align-items:center;gap:calc(6px*var(--s));
-  font-family:'Pretendard';font-weight:900;font-size:calc(30px*var(--s));letter-spacing:-0.03em;line-height:1}
-.logo .tg{display:inline-flex;align-items:center;gap:calc(8px*var(--s));background:${BRAND.lime};color:${BRAND.ink};
-  border-radius:999px;padding:calc(6px*var(--s)) calc(7px*var(--s)) calc(6px*var(--s)) calc(16px*var(--s))}
-.logo .tg i{display:block;width:calc(28px*var(--s));height:calc(28px*var(--s));border-radius:50%;background:${BRAND.ink}}
-.logo .lt{color:currentColor}
+.logo{display:inline-flex;align-items:baseline;line-height:1;white-space:nowrap}
+.logo .kn{font-family:'Pretendard';font-weight:900;font-size:calc(32px*var(--s));letter-spacing:-0.04em}
+.logo .ish{font-family:'Permanent Marker';font-size:calc(30px*var(--s));color:${BRAND.lime};
+  display:inline-block;transform:rotate(-8deg) translate(calc(3px*var(--s)),calc(-4px*var(--s)));margin-left:calc(2px*var(--s))}
+.logo.light .ish{color:${BRAND.ink};padding:0 calc(4px*var(--s));
+  background:linear-gradient(transparent 45%, ${BRAND.lime} 45%, ${BRAND.lime} 88%, transparent 88%)}
 
 /* ---------- photo / placeholder ---------- */
 .photo{position:absolute;inset:0;background-size:cover;background-position:center}
@@ -165,7 +165,7 @@ function bodyShell(inner, s, d, S, i, n, noimg) {
     <span class="pno"><b>${String(i + 1).padStart(2, '0')}</b> / ${String(n).padStart(2, '0')}</span>
   </div>
   <div class="wrap">${inner}</div>
-  <div class="foot">${logo(0.8)}<span class="ref">${s.ref ? 'Ref. ' + esc(s.ref) : ''}</span></div>
+  <div class="foot">${logo(0.85, true)}<span class="ref">${s.ref ? 'Ref. ' + esc(s.ref) : ''}</span></div>
 </div>`;
 }
 
@@ -199,11 +199,11 @@ function points(s, d, S, i, n) {
 
 function outro(s, d, S) {
   return `<div class="card outro">
-  <div class="lbl">ONOFF 한 줄 정리</div>
+  <div class="lbl">KNOW-ISH 한 줄 정리</div>
   <h2>${rich(s.title)}</h2>
   ${s.text ? `<div class="sub">${rich(s.text)}</div>` : ''}
-  <div class="cta"><span class="p">저장해두고 다시 보기</span><span>친구에게 공유</span><span>팔로우 @onoff.daily</span></div>
-  <div class="bot">${logo(1)}<span class="next">${esc(s.next || (S.key === 'on' ? '오후엔 힘 빼고, 마케팅 OFF 편으로' : '내일 아침, 시사경제 ON 편으로'))}</span></div>
+  <div class="cta"><span class="p">저장해두고 다시 보기</span><span>친구에게 공유</span><span>팔로우 @knowish.daily</span></div>
+  <div class="bot">${logo(1)}<span class="next">${esc(s.next || (S.key === 'on' ? '오후엔 가볍게, -ISH 마케팅 편으로' : '내일 아침, KNOW 시사경제 편으로'))}</span></div>
 </div>`;
 }
 
