@@ -11,15 +11,17 @@ export const BRAND = {
   name: 'KNOW-ISH',
   ink: '#0E0E10',
   paper: '#F5F3EE',
-  lime: '#D4FF3A',
-  on: '#2B4BFF',   // 오전 · 시사경제 (깊게)
-  off: '#FF5C39',  // 오후 · 마케팅 (가볍게)
+  sky: '#5CD3FF',  // 메인 · 오전 KNOW 시리즈
+  mag: '#FF1EC8',  // 포인트 · 오후 -ISH 시리즈
+  on: '#5CD3FF',
+  off: '#FF1EC8',
   gray: '#6B6B70',
 };
 
 export const SERIES = {
-  on: { key: 'on', label: 'KNOW', desc: '시사·경제', slot: 'AM', accent: BRAND.on },
-  off: { key: 'off', label: '-ISH', desc: '마케팅', slot: 'PM', accent: BRAND.off },
+  // accent: 면(스티커·배지)  fg: accent 위 글자색  deep: 밝은 종이 위 글자·선 색  hl: 형광펜
+  on: { key: 'on', label: 'KNOW', desc: '시사·경제', slot: 'AM', accent: BRAND.sky, fg: BRAND.ink, deep: '#0B72C9', hl: 'rgba(92,211,255,.38)' },
+  off: { key: 'off', label: '-ISH', desc: '마케팅', slot: 'PM', accent: BRAND.mag, fg: '#fff', deep: '#D1009E', hl: 'rgba(255,30,200,.20)' },
 };
 
 const esc = (s = '') => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -29,9 +31,9 @@ export const rich = (s = '') =>
     .replace(/==(.+?)==/g, '<mark>$1</mark>')
     .replace(/\n/g, '<br>');
 
-// light=true: 밝은 배경용 (-ish 를 잉크색 + 라임 형광펜으로)
-export const logo = (size = 1, light = false) => `
-<span class="logo ${light ? 'light' : ''}" style="--s:${size}"><span class="kn">KNOW</span><span class="ish">-ish</span></span>`;
+// 가로형 스티커 로고 (KNOW 하늘 블록 + -ish 마젠타 스티커)
+export const logo = (size = 1) => `
+<span class="logo" style="--s:${size}"><span class="kn">KNOW</span><span class="ish">-ish</span></span>`;
 
 const css = `
 @import url('${nm('pretendard/dist/web/static/pretendard.css')}');
@@ -45,12 +47,14 @@ html,body{background:#888}
 b{font-weight:800}
 
 /* ---------- logo ---------- */
-.logo{display:inline-flex;align-items:baseline;line-height:1;white-space:nowrap}
-.logo .kn{font-family:'Pretendard';font-weight:900;font-size:calc(32px*var(--s));letter-spacing:-0.04em}
-.logo .ish{font-family:'Permanent Marker';font-size:calc(30px*var(--s));color:${BRAND.lime};
-  display:inline-block;transform:rotate(-8deg) translate(calc(3px*var(--s)),calc(-4px*var(--s)));margin-left:calc(2px*var(--s))}
-.logo.light .ish{color:${BRAND.ink};padding:0 calc(4px*var(--s));
-  background:linear-gradient(transparent 45%, ${BRAND.lime} 45%, ${BRAND.lime} 88%, transparent 88%)}
+.logo{display:inline-flex;align-items:center;line-height:1;white-space:nowrap;padding:calc(4px*var(--s)) calc(10px*var(--s)) calc(8px*var(--s)) 0}
+.logo .kn{display:inline-block;background:${BRAND.sky};color:${BRAND.ink};font-weight:900;letter-spacing:-0.05em;
+  font-size:calc(30px*var(--s));padding:calc(6px*var(--s)) calc(10px*var(--s)) calc(4px*var(--s));transform:rotate(-3deg);
+  box-shadow:calc(3px*var(--s)) calc(3px*var(--s)) 0 ${BRAND.ink}, calc(3px*var(--s)) calc(3px*var(--s)) 0 calc(1px*var(--s)) #fff}
+.logo .ish{display:inline-block;background:${BRAND.mag};color:#fff;font-weight:900;font-style:italic;letter-spacing:-0.03em;
+  font-size:calc(26px*var(--s));padding:calc(5px*var(--s)) calc(10px*var(--s)) calc(4px*var(--s));margin-left:calc(-4px*var(--s));
+  border:calc(2px*var(--s)) solid #fff;border-radius:calc(5px*var(--s));transform:rotate(6deg) translateY(calc(4px*var(--s)));
+  box-shadow:calc(3px*var(--s)) calc(3px*var(--s)) 0 ${BRAND.ink}}
 
 /* ---------- photo / placeholder ---------- */
 .photo{position:absolute;inset:0;background-size:cover;background-position:center}
@@ -70,14 +74,14 @@ b{font-weight:800}
 .cover .date{font-weight:700;font-size:26px;letter-spacing:.04em;opacity:.9}
 .cover .sticker{position:absolute;top:190px;right:60px;transform:rotate(4deg);
   font-family:'Black Han Sans';font-size:84px;line-height:1;padding:18px 28px 14px;
-  background:${BRAND.lime};color:${BRAND.ink};box-shadow:8px 8px 0 ${BRAND.ink}}
+  background:var(--acc);color:var(--acf);box-shadow:8px 8px 0 ${BRAND.ink},0 0 50px color-mix(in srgb,var(--acc) 45%,transparent)}
 .cover .sticker.left{right:auto;left:60px;transform:rotate(-4deg)}
 .cover .bottom{position:absolute;left:60px;right:60px;bottom:96px}
 .cover .badge{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:28px;
-  padding:10px 22px;border-radius:999px;color:#fff;margin-bottom:28px}
-.cover .badge::before{content:'';width:12px;height:12px;border-radius:50%;background:#fff}
+  padding:10px 22px;border-radius:999px;color:var(--acf);margin-bottom:28px}
+.cover .badge::before{content:'';width:12px;height:12px;border-radius:50%;background:currentColor}
 .cover h1{font-weight:900;font-size:86px;line-height:1.2;letter-spacing:-0.045em;text-shadow:0 2px 24px rgba(0,0,0,.35)}
-.cover h1 mark{background:none;color:${BRAND.lime}}
+.cover h1 mark{background:none;color:var(--acc);text-shadow:0 0 28px color-mix(in srgb,var(--acc) 55%,transparent)}
 .cover .credit{position:absolute;bottom:38px;right:60px;font-size:20px;font-weight:500;opacity:.7}
 .cover .swipe{position:absolute;bottom:38px;left:60px;font-size:20px;font-weight:700;opacity:.8;letter-spacing:.06em}
 
@@ -124,13 +128,13 @@ b{font-weight:800}
 
 /* ---------- OUTRO ---------- */
 .outro{background:${BRAND.ink};color:#fff;display:flex;flex-direction:column;padding:120px 80px 80px}
-.outro .lbl{font-weight:800;font-size:28px;color:${BRAND.lime};letter-spacing:.04em;margin-bottom:36px}
+.outro .lbl{font-weight:800;font-size:28px;color:var(--acc);letter-spacing:.04em;margin-bottom:36px}
 .outro h2{font-weight:900;font-size:72px;line-height:1.28;letter-spacing:-0.045em}
-.outro h2 mark{background:none;color:${BRAND.lime}}
+.outro h2 mark{background:none;color:var(--acc)}
 .outro .sub{margin-top:40px;font-size:32px;line-height:1.65;color:rgba(255,255,255,.75);font-weight:500}
 .outro .cta{margin-top:auto;display:flex;gap:18px;flex-wrap:wrap}
 .outro .cta span{border:2px solid rgba(255,255,255,.3);border-radius:999px;padding:16px 30px;font-size:27px;font-weight:700}
-.outro .cta span.p{background:${BRAND.lime};color:${BRAND.ink};border-color:${BRAND.lime}}
+.outro .cta span.p{background:var(--acc);color:var(--acf);border-color:var(--acc)}
 .outro .bot{margin-top:60px;display:flex;justify-content:space-between;align-items:center}
 .outro .next{font-size:24px;color:rgba(255,255,255,.6);font-weight:600}
 `;
@@ -143,7 +147,7 @@ const photo = (img, cls = '') =>
 const credit = (img) => (img?.credit ? `사진 | ${esc(img.credit)}` : '');
 
 function cover(s, d, S) {
-  return `<div class="card cover">
+  return `<div class="card cover" style="--acc:${S.accent};--acf:${S.fg}">
   ${photo(s.image)}
   <div class="shade"></div>
   <div class="top">${logo(1)}<span class="date">${esc(d.dateLabel)} · ${S.slot}</span></div>
@@ -158,14 +162,13 @@ function cover(s, d, S) {
 }
 
 function bodyShell(inner, s, d, S, i, n, noimg) {
-  const hl = S.key === 'on' ? 'rgba(43,75,255,.18)' : 'rgba(255,92,57,.22)';
-  return `<div class="card body ${noimg ? 'noimg' : ''}" style="--ac:${S.accent};--hl:${hl}">
+  return `<div class="card body ${noimg ? 'noimg' : ''}" style="--ac:${S.deep};--hl:${S.hl}">
   <div class="head">
     <span class="kicker"><span class="dot" style="background:${S.accent}"></span>${S.label} | ${esc(d.category || S.desc)}</span>
     <span class="pno"><b>${String(i + 1).padStart(2, '0')}</b> / ${String(n).padStart(2, '0')}</span>
   </div>
   <div class="wrap">${inner}</div>
-  <div class="foot">${logo(0.85, true)}<span class="ref">${s.ref ? 'Ref. ' + esc(s.ref) : ''}</span></div>
+  <div class="foot">${logo(0.85)}<span class="ref">${s.ref ? 'Ref. ' + esc(s.ref) : ''}</span></div>
 </div>`;
 }
 
@@ -198,7 +201,7 @@ function points(s, d, S, i, n) {
 }
 
 function outro(s, d, S) {
-  return `<div class="card outro">
+  return `<div class="card outro" style="--acc:${S.accent};--acf:${S.fg}">
   <div class="lbl">KNOW-ISH 한 줄 정리</div>
   <h2>${rich(s.title)}</h2>
   ${s.text ? `<div class="sub">${rich(s.text)}</div>` : ''}
