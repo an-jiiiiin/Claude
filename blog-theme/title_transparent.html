@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gaegu:wght@700&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0}
+.c{position:relative;width:966px;height:300px;overflow:hidden;background:transparent;font-family:'Jua',sans-serif;
+ }
+.wob{filter:url(#wobble)}
+.row{position:absolute;left:0;right:0;display:flex;justify-content:center;gap:10px}
+.t{display:flex;align-items:center;justify-content:center;color:#fff;border-radius:16px;
+ box-shadow:0 5px 0 rgba(60,45,30,.18)}
+.s{width:58px;height:58px;font-size:36px;color:#FFF3B8}
+.b{width:86px;height:86px;font-size:62px;border-radius:20px}
+.r1{top:42px}.r2{top:116px;gap:14px}
+.sub{position:absolute;left:0;right:0;top:226px;text-align:center}
+.sub span{display:inline-block;padding:7px 20px 6px;background:#fff;border:2.5px solid #4A3F35;border-radius:999px;
+ font-family:'Gaegu';font-size:21px;color:#4A3F35;box-shadow:0 4px 0 #4A3F35}
+.ico{position:absolute}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="5"/></filter></svg>
+<div class="c">
+ <!-- title -->
+ <div class="row r1 wob">
+  <div class="t s" style="background:#5BAE7C;transform:rotate(-5deg)">모</div>
+  <div class="t s" style="background:#4FA3C7;transform:rotate(4deg) translateY(-4px)">여</div>
+  <div class="t s" style="background:#5BAE7C;transform:rotate(-3deg)">봐</div>
+  <div class="t s" style="background:#4FA3C7;transform:rotate(5deg) translateY(-3px)">요</div>
+ </div>
+ <div class="row r2 wob">
+  <div class="t b" style="background:#FF7FA8;transform:rotate(-4deg)">B</div>
+  <div class="t b" style="background:#5DB7F5;transform:rotate(3deg) translateY(6px)">L</div>
+  <div class="t b" style="background:#FFB938;transform:rotate(-2deg)">O</div>
+  <div class="t b" style="background:#5BC48E;border-radius:50%;transform:rotate(5deg) translateY(4px)">G</div>
+ </div>
+ <div class="sub"><span>오늘도 알찬 생활 Tip, 함께 모여봐요 ♡</span></div>
+</div></body></html>
