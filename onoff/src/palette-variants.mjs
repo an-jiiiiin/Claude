@@ -7,14 +7,12 @@ import { page } from './templates.mjs';
 
 const ink = '#0E0E10';
 const P = {
-  mc: { name: '① 마젠타 × 시안', main: '#FF1EC8', stk: '#00F0FF', stkTx: ink, on: '#00C8F0', off: '#FF1EC8',
-       desc: '메인 마젠타, 스티커 시안. 가장 쨍한 형광 보색 조합' },
-  ms: { name: '② 마젠타 × 하늘', main: '#FF1EC8', stk: '#5CD3FF', stkTx: ink, on: '#3CB8FF', off: '#FF1EC8',
-       desc: '시안보다 푸른 형광 하늘색. 같은 쨍함에 조금 더 부드럽고 세련됨' },
+  ms: { name: '② 마젠타 × 하늘 (현재)', main: '#FF1EC8', stk: '#5CD3FF', stkTx: ink, on: '#3CB8FF', off: '#FF1EC8',
+       desc: '검정 글씨 대비 5.8 : 1. 기준은 넘지만 마젠타의 채도가 글씨를 먹어서 진동해 보임' },
+  ml: { name: '②′ 밝은 마젠타 × 하늘', main: '#FF4FD3', stk: '#5CD3FF', stkTx: ink, on: '#3CB8FF', off: '#FF4FD3',
+       desc: '마젠타를 한 톤 밝게 → 대비 6.7 : 1. 형광 느낌은 유지, 글씨는 조금 더 또렷' },
   sm: { name: '③ 하늘 × 마젠타', main: '#5CD3FF', stk: '#FF1EC8', stkTx: '#fff', on: '#3CB8FF', off: '#FF1EC8',
-       desc: '메인 하늘색, 스티커 마젠타. 시원하고 깨끗한 인상, 시사 톤과도 잘 맞음' },
-  cm: { name: '④ 시안 × 마젠타', main: '#00F0FF', stk: '#FF1EC8', stkTx: '#fff', on: '#00C8F0', off: '#FF1EC8',
-       desc: '메인 시안. 가장 차갑고 강렬하지만 2EZ 메인색과 비슷함' },
+       desc: '검정 글씨 대비 11.2 : 1로 2배. 마젠타는 흰 글씨 스티커·포인트로만 사용' },
 };
 
 const css = `
@@ -27,7 +25,7 @@ const css = `
   box-shadow:calc(5px*var(--s)) calc(5px*var(--s)) 0 ${ink};font-weight:900;font-style:italic;letter-spacing:-0.03em;line-height:1;
   font-size:calc(58px*var(--s));padding:calc(8px*var(--s)) calc(20px*var(--s)) calc(6px*var(--s))}
 .prof{width:1080px;height:1080px;display:flex;align-items:center;justify-content:center;background:${ink};font-family:'Pretendard'}
-.cmp{width:2400px;background:#F5F3EE;padding:70px;font-family:'Pretendard';color:${ink};display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:34px}
+.cmp{width:1900px;background:#F5F3EE;padding:70px;font-family:'Pretendard';color:${ink};display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px}
 .col{display:flex;flex-direction:column;gap:24px;background:#fff;border-radius:28px;padding:34px;min-width:0}
 .col h2{font-size:38px;font-weight:900;letter-spacing:-0.03em}
 .col .d{font-size:21px;line-height:1.5;color:#555;min-height:64px}
