@@ -202,7 +202,7 @@ function outro(s, d, S) {
   <div class="lbl">KNOW-ISH 한 줄 정리</div>
   <h2>${rich(s.title)}</h2>
   ${s.text ? `<div class="sub">${rich(s.text)}</div>` : ''}
-  <div class="cta"><span class="p">저장해두고 다시 보기</span><span>친구에게 공유</span><span>팔로우 @knowish.daily</span></div>
+  <div class="cta"><span class="p">저장해두고 다시 보기</span><span>친구에게 공유</span><span>팔로우 @know.ish</span></div>
   <div class="bot">${logo(1)}<span class="next">${esc(s.next || (S.key === 'on' ? '오후엔 가볍게, -ISH 마케팅 편으로' : '내일 아침, KNOW 시사경제 편으로'))}</span></div>
 </div>`;
 }
