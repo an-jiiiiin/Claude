@@ -55,12 +55,13 @@
 | 우선순위 | 소스 | 비고 |
 |---|---|---|
 | 1 | 정책브리핑 korea.kr 사진 (공공누리 제1유형) | 정부·정책·경제 이슈. credit `대한민국 정책브리핑`, license `공공누리 제1유형` |
-| 2 | 기업 공식 보도자료·뉴스룸 사진 | 해당 브랜드 사례일 때. credit `<기업명> 제공`, license `보도자료` |
+| 2 | 기업 공식 보도자료·뉴스룸 사진 | 해당 브랜드 사례일 때. 기사에 `<기업명> 제공`으로 실린 보도자료 사진은 기사 URL로 받아도 됨(og:image). credit `<기업명> 제공`, license `보도자료` |
 | 3 | Wikimedia Commons (CC BY / CC BY-SA / PD) | 건물·인물·장소. credit 에 저작자, license 에 라이선스명 |
 | 4 | Unsplash | 일반 이미지(돈, 도시, 사무실 등). credit `Unsplash / 작가명`, license `Unsplash License` |
 
 - 언론사(연합뉴스 등) 사진은 **쓰지 않는다** — 유료 라이선스.
-- 내려받기: `node src/fetch-image.mjs <이미지 또는 페이지 URL> posts/<id>/images/01`
+- 내려받기: `node src/fetch-image.mjs <이미지 또는 페이지 URL> posts/<id>/images/01` (프록시 환경이면 스크립트가 알아서 프록시로 다시 실행)
+- 사진에 원래 들어 있는 글자가 스티커·제목과 겹치면 다른 사진을 쓰거나 `image.pos`(예: `"center 70%"`)로 위치를 옮긴다. 포스터형 이미지는 `"fit": "contain"` 도 가능.
 - `content.json` 의 해당 슬라이드 `image` 에 `src`(저장 경로, onoff/ 기준), `credit`, `license` 를 채운다.
 - 이모지·일러스트가 필요한 자리(주로 -ISH)는 AI 생성 이미지 가능 — license `AI 생성`.
 - 이미지를 못 구하면 `src` 를 비워 두고(회색 자리) 검수 요청 때 알린다. 가짜·무단 이미지로 채우지 않는다.
@@ -86,7 +87,7 @@ node src/build.mjs posts/<id>
   2. `node src/publish.mjs posts/<id> --dry-run` 으로 URL·캡션 확인.
   3. `node src/publish.mjs posts/<id>` 실행.
   4. 결과(permalink)를 커밋·push 하고 사용자에게 알린다.
-- 게시에 필요한 설정이 아직 없으면(아래) 게시는 건너뛰고, 사용자에게 **수동 업로드용 파일**(slides 폴더 + 캡션)을 보낸다.
+- 게시에 필요한 설정이 아직 없으면(아래) 게시는 건너뛰고, `caption.txt` 를 만들어 사용자에게 **수동 업로드용 파일**(slides/01~NN.png + caption.txt)을 보낸다.
 
 ## 게시에 필요한 설정 (최초 1회)
 - `docs/INSTAGRAM_SETUP.md` 를 따라 비즈니스 계정·토큰·`IG_USER_ID` 준비

@@ -4,6 +4,15 @@
 // 주의: 라이선스가 확인된 소스만 사용 (AUTOMATION.md 의 이미지 규칙 참고)
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { spawnSync } from 'node:child_process';
+
+// Node fetch 는 기본적으로 HTTPS_PROXY 를 안 따름 → 프록시 환경이면 설정을 켜고 다시 실행
+if ((process.env.HTTPS_PROXY || process.env.https_proxy) && !process.env.NODE_USE_ENV_PROXY) {
+  const env = { ...process.env, NODE_USE_ENV_PROXY: '1', NODE_NO_WARNINGS: '1' };
+  if (!env.NODE_EXTRA_CA_CERTS) { try { await fs.access('/root/.ccr/ca-bundle.crt'); env.NODE_EXTRA_CA_CERTS = '/root/.ccr/ca-bundle.crt'; } catch {} }
+  const r = spawnSync(process.execPath, process.argv.slice(1), { stdio: 'inherit', env });
+  process.exit(r.status ?? 1);
+}
 
 const [url, outBase] = process.argv.slice(2);
 if (!url || !outBase) {

@@ -2,7 +2,7 @@
 
 - 게시물: `2026-11-19-pm` (슬라이드 6장, 게시 예정 18:00 KST)
 - 형식 검사: 통과
-- 실사 이미지: ⚠ 3장 미지정
+- 실사 이미지: 모두 지정
 
 ## 캡션
 ```
@@ -26,10 +26,11 @@ Ref. 디지털데일리, 더페어, 한국경제, 푸드투데이
 - https://www.hankyung.com/article/202611196622g
 - https://www.foodtoday.or.kr/news/article.html?no=209884
 - https://www.ggilbo.com/news/articleView.html?idxno=1192566
+- https://www.inthenews.co.kr/news/article.html?no=94496
 
 ## 이미지
-- 공차코리아 제공 · 보도자료 · ⚠ 미지정
-- 공차코리아 제공 · 보도자료 · ⚠ 미지정
-- 공차코리아 제공 · 보도자료 · ⚠ 미지정
+- 공차코리아 제공 · 보도자료
+- 공차코리아 제공 · 보도자료
+- 공차코리아 제공 · 보도자료
 
 승인하려면 이 세션에 **"승인"**, 수정하려면 바꿀 내용을 적어주세요.
