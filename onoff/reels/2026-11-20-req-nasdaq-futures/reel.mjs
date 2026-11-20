@@ -16,6 +16,12 @@ html,body{margin:0;background:${ink}}
 .sc{position:absolute;inset:0;opacity:0}
 .top{position:absolute;top:110px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:center;z-index:9}
 .top .d{font-weight:700;font-size:30px;opacity:.85}
+.corner{display:inline-flex;align-items:center;gap:12px;background:${sky};color:${ink};font-weight:900;font-size:44px;padding:12px 26px 10px;border-radius:14px;transform:rotate(2deg);box-shadow:5px 5px 0 #000,0 0 30px rgba(92,211,255,.45)}
+.corner small{font-size:28px;font-weight:800;opacity:.7}
+.cbig{display:inline-flex;align-items:center;gap:22px;background:#fff;color:${ink};padding:18px 34px 16px 22px;border-radius:20px;box-shadow:8px 8px 0 #000;transform:rotate(-2deg)}
+.cbig .ic{width:96px;height:96px;border-radius:16px;background:${sky};display:flex;align-items:center;justify-content:center;font-size:60px}
+.cbig .k{font-weight:900;font-size:92px;line-height:1;letter-spacing:-0.05em}
+.cbig .n{font-weight:800;font-size:30px;color:${deep};margin-top:6px}
 .logo{display:inline-flex;align-items:center;line-height:1}
 .logo .kn{background:${sky};color:${ink};font-weight:900;letter-spacing:-0.05em;font-size:44px;padding:8px 14px 6px;transform:rotate(-3deg);box-shadow:4px 4px 0 #000,4px 4px 0 2px #fff}
 .logo .ish{background:${mag};color:#fff;font-weight:900;font-style:italic;font-size:38px;padding:7px 14px 6px;margin-left:-6px;border:3px solid #fff;border-radius:8px;transform:rotate(6deg) translateY(6px);box-shadow:4px 4px 0 #000}
@@ -56,7 +62,7 @@ html,body{margin:0;background:${ink}}
 .hj.no .c{color:${mag}}
 .hj.ok{border-color:${sky};box-shadow:0 0 50px rgba(92,211,255,.25)}
 .hj.ok .c{color:${sky}}
-.strike{position:absolute;left:40px;right:40px;top:50%;height:10px;background:#ff3b3b;border-radius:5px;transform-origin:left center;transform:scaleX(0)}
+.strike{position:absolute;left:40px;width:350px;top:50%;height:10px;background:#ff3b3b;border-radius:5px;transform-origin:left center;transform:scaleX(0)}
 
 /* 약속 흐름 */
 .step{position:absolute;left:70px;right:70px;background:#1b1c22;border-radius:26px;padding:34px 40px;border:2px solid rgba(255,255,255,.08);opacity:0}
@@ -83,18 +89,18 @@ const ticks = [8, 12, 16, 20, 0, 4, 7];
 
 const body = `<div class="stage">
   <div class="bg"></div><div class="grid"></div>
-  <div class="top"><span class="logo"><span class="kn">KNOW</span><span class="ish">-ish</span></span><span class="d">11.20 FRI · KNOW 경제상식</span></div>
+  <div class="top"><span class="logo"><span class="kn">KNOW</span><span class="ish">-ish</span></span><span class="corner">📖 경제상식 <small>11.20</small></span></div>
 
   <div class="sc" id="s1">
-    <div id="s1chips" style="position:absolute;top:260px;left:70px;display:flex;gap:16px"><span class="chip">용어 정리</span><span class="chip dark">나스닥100</span></div>
+    <div id="s1chips" style="position:absolute;top:260px;left:70px;display:flex;gap:16px"><span class="chip">오늘의 용어</span><span class="chip dark">나스닥 선물</span></div>
     <div class="gift" id="gift">
       <svg class="line" id="gline" viewBox="0 0 380 360"><polyline points="10,330 70,260 120,290 190,170 240,210 300,90 370,20" fill="none" stroke="${sky}" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(0 0 14px rgba(92,211,255,.8))"/></svg>
       <div class="bx"><div class="rv"></div></div>
       <div class="lid" id="lid"><div class="rv"></div><div class="bow"><i></i><i></i></div></div>
     </div>
     <div id="s1stk" style="position:absolute;top:400px;right:60px;transform:rotate(5deg)"><span class="sticker">포장 없음</span></div>
-    <div style="position:absolute;left:70px;right:70px;top:1100px">
-      <div id="s1badge"><span class="badge">KNOW · 경제상식</span></div>
+    <div style="position:absolute;left:70px;right:70px;top:1020px">
+      <div id="s1badge"><span class="cbig"><span class="ic">📖</span><span><div class="k">경제상식</div><div class="n">KNOW-ISH 용어 사전</div></span></span></div>
       <div class="h1" id="s1t1" style="margin-top:36px">나스닥 ‘선물’,</div>
       <div class="h1" id="s1t2">리본은 <em>없습니다</em></div>
     </div>
@@ -129,9 +135,10 @@ const body = `<div class="stage">
   <div class="sc" id="s5">
     <div style="position:absolute;top:380px;left:70px;right:70px">
       <div id="s5w" style="margin-bottom:60px"><span class="say" style="transform:rotate(-2deg)">⚠️ 선물 올랐다 ≠ <em>본장도 오른다</em></span></div>
-      <div class="lbl">KNOW-ISH 한 줄 정리</div>
+      <div class="lbl">📖 경제상식 한 줄 정리</div>
       <div class="h2" style="font-size:96px">나스닥 선물 =<br>미국 기술주의<br><em>예고편</em></div>
       <div style="margin-top:50px;font-size:38px;line-height:1.6;color:rgba(255,255,255,.75);font-weight:500">포장도 리본도 없고,<br>‘미래 가격 약속’만 있어요.</div>
+      <div style="margin-top:40px;font-size:36px;font-weight:800;color:${sky}">다음 경제상식, 궁금한 용어 댓글로 👇</div>
     </div>
     <div style="position:absolute;bottom:330px;left:70px;display:flex;gap:18px"><span class="chip hot">저장해두고 아는 척</span><span class="chip" style="background:transparent;color:#fff;border:3px solid rgba(255,255,255,.4);box-shadow:none">@knowish.mag</span></div>
     <div class="src">자료: CME Group 상품 명세(E-mini Nasdaq-100), Charles Schwab 선물 안내 · 투자 권유 아님</div>
