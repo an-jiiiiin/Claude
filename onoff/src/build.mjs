@@ -56,6 +56,7 @@ const html = `<div class="rv">
       <h2 style="margin-top:22px">첫 댓글 (유입용 태그)</h2><pre>${esc((doc.commentTags || []).join(' '))}</pre></div>
     <div class="box"><h2>검수 체크</h2>
       ${problems.length ? problems.map((p) => `<div class="warn">⚠ ${esc(p)}</div>`).join('') : '<div class="ok">✓ 형식 검사 통과</div>'}
+      ${doc.reel ? `<div class="${doc.reel.make ? 'ok' : ''}">🎬 릴스 적합도 <b>${esc(doc.reel.fit || '?')}</b> — ${esc(doc.reel.why || '')} ${doc.reel.make ? '(이번 회차 릴스 제작)' : '(이번 회차 릴스 없음)'}</div>` : '<div class="warn">⚠ 릴스 적합도(reel) 미기재</div>'}
       ${missing.length ? `<div class="warn">⚠ 실사 이미지 미지정 ${missing.length}장 (회색 자리) — 이미지 지정 후 재빌드 필요</div>` : '<div class="ok">✓ 실사 이미지 모두 지정됨</div>'}
       <h2 style="margin-top:20px">출처</h2>${(doc.sources || []).map((u) => `<div><a>${esc(u)}</a></div>`).join('') || '<div class="warn">⚠ 출처 없음</div>'}
       <h2 style="margin-top:20px">이미지 출처</h2>${photos.map((s) => `<div>${esc(s.image.credit || '?')} — ${esc(s.image.license || '라이선스 미기재')}</div>`).join('') || '<div>없음</div>'}
@@ -78,6 +79,7 @@ const md = `# [승인 요청] ${S.label} · ${doc.category || S.desc}
 - 게시물: \`${path.basename(dir)}\` (슬라이드 ${slides.length}장, 게시 예정 ${doc.series === 'on' ? '08:00' : '18:00'} KST)
 - 형식 검사: ${problems.length ? problems.map((x) => '⚠ ' + x).join(' / ') : '통과'}
 - 실사 이미지: ${missing.length ? `⚠ ${missing.length}장 미지정` : '모두 지정'}
+- 릴스: ${doc.reel ? `적합도 ${doc.reel.fit} — ${doc.reel.why || ''} ${doc.reel.make ? '(제작)' : '(이번 회차 없음)'}` : '⚠ 적합도 미기재'}
 
 ## 캡션
 \`\`\`
