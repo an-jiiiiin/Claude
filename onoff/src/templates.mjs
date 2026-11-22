@@ -164,8 +164,8 @@ b{font-weight:800}
 .pastel .msrc{position:absolute;left:60px;bottom:44px;font-size:20px;color:#8a8a8a;z-index:2}
 .pastel .mfoot{position:absolute;right:60px;bottom:36px;z-index:2}
 .letter .in{position:absolute;top:170px;left:60px;right:60px}
-.letter h2{font-weight:800;font-size:54px;line-height:1.35;letter-spacing:-0.035em;margin-bottom:40px}
-.letter p{font-size:31px;line-height:1.75;color:#222;font-weight:500}
+.letter h2{font-weight:800;font-size:60px;line-height:1.35;letter-spacing:-0.035em;margin-bottom:40px}
+.letter p{font-size:36px;line-height:1.72;color:#222;font-weight:500}
 .letter p + p{margin-top:28px}
 .letter b{font-weight:800;color:#111}
 .letter mark{background:linear-gradient(transparent 58%, var(--hl) 58%);color:inherit}
