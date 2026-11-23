@@ -49,7 +49,7 @@ const css = `
 const grid = slides.map((f, i) => `<div><img src="slides/${path.basename(f)}"><div>${i + 1}</div></div>`).join('');
 const html = `<div class="rv">
   <h1>[승인 요청] ${S.label} · ${esc(doc.category || S.desc)} — ${esc(doc.slides[0].title.replace(/==|\*\*/g, '').replace(/\n/g, ' '))}</h1>
-  <div class="meta">${esc(path.basename(dir))} · 슬라이드 ${slides.length}장 · 게시 예정 ${doc.series === 'on' ? '08:00' : '18:00'} KST</div>
+  <div class="meta">${esc(path.basename(dir))} · 슬라이드 ${slides.length}장 · 게시 예정 ${doc.postAt || (doc.series === 'on' ? '08:00' : '18:00')} KST</div>
   <div class="g">${grid}</div>
   <div class="two">
     <div class="box"><h2>캡션</h2><pre>${esc(doc.caption || '')}</pre>
@@ -76,7 +76,7 @@ await browser.close();
 // 3) review.md + status.json
 const md = `# [승인 요청] ${S.label} · ${doc.category || S.desc}
 
-- 게시물: \`${path.basename(dir)}\` (슬라이드 ${slides.length}장, 게시 예정 ${doc.series === 'on' ? '08:00' : '18:00'} KST)
+- 게시물: \`${path.basename(dir)}\` (슬라이드 ${slides.length}장, 게시 예정 ${doc.postAt || (doc.series === 'on' ? '08:00' : '18:00')} KST)
 - 형식 검사: ${problems.length ? problems.map((x) => '⚠ ' + x).join(' / ') : '통과'}
 - 실사 이미지: ${missing.length ? `⚠ ${missing.length}장 미지정` : '모두 지정'}
 - 릴스: ${doc.reel ? `적합도 ${doc.reel.fit} — ${doc.reel.why || ''} ${doc.reel.make ? '(제작)' : '(이번 회차 없음)'}` : '⚠ 적합도 미기재'}
