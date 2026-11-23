@@ -1,165 +1,180 @@
 <!doctype html>
 <html lang="ko"><head><meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Fredoka:wght@500;600&display=swap" rel="stylesheet">
 <style>
-:root{--lemon:#FFF27A;--pink:#FFC8DD;--baby:#DCEEFF;--sky:#A8D8FF;--cream:#FFFDF6;--ink:#3A3F5C;}
+:root{--lemon:#FFF27A;--pink:#FFC8DD;--baby:#DCEEFF;--sky:#A8D8FF;--ink:#4B4E7A;--lilac:#D9CCFF}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#eee;font-family:'Gowun Dodum',sans-serif;color:var(--ink)}
 .card{width:1080px;height:1350px;position:relative;overflow:hidden;margin-bottom:20px}
-.logo{position:absolute;top:44px;left:0;right:0;text-align:center;font-family:'Fredoka';font-weight:600;font-size:30px;letter-spacing:1px;color:var(--ink);opacity:.75}
-.logo b{font-weight:700}
-.stage{position:absolute;top:110px;left:40px;right:40px;height:760px}
-.bottom{position:absolute;left:0;right:0;bottom:0;height:470px;background:var(--cream);padding:46px 60px 0;border-top-left-radius:60px;border-top-right-radius:60px}
-.meta{display:flex;align-items:center;gap:14px;font-size:28px;margin-bottom:26px;opacity:.85}
-.tag{font-family:'Fredoka';font-weight:700;font-size:26px;padding:6px 20px;border-radius:999px;color:var(--ink)}
-.mini{width:44px;height:44px}
-h1{font-family:'Jua';font-weight:400;font-size:84px;line-height:1.22;letter-spacing:-1px}
-h1 .hl{background:linear-gradient(transparent 60%,var(--lemon) 60%)}
-.deco{position:absolute;font-family:'Fredoka'}
-.dots{background-image:radial-gradient(rgba(255,255,255,.75) 3px,transparent 3.5px);background-size:44px 44px}
-.check{background-image:linear-gradient(45deg,rgba(255,255,255,.35) 25%,transparent 25%,transparent 75%,rgba(255,255,255,.35) 75%),linear-gradient(45deg,rgba(255,255,255,.35) 25%,transparent 25%,transparent 75%,rgba(255,255,255,.35) 75%);background-size:80px 80px;background-position:0 0,40px 40px}
-.sticker{position:absolute;background:#fff;border-radius:999px;padding:12px 26px;font-family:'Jua';font-size:34px;box-shadow:0 6px 0 rgba(58,63,92,.12)}
-.ph{position:absolute;bottom:30px;right:40px;font-size:20px;opacity:.45}
-.board{width:1080px;height:1350px;background:var(--cream);padding:70px;position:relative}
-.board h2{font-family:'Jua';font-size:64px;margin-bottom:10px}
-.board p.sub{font-size:28px;opacity:.7;margin-bottom:50px}
-.sw{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-bottom:60px}
-.sw div{height:190px;border-radius:36px;padding:24px;display:flex;flex-direction:column;justify-content:flex-end;font-size:26px;border:2px solid rgba(58,63,92,.08)}
-.sw b{font-family:'Jua';font-weight:400;font-size:34px}
-.hls{display:flex;justify-content:space-between}
-.hl-i{text-align:center;font-size:28px}
-.hl-i .ring{width:170px;height:170px;border-radius:50%;border:5px solid #e6e6ee;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
-.hl-i .in{width:146px;height:146px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.orb{position:absolute;border-radius:50%;filter:blur(60px);opacity:.85}
+.bokeh{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.9),rgba(255,255,255,0) 70%)}
+.logo{position:absolute;top:46px;left:0;right:0;text-align:center;font-family:'Cormorant Garamond';font-style:italic;font-weight:600;font-size:40px;letter-spacing:2px;color:#7A6FB8;text-shadow:0 0 20px #fff,0 0 8px #fff}
+.logo small{display:block;font-family:'Fredoka';font-style:normal;font-weight:500;font-size:16px;letter-spacing:6px;opacity:.9;margin-top:-2px}
+.stage{position:absolute;top:140px;left:40px;right:40px;height:720px}
+.stage svg.p{position:absolute;filter:drop-shadow(0 24px 30px rgba(140,120,210,.35))}
+.glass{position:absolute;left:44px;right:44px;bottom:44px;height:420px;border-radius:56px;background:rgba(255,255,255,.58);backdrop-filter:blur(24px);border:2px solid rgba(255,255,255,.9);box-shadow:0 20px 60px rgba(150,130,220,.25), inset 0 0 40px rgba(255,255,255,.6);padding:44px 52px}
+.meta{display:flex;align-items:center;gap:14px;font-size:27px;margin-bottom:24px;opacity:.85}
+.tag{font-family:'Fredoka';font-weight:600;font-size:24px;letter-spacing:2px;padding:7px 22px;border-radius:999px;color:#fff;background:linear-gradient(90deg,#FFB3CF,#B9A8FF,#9CCBFF)}
+h1{font-family:'Jua';font-weight:400;font-size:80px;line-height:1.24;letter-spacing:-1px;color:var(--ink)}
+h1 .hl{background:linear-gradient(90deg,#FFE3F0,#FFF6B0,#DDEFFF);border-radius:14px;padding:0 8px}
+.foot{position:absolute;bottom:34px;left:52px;right:52px;display:flex;justify-content:space-between;font-family:'Fredoka';font-weight:500;font-size:24px;opacity:.55}
+.chip{position:absolute;padding:12px 28px;border-radius:999px;font-family:'Jua';font-size:34px;color:var(--ink);background:rgba(255,255,255,.7);border:2px solid #fff;backdrop-filter:blur(8px);box-shadow:0 10px 30px rgba(150,130,220,.25)}
+.tw{position:absolute}
+/* inner page */
+.row{display:flex;gap:30px;align-items:center;padding:26px 30px;border-radius:40px;background:rgba(255,255,255,.6);border:2px solid #fff;margin-bottom:24px;box-shadow:0 10px 30px rgba(150,130,220,.18)}
+.thumb{width:170px;height:170px;border-radius:34px;display:flex;align-items:center;justify-content:center;flex:none}
+.row h3{font-family:'Jua';font-weight:400;font-size:42px;margin-bottom:6px}
+.row .price{font-family:'Fredoka';font-weight:600;font-size:30px;color:#E37AA8}
+.row p{font-size:26px;opacity:.8;margin-top:6px}
 </style></head><body>
 
 <svg width="0" height="0" style="position:absolute">
  <defs>
-  <!-- mascot: 말랑 (lemon cloud chick) -->
-  <symbol id="m" viewBox="0 0 200 180">
-   <path d="M30 120 C10 120 6 92 26 84 C18 52 52 34 74 50 C82 20 128 18 136 50 C160 36 192 58 178 88 C198 98 190 124 168 124 Z" fill="#FFF27A" stroke="#3A3F5C" stroke-width="6" stroke-linejoin="round"/>
-   <path d="M60 124 Q100 150 140 124" fill="#FFF27A" stroke="#3A3F5C" stroke-width="6"/>
-   <circle cx="78" cy="92" r="8" fill="#3A3F5C"/><circle cx="122" cy="92" r="8" fill="#3A3F5C"/>
-   <circle cx="81" cy="89" r="2.5" fill="#fff"/><circle cx="125" cy="89" r="2.5" fill="#fff"/>
-   <path d="M93 104 L100 112 L107 104 Z" fill="#FFB347" stroke="#3A3F5C" stroke-width="3" stroke-linejoin="round"/>
-   <ellipse cx="62" cy="108" rx="11" ry="7" fill="#FFB3CF"/><ellipse cx="138" cy="108" rx="11" ry="7" fill="#FFB3CF"/>
-   <path d="M96 30 Q100 12 112 16" fill="none" stroke="#3A3F5C" stroke-width="5" stroke-linecap="round"/>
-  </symbol>
-  <symbol id="star" viewBox="0 0 40 40"><path d="M20 2 L24 16 L38 20 L24 24 L20 38 L16 24 L2 20 L16 16Z" fill="#fff"/></symbol>
+  <linearGradient id="gloss" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".85"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/></linearGradient>
+  <linearGradient id="holo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFD6EA"/><stop offset=".5" stop-color="#E4DAFF"/><stop offset="1" stop-color="#CFE8FF"/></linearGradient>
+  <symbol id="spark" viewBox="0 0 40 40"><path d="M20 0 C21.5 13 27 18.5 40 20 C27 21.5 21.5 27 20 40 C18.5 27 13 21.5 0 20 C13 18.5 18.5 13 20 0Z" fill="#fff"/></symbol>
+  <symbol id="moon" viewBox="0 0 100 100"><path d="M64 8 A44 44 0 1 0 92 70 A36 36 0 1 1 64 8Z" fill="#FFF6B0" stroke="#fff" stroke-width="3"/></symbol>
+  <symbol id="cloud" viewBox="0 0 220 110"><path d="M40 100 C10 100 6 64 34 58 C30 26 74 14 92 38 C104 6 160 8 164 46 C196 40 214 74 192 96 Z" fill="#fff" opacity=".9"/></symbol>
+  <symbol id="heart" viewBox="0 0 60 54"><path d="M30 52 C10 38 0 28 0 16 C0 6 8 0 16 0 C23 0 28 4 30 9 C32 4 37 0 44 0 C52 0 60 6 60 16 C60 28 50 38 30 52Z" fill="url(#holo)" stroke="#fff" stroke-width="3"/></symbol>
   <symbol id="bow" viewBox="0 0 120 70">
-   <path d="M60 35 C40 5 8 8 10 35 C8 62 40 65 60 35 C80 65 112 62 110 35 C112 8 80 5 60 35Z" fill="#FFC8DD" stroke="#3A3F5C" stroke-width="4"/>
-   <circle cx="60" cy="35" r="10" fill="#FF9CC2" stroke="#3A3F5C" stroke-width="4"/></symbol>
-  <!-- products -->
+   <path d="M60 35 C40 5 8 8 10 35 C8 62 40 65 60 35 C80 65 112 62 110 35 C112 8 80 5 60 35Z" fill="url(#holo)" stroke="#fff" stroke-width="4"/>
+   <circle cx="60" cy="35" r="10" fill="#FFC8DD" stroke="#fff" stroke-width="4"/></symbol>
+  <!-- glossy products (placeholders for real 누끼 photos) -->
   <symbol id="tint" viewBox="0 0 80 260">
-   <rect x="16" y="0" width="48" height="110" rx="16" fill="#FFF" stroke="#3A3F5C" stroke-width="4"/>
-   <rect x="8" y="104" width="64" height="150" rx="18" fill="currentColor" stroke="#3A3F5C" stroke-width="4"/>
-   <rect x="18" y="120" width="10" height="110" rx="5" fill="#fff" opacity=".5"/></symbol>
+   <rect x="16" y="2" width="48" height="108" rx="20" fill="#fff" stroke="#fff" stroke-width="3"/>
+   <rect x="16" y="2" width="48" height="108" rx="20" fill="url(#holo)" opacity=".6"/>
+   <rect x="8" y="104" width="64" height="150" rx="24" fill="currentColor" stroke="#fff" stroke-width="4"/>
+   <rect x="8" y="104" width="64" height="150" rx="24" fill="url(#gloss)"/></symbol>
   <symbol id="cushion" viewBox="0 0 220 220">
-   <circle cx="110" cy="110" r="100" fill="currentColor" stroke="#3A3F5C" stroke-width="5"/>
-   <circle cx="110" cy="110" r="72" fill="#fff" opacity=".6"/>
-   <circle cx="110" cy="110" r="72" fill="none" stroke="#3A3F5C" stroke-width="3" stroke-dasharray="8 8"/></symbol>
+   <circle cx="110" cy="110" r="100" fill="currentColor" stroke="#fff" stroke-width="5"/>
+   <circle cx="110" cy="110" r="100" fill="url(#gloss)"/>
+   <circle cx="110" cy="110" r="70" fill="#fff" opacity=".55"/>
+   <path d="M70 80 Q110 50 150 80" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity=".9"/></symbol>
   <symbol id="serum" viewBox="0 0 120 280">
-   <rect x="44" y="0" width="32" height="60" rx="14" fill="#3A3F5C"/>
-   <rect x="38" y="56" width="44" height="26" rx="6" fill="#fff" stroke="#3A3F5C" stroke-width="4"/>
-   <rect x="10" y="80" width="100" height="196" rx="30" fill="currentColor" stroke="#3A3F5C" stroke-width="5"/>
-   <rect x="26" y="140" width="68" height="70" rx="10" fill="#fff" opacity=".8"/></symbol>
+   <rect x="44" y="2" width="32" height="60" rx="16" fill="#fff"/>
+   <rect x="44" y="2" width="32" height="60" rx="16" fill="url(#holo)"/>
+   <rect x="38" y="56" width="44" height="26" rx="8" fill="#fff"/>
+   <rect x="10" y="80" width="100" height="196" rx="40" fill="currentColor" stroke="#fff" stroke-width="5" fill-opacity=".85"/>
+   <rect x="10" y="80" width="100" height="196" rx="40" fill="url(#gloss)"/>
+   <rect x="30" y="150" width="60" height="56" rx="14" fill="#fff" opacity=".6"/></symbol>
   <symbol id="jar" viewBox="0 0 220 170">
-   <rect x="20" y="10" width="180" height="50" rx="16" fill="#fff" stroke="#3A3F5C" stroke-width="5"/>
-   <rect x="10" y="56" width="200" height="108" rx="30" fill="currentColor" stroke="#3A3F5C" stroke-width="5"/></symbol>
+   <rect x="20" y="10" width="180" height="50" rx="22" fill="#fff"/><rect x="20" y="10" width="180" height="50" rx="22" fill="url(#holo)" opacity=".7"/>
+   <rect x="10" y="56" width="200" height="108" rx="40" fill="currentColor" stroke="#fff" stroke-width="5"/>
+   <rect x="10" y="56" width="200" height="108" rx="40" fill="url(#gloss)"/></symbol>
   <symbol id="puff" viewBox="0 0 200 200">
-   <path d="M100 20 C160 20 186 70 180 110 C174 160 130 184 100 184 C70 184 26 160 20 110 C14 70 40 20 100 20Z" fill="currentColor" stroke="#3A3F5C" stroke-width="5"/>
-   <path d="M60 90 Q100 60 140 90" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round"/></symbol>
+   <path d="M100 20 C160 20 186 70 180 110 C174 160 130 184 100 184 C70 184 26 160 20 110 C14 70 40 20 100 20Z" fill="currentColor" stroke="#fff" stroke-width="5"/>
+   <path d="M100 20 C160 20 186 70 180 110 C174 160 130 184 100 184 C70 184 26 160 20 110 C14 70 40 20 100 20Z" fill="url(#gloss)"/>
+   <path d="M60 90 Q100 60 140 90" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round" opacity=".9"/></symbol>
  </defs>
 </svg>
 
-<!-- 1. BEAUTY (pink) -->
-<div class="card dots" style="background-color:var(--pink)">
- <div class="logo">mallang <b>magazine</b> ♡</div>
+<!-- 1. BEAUTY : pink-lilac dream -->
+<div class="card" style="background:linear-gradient(160deg,#FFE0EE 0%,#F3DDFF 45%,#DDEBFF 100%)">
+ <div class="orb" style="width:520px;height:520px;left:-120px;top:120px;background:#FFC8DD"></div>
+ <div class="orb" style="width:460px;height:460px;right:-100px;top:-60px;background:#D9CCFF"></div>
+ <div class="orb" style="width:420px;height:420px;right:-60px;top:560px;background:#BFE0FF"></div>
+ <div class="bokeh" style="width:120px;height:120px;left:860px;top:300px"></div>
+ <div class="bokeh" style="width:70px;height:70px;left:120px;top:90px"></div>
+ <div class="logo">mallang<small>DREAMY BEAUTY MAGAZINE</small></div>
  <div class="stage">
-  <svg style="position:absolute;left:120px;top:110px;width:110px;height:360px;color:#FF7FA8;transform:rotate(-12deg)"><use href="#tint"/></svg>
-  <svg style="position:absolute;left:250px;top:70px;width:110px;height:360px;color:#FFA3BF;transform:rotate(-4deg)"><use href="#tint"/></svg>
-  <svg style="position:absolute;left:380px;top:60px;width:110px;height:360px;color:#F5B8A0;transform:rotate(4deg)"><use href="#tint"/></svg>
-  <svg style="position:absolute;left:510px;top:80px;width:110px;height:360px;color:#E88FA0;transform:rotate(11deg)"><use href="#tint"/></svg>
-  <svg style="position:absolute;left:650px;top:300px;width:300px;height:300px;color:var(--sky)"><use href="#cushion"/></svg>
-  <svg style="position:absolute;left:60px;top:470px;width:250px;height:200px;color:var(--lemon)"><use href="#jar"/></svg>
-  <svg style="position:absolute;left:760px;top:40px;width:180px;height:110px;transform:rotate(14deg)"><use href="#bow"/></svg>
-  <svg style="position:absolute;left:640px;top:180px;width:46px"><use href="#star"/></svg>
-  <svg style="position:absolute;left:60px;top:40px;width:60px;height:60px"><use href="#star"/></svg>
-  <svg style="position:absolute;left:360px;top:500px;width:230px;height:210px"><use href="#m"/></svg>
-  <div class="sticker" style="left:640px;top:630px;transform:rotate(-4deg)">1+1 기획 ♡</div>
+  <svg class="tw" style="left:40px;top:470px;width:260px;height:130px"><use href="#cloud"/></svg>
+  <svg class="tw" style="left:720px;top:520px;width:240px;height:120px"><use href="#cloud"/></svg>
+  <svg class="p" style="left:170px;top:90px;width:110px;height:360px;color:#FF9EC4;transform:rotate(-14deg)"><use href="#tint"/></svg>
+  <svg class="p" style="left:300px;top:40px;width:110px;height:360px;color:#FFB8D2;transform:rotate(-5deg)"><use href="#tint"/></svg>
+  <svg class="p" style="left:430px;top:30px;width:110px;height:360px;color:#C9B4FF;transform:rotate(4deg)"><use href="#tint"/></svg>
+  <svg class="p" style="left:560px;top:60px;width:110px;height:360px;color:#F7A8B8;transform:rotate(13deg)"><use href="#tint"/></svg>
+  <svg class="p" style="left:690px;top:250px;width:260px;height:260px;color:#BFDDFF"><use href="#cushion"/></svg>
+  <svg class="p" style="left:110px;top:400px;width:230px;height:180px;color:#FFF3A8"><use href="#jar"/></svg>
+  <svg class="tw" style="left:780px;top:40px;width:170px;height:100px;transform:rotate(14deg)"><use href="#bow"/></svg>
+  <svg class="tw" style="left:60px;top:30px;width:70px;height:70px"><use href="#spark"/></svg>
+  <svg class="tw" style="left:660px;top:170px;width:40px;height:40px"><use href="#spark"/></svg>
+  <svg class="tw" style="left:420px;top:450px;width:56px;height:56px"><use href="#spark"/></svg>
+  <svg class="tw" style="left:520px;top:520px;width:70px;height:62px;transform:rotate(-12deg)"><use href="#heart"/></svg>
+  <div class="chip" style="left:470px;top:600px;transform:rotate(-3deg)">1+1 기획 <svg style="width:.8em;height:.8em;vertical-align:-0.05em;filter:drop-shadow(0 0 2px #C9B4FF)"><use href="#spark"/></svg></div>
  </div>
- <div class="bottom">
-  <div class="meta"><span class="tag" style="background:var(--pink)">BEAUTY</span><svg class="mini"><use href="#m"/></svg><span>| 12월 첫째 주 올영 신상 립만 모았어!</span></div>
+ <div class="glass">
+  <div class="meta"><span class="tag">BEAUTY</span><span><svg style="width:.8em;height:.8em;vertical-align:-0.05em;filter:drop-shadow(0 0 2px #C9B4FF)"><use href="#spark"/></svg> 12월 첫째 주 올영 신상 립만 모았어</span></div>
   <h1>이거 안 사면 손해,,♡<br>올영 겨울 신상 <span class="hl">립.zip</span></h1>
-  <div style="position:absolute;bottom:40px;left:60px;right:60px;display:flex;justify-content:space-between;font-family:Fredoka;font-weight:600;font-size:26px;opacity:.45"><span>@mallang.mag</span><span>저장하고 보기 ♡ →</span></div>
+  <div class="foot"><span>@mallang.mag</span><span>save for later ♡</span></div>
  </div>
 </div>
 
-<!-- 2. EVENT (lemon) -->
-<div class="card check" style="background-color:var(--lemon)">
- <div class="logo">mallang <b>magazine</b> ♡</div>
+<!-- 2. EVENT : lemon-peach dream -->
+<div class="card" style="background:linear-gradient(170deg,#FFF6C2 0%,#FFE4EC 55%,#E6E4FF 100%)">
+ <div class="orb" style="width:560px;height:560px;left:-140px;top:-80px;background:#FFF08A"></div>
+ <div class="orb" style="width:460px;height:460px;right:-120px;top:300px;background:#FFC8DD"></div>
+ <div class="orb" style="width:380px;height:380px;left:200px;top:640px;background:#D9CCFF"></div>
+ <div class="bokeh" style="width:140px;height:140px;left:80px;top:520px"></div>
+ <div class="bokeh" style="width:80px;height:80px;left:900px;top:180px"></div>
+ <div class="logo">mallang<small>DREAMY BEAUTY MAGAZINE</small></div>
  <div class="stage">
-  <svg style="position:absolute;left:90px;top:90px;width:260px;height:260px;color:var(--pink);transform:rotate(-10deg)"><use href="#puff"/></svg>
-  <svg style="position:absolute;left:330px;top:40px;width:240px;height:240px;color:var(--baby);transform:rotate(8deg)"><use href="#puff"/></svg>
-  <svg style="position:absolute;left:600px;top:110px;width:270px;height:270px;color:#fff;transform:rotate(-6deg)"><use href="#puff"/></svg>
-  <svg style="position:absolute;left:180px;top:360px;width:240px;height:240px;color:var(--sky);transform:rotate(12deg)"><use href="#puff"/></svg>
-  <svg style="position:absolute;left:520px;top:400px;width:300px;height:270px"><use href="#m"/></svg>
-  <div class="sticker" style="left:60px;top:620px;background:#FF7FA8;color:#fff;font-size:40px;transform:rotate(-6deg)">~70% OFF</div>
-  <div class="sticker" style="left:770px;top:30px;transform:rotate(8deg)">품절주의 !!</div>
-  <svg style="position:absolute;left:880px;top:420px;width:56px"><use href="#star"/></svg>
-  <svg style="position:absolute;left:470px;top:300px;width:40px"><use href="#star"/></svg>
+  <svg class="tw" style="left:780px;top:20px;width:150px;height:150px"><use href="#moon"/></svg>
+  <svg class="p" style="left:80px;top:90px;width:250px;height:250px;color:#FFC8DD;transform:rotate(-10deg)"><use href="#puff"/></svg>
+  <svg class="p" style="left:330px;top:30px;width:230px;height:230px;color:#E2D8FF;transform:rotate(8deg)"><use href="#puff"/></svg>
+  <svg class="p" style="left:560px;top:180px;width:270px;height:270px;color:#FFD9C2;transform:rotate(-6deg)"><use href="#puff"/></svg>
+  <svg class="p" style="left:230px;top:330px;width:250px;height:250px;color:#BFDDFF;transform:rotate(12deg)"><use href="#puff"/></svg>
+  <svg class="tw" style="left:560px;top:470px;width:280px;height:140px"><use href="#cloud"/></svg>
+  <svg class="tw" style="left:500px;top:110px;width:50px;height:50px"><use href="#spark"/></svg>
+  <svg class="tw" style="left:40px;top:400px;width:64px;height:64px"><use href="#spark"/></svg>
+  <svg class="tw" style="left:880px;top:420px;width:44px;height:44px"><use href="#spark"/></svg>
+  <div class="chip" style="left:620px;top:510px;transform:rotate(4deg);background:linear-gradient(90deg,#FFB3CF,#C9B4FF);color:#fff;font-size:40px">~70% OFF</div>
+  <div class="chip" style="left:60px;top:20px;transform:rotate(-6deg)">품절 주의 <svg style="width:.8em;height:.8em;vertical-align:-0.05em;filter:drop-shadow(0 0 2px #C9B4FF)"><use href="#spark"/></svg></div>
  </div>
- <div class="bottom">
-  <div class="meta"><span class="tag" style="background:var(--lemon)">EVENT</span><svg class="mini"><use href="#m"/></svg><span>| 블프 마지막 날까지! 다이소 퍼프 총정리</span></div>
-  <h1>[속보] 다이소 퍼프 대란?!<br>품절 전에 <span class="hl">저장해,,</span> ⭐</h1>
-  <div style="position:absolute;bottom:40px;left:60px;right:60px;display:flex;justify-content:space-between;font-family:Fredoka;font-weight:600;font-size:26px;opacity:.45"><span>@mallang.mag</span><span>저장하고 보기 ♡ →</span></div>
+ <div class="glass">
+  <div class="meta"><span class="tag">EVENT</span><span><svg style="width:.8em;height:.8em;vertical-align:-0.05em;filter:drop-shadow(0 0 2px #C9B4FF)"><use href="#spark"/></svg> 블프 마지막 날까지! 다이소 퍼프 총정리</span></div>
+  <h1>[속보] 다이소 퍼프 대란?!<br>품절 전에 <span class="hl">저장해,,</span> ☆</h1>
+  <div class="foot"><span>@mallang.mag</span><span>save for later ♡</span></div>
  </div>
 </div>
 
-<!-- 3. INFO (baby/sky blue) -->
-<div class="card dots" style="background:linear-gradient(180deg,var(--sky),var(--baby))">
- <div class="logo">mallang <b>magazine</b> ♡</div>
+<!-- 3. INFO : sky-baby dream -->
+<div class="card" style="background:linear-gradient(180deg,#BFE2FF 0%,#DCEEFF 50%,#F3E6FF 100%)">
+ <div class="orb" style="width:500px;height:500px;left:-120px;top:-40px;background:#A8D8FF"></div>
+ <div class="orb" style="width:420px;height:420px;right:-80px;top:120px;background:#E6D6FF"></div>
+ <div class="orb" style="width:400px;height:400px;left:300px;top:600px;background:#FFD6E8"></div>
+ <div class="bokeh" style="width:110px;height:110px;left:920px;top:560px"></div>
+ <div class="bokeh" style="width:60px;height:60px;left:300px;top:120px"></div>
+ <div class="logo">mallang<small>DREAMY BEAUTY MAGAZINE</small></div>
  <div class="stage">
-  <svg style="position:absolute;left:80px;top:60px;width:150px;height:350px;color:var(--pink);transform:rotate(-8deg)"><use href="#serum"/></svg>
-  <svg style="position:absolute;left:250px;top:120px;width:260px;height:260px;color:var(--lemon)"><use href="#cushion"/></svg>
-  <svg style="position:absolute;left:560px;top:50px;width:150px;height:350px;color:#fff;transform:rotate(6deg)"><use href="#serum"/></svg>
-  <svg style="position:absolute;left:740px;top:170px;width:110px;height:330px;color:#FF7FA8;transform:rotate(14deg)"><use href="#tint"/></svg>
-  <svg style="position:absolute;left:90px;top:440px;width:260px;height:200px;color:var(--pink)"><use href="#jar"/></svg>
-  <svg style="position:absolute;left:640px;top:470px;width:230px;height:230px;color:var(--lemon)"><use href="#puff"/></svg>
-  <svg style="position:absolute;left:390px;top:440px;width:240px;height:220px"><use href="#m"/></svg>
-  <svg style="position:absolute;left:420px;top:20px;width:150px;height:90px;transform:rotate(-10deg)"><use href="#bow"/></svg>
-  <svg style="position:absolute;left:900px;top:60px;width:56px"><use href="#star"/></svg>
-  <svg style="position:absolute;left:40px;top:400px;width:40px"><use href="#star"/></svg>
+  <svg class="tw" style="left:0px;top:500px;width:300px;height:150px"><use href="#cloud"/></svg>
+  <svg class="tw" style="left:700px;top:540px;width:280px;height:140px"><use href="#cloud"/></svg>
+  <svg class="p" style="left:100px;top:50px;width:150px;height:350px;color:#FFC8DD;transform:rotate(-8deg)"><use href="#serum"/></svg>
+  <svg class="p" style="left:290px;top:120px;width:240px;height:240px;color:#FFF3A8"><use href="#cushion"/></svg>
+  <svg class="p" style="left:570px;top:40px;width:150px;height:350px;color:#E4DAFF;transform:rotate(6deg)"><use href="#serum"/></svg>
+  <svg class="p" style="left:760px;top:150px;width:110px;height:330px;color:#FF9EC4;transform:rotate(14deg)"><use href="#tint"/></svg>
+  <svg class="p" style="left:130px;top:400px;width:250px;height:190px;color:#FFD6E8"><use href="#jar"/></svg>
+  <svg class="p" style="left:560px;top:410px;width:200px;height:200px;color:#FFF3A8"><use href="#puff"/></svg>
+  <svg class="tw" style="left:400px;top:400px;width:120px;height:120px"><use href="#moon"/></svg>
+  <svg class="tw" style="left:420px;top:10px;width:150px;height:90px;transform:rotate(-10deg)"><use href="#bow"/></svg>
+  <svg class="tw" style="left:900px;top:40px;width:60px;height:60px"><use href="#spark"/></svg>
+  <svg class="tw" style="left:40px;top:20px;width:44px;height:44px"><use href="#spark"/></svg>
+  <svg class="tw" style="left:470px;top:560px;width:50px;height:50px"><use href="#spark"/></svg>
  </div>
- <div class="bottom">
-  <div class="meta"><span class="tag" style="background:var(--baby)">정보말랑</span><svg class="mini"><use href="#m"/></svg><span>| 11월 넷째 주 귀여운 뷰티템 모음!</span></div>
-  <h1>이번 주 말랑한 템.zip<br>파우치 속 <span class="hl">귀요미들</span> ♡</h1>
-  <div style="position:absolute;bottom:40px;left:60px;right:60px;display:flex;justify-content:space-between;font-family:Fredoka;font-weight:600;font-size:26px;opacity:.45"><span>@mallang.mag</span><span>저장하고 보기 ♡ →</span></div>
+ <div class="glass">
+  <div class="meta"><span class="tag">INFO</span><span><svg style="width:.8em;height:.8em;vertical-align:-0.05em;filter:drop-shadow(0 0 2px #C9B4FF)"><use href="#spark"/></svg> 11월 넷째 주 몽글몽글 뷰티템 모음</span></div>
+  <h1>이번 주 말랑한 템.zip<br>파우치 속 <span class="hl">꿈결템</span> ♡</h1>
+  <div class="foot"><span>@mallang.mag</span><span>save for later ♡</span></div>
  </div>
 </div>
 
-<!-- 4. BRAND BOARD -->
-<div class="board">
- <h2>mallang magazine 무드보드</h2>
- <p class="sub">계정 이름 · 마스코트는 임시예요. 바꾸면 전체 템플릿에 그대로 적용돼요.</p>
- <div class="sw">
-  <div style="background:var(--lemon)"><b>레몬</b>#FFF27A · 이벤트</div>
-  <div style="background:var(--pink)"><b>밀크 핑크</b>#FFC8DD · 뷰티</div>
-  <div style="background:var(--sky)"><b>스카이블루</b>#A8D8FF · 패션</div>
-  <div style="background:var(--baby)"><b>베이비블루</b>#DCEEFF · 정보/굿즈</div>
-  <div style="background:var(--cream)"><b>크림 화이트</b>#FFFDF6 · 기본 배경</div>
-  <div style="background:var(--ink);color:#fff"><b>네이비그레이</b>#3A3F5C · 글자</div>
+<!-- 4. INNER PAGE -->
+<div class="card" style="background:linear-gradient(160deg,#FFE0EE 0%,#F3DDFF 45%,#DDEBFF 100%)">
+ <div class="orb" style="width:500px;height:500px;left:-160px;top:400px;background:#FFC8DD"></div>
+ <div class="orb" style="width:420px;height:420px;right:-120px;top:-80px;background:#D9CCFF"></div>
+ <div class="bokeh" style="width:100px;height:100px;left:900px;top:1100px"></div>
+ <div class="logo" style="top:40px;font-size:32px">mallang<small>02 / 06</small></div>
+ <div style="position:absolute;top:150px;left:60px;right:60px">
+  <div style="display:flex;align-items:center;gap:14px;margin-bottom:30px"><span class="tag">BEAUTY</span><span style="font-family:Jua;font-size:46px">말랑 PICK 립 4종 <svg style="width:.8em;height:.8em;vertical-align:-0.05em;filter:drop-shadow(0 0 2px #C9B4FF)"><use href="#spark"/></svg></span></div>
+  <div class="row"><div class="thumb" style="background:#FFE3F0"><svg width="70" height="150" style="color:#FF9EC4;filter:drop-shadow(0 10px 14px rgba(140,120,210,.3))"><use href="#tint"/></svg></div>
+   <div><h3>01. 딸기우유 글로스 틴트</h3><div class="price">₩12,900 → ₩9,900</div><p>물광 + 은은한 핑크, 겨울 입술에 딱 ♡</p></div></div>
+  <div class="row"><div class="thumb" style="background:#EFE8FF"><svg width="70" height="150" style="color:#C9B4FF;filter:drop-shadow(0 10px 14px rgba(140,120,210,.3))"><use href="#tint"/></svg></div>
+   <div><h3>02. 라벤더 블러 틴트</h3><div class="price">₩14,000 · 1+1</div><p>쿨톤 요정 컬러, 보송하게 블러 처리</p></div></div>
+  <div class="row"><div class="thumb" style="background:#FFF6C8"><svg width="70" height="150" style="color:#F7C08A;filter:drop-shadow(0 10px 14px rgba(140,120,210,.3))"><use href="#tint"/></svg></div>
+   <div><h3>03. 꿀자몽 립밤</h3><div class="price">₩8,500</div><p>각질 없는 촉촉함, 데일리 베이스로</p></div></div>
+  <div class="row"><div class="thumb" style="background:#E2F0FF"><svg width="70" height="150" style="color:#F7A8B8;filter:drop-shadow(0 10px 14px rgba(140,120,210,.3))"><use href="#tint"/></svg></div>
+   <div><h3>04. 구름 무드 벨벳 립</h3><div class="price">₩15,000 → ₩11,200</div><p>말린 장미 컬러, 몽환 메이크업 완성</p></div></div>
  </div>
- <h2 style="font-size:44px;margin-bottom:30px">하이라이트 아이콘</h2>
- <div class="hls">
-  <div class="hl-i"><div class="ring"><div class="in" style="background:var(--pink)"><svg width="110" height="100"><use href="#m"/></svg></div></div>뷰티</div>
-  <div class="hl-i"><div class="ring"><div class="in" style="background:var(--lemon)"><svg width="110" height="100"><use href="#m"/></svg></div></div>이벤트</div>
-  <div class="hl-i"><div class="ring"><div class="in" style="background:var(--sky)"><svg width="110" height="100"><use href="#m"/></svg></div></div>패션</div>
-  <div class="hl-i"><div class="ring"><div class="in" style="background:var(--baby)"><svg width="110" height="100"><use href="#m"/></svg></div></div>정보말랑</div>
-  <div class="hl-i"><div class="ring"><div class="in" style="background:#fff"><svg width="110" height="100"><use href="#m"/></svg></div></div>1분 소개</div>
- </div>
- <h2 style="font-size:44px;margin:60px 0 20px">폰트</h2>
- <p style="font-family:'Jua';font-size:54px">제목은 주아체 — 이번 주 귀여운 템.zip ♡</p>
- <p style="font-size:32px;margin-top:14px">본문은 고운돋움 — 가격, 용량, 한 줄 후기처럼 정보가 들어가는 곳</p>
- <p style="font-family:'Fredoka';font-weight:600;font-size:36px;margin-top:14px">Logo · Tag : Fredoka — BEAUTY · EVENT</p>
+ <div class="foot" style="left:60px;right:60px">
+  <span>* 가격은 올리브영 온라인 기준</span><span>@mallang.mag</span></div>
 </div>
 </body></html>
