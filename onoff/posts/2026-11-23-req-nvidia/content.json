@@ -1,7 +1,7 @@
 {
   "series": "on",
   "style": "classic",
-  "dateLabel": "11.24 TUE",
+  "dateLabel": "11.23 MON",
   "category": "글로벌",
   "caption": "[젠슨 황, 사임 11일 만에 엔비디아 복귀]\n\n엔비디아 이사회가 23일(현지시간) 만장일치로 젠슨 황을 사장·CEO·이사로 즉시 복귀시켰어요.\n불과 6일 전 “복귀 계획 없다”던 결정을 뒤집은 것.\n\n이사회는 미국 정부 고위급 의견까지 듣고 “국가안보 위험 없다”고 판단했지만,\n외국 정보기관 관련 조사는 끝까지 이어져요. 핵심만 정리했어요.\n\nRef. NVIDIA 공식 발표(11/23), AP·CBS, AI타임스\n사진 | NVIDIA Newsroom\n※ 투자 권유가 아닌 정보 제공용입니다\n\n#엔비디아 #젠슨황 #NVIDIA #경제뉴스 #knowish",
   "commentTags": [
@@ -33,7 +33,7 @@
   ],
   "reel": {
     "fit": "상",
-    "why": "사임 → '복귀 없다' → 6일 만에 번복, 타임라인 반전이 영상으로 잘 보임. 11/24 첫 릴스",
+    "why": "사임 → '복귀 없다' → 6일 만에 번복, 타임라인 반전. 속보라 하루 1개 규칙 예외로 즉시 제작",
     "make": true
   },
   "slides": [
@@ -52,7 +52,7 @@
         }
       ],
       "image": {
-        "src": "posts/2026-11-24-am/images/01-jensen-huang.jpg",
+        "src": "posts/2026-11-23-req-nvidia/images/01-jensen-huang.jpg",
         "credit": "NVIDIA Newsroom",
         "license": "기업 공식 보도용 사진",
         "pos": "center 22%"
@@ -129,14 +129,14 @@
       "type": "body",
       "title": "그래서 나한테는?",
       "image": {
-        "src": "posts/2026-11-24-am/images/01-jensen-huang.jpg",
+        "src": "posts/2026-11-23-req-nvidia/images/01-jensen-huang.jpg",
         "credit": "NVIDIA Newsroom",
         "license": "기업 공식 보도용 사진",
         "pos": "center 20%"
       },
       "text": [
-        "‘CEO 공백’ 불확실성은 일단 해소. 발표 직후 엔비디아 주가는 ==장 초반 급등==했다는 보도가 이어졌어요(확정 등락은 마감 후 확인).",
-        "어제 코스피 급락 배경으로 **AI 투심 위축**이 꼽혔던 만큼, 오늘 국내 반도체주 반응도 관심이에요."
+        "‘CEO 공백’ 불확실성은 일단 해소. 발표 직후 주가는 ==장 초반 급등== 보도(확정치는 마감 후).",
+        "오늘 코스피 급락 배경이 **AI 투심 위축**이었던 만큼, 내일 국내 반도체주도 관심."
       ],
       "ref": "AP, 뉴스1(11/23 코스피 기사)"
     },
@@ -145,5 +145,7 @@
       "title": "황은 돌아왔다,\n==조사 결과==까지가 완결",
       "text": "독립위원회 조사 결과가 나오면\nKNOW-ISH가 바로 정리해드릴게요."
     }
-  ]
+  ],
+  "slot": "속보",
+  "postAt": "즉시(23:28)"
 }

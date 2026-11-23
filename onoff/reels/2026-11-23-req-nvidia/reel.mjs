@@ -1,5 +1,5 @@
 // KNOW 릴스: 젠슨 황, 사임 11일 만에 엔비디아 복귀 (2026-11-23 현지시간)
-// 근거: posts/2026-11-24-am/content.json 의 sources
+// 근거: posts/2026-11-23-req-nvidia/content.json 의 sources
 import { page, BRAND } from '../../src/templates.mjs';
 import { pathToFileURL } from 'node:url';
 import path from 'node:path';
@@ -9,7 +9,7 @@ export const posterAt = 2.8;
 const { ink, sky, mag } = BRAND;
 const deep = '#0B72C9';
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..');
-const coverImg = pathToFileURL(path.join(ROOT, 'posts/2026-11-24-am/images/01-jensen-huang.jpg')).href;
+const coverImg = pathToFileURL(path.join(ROOT, 'posts/2026-11-23-req-nvidia/images/01-jensen-huang.jpg')).href;
 
 const css = `
 html,body{margin:0;background:${ink}}
@@ -52,7 +52,7 @@ html,body{margin:0;background:${ink}}
 
 const body = `<div class="stage">
   <div class="bg"></div><div class="grid"></div>
-  <div class="top"><span class="logo"><span class="kn">KNOW</span><span class="ish">-ish</span></span><span class="d">11.24 TUE · KNOW 글로벌</span></div>
+  <div class="top"><span class="logo"><span class="kn">KNOW</span><span class="ish">-ish</span></span><span class="d">11.23 MON · 속보 · KNOW 글로벌</span></div>
 
   <div class="sc" id="s1">
     <div id="s1img" style="position:absolute;top:240px;left:0;width:1080px;height:1100px;background:url('${coverImg}') center 18%/cover"></div>
@@ -95,7 +95,7 @@ const body = `<div class="stage">
     <div style="position:absolute;top:420px;left:70px;right:70px">
       <div class="lbl">KNOW-ISH 한 줄 정리</div>
       <div class="h2" style="font-size:100px">황은 돌아왔다,<br><em>조사 결과</em>까지가<br>완결</div>
-      <div style="margin-top:60px;font-size:38px;line-height:1.6;color:rgba(255,255,255,.75);font-weight:500">CEO 공백 불확실성은 일단 해소.<br>오늘 국내 반도체주 반응도 지켜봐요.</div>
+      <div style="margin-top:60px;font-size:38px;line-height:1.6;color:rgba(255,255,255,.75);font-weight:500">CEO 공백 불확실성은 일단 해소.<br>내일 국내 반도체주 반응도 지켜봐요.</div>
     </div>
     <div style="position:absolute;bottom:330px;left:70px;display:flex;gap:18px"><span class="chip hot">저장해두고 다시 보기</span><span class="chip" style="background:transparent;color:#fff;border:3px solid rgba(255,255,255,.4);box-shadow:none">@knowish.mag</span></div>
     <div class="src">자료: NVIDIA 공식 발표(11/23), AP·CBS, AI타임스 · 투자 권유가 아닌 정보 제공용입니다</div>
