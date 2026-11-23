@@ -164,8 +164,8 @@ b{font-weight:800}
 .pastel .msrc{position:absolute;left:60px;bottom:44px;font-size:20px;color:#8a8a8a;z-index:2}
 .pastel .mfoot{position:absolute;right:60px;bottom:36px;z-index:2}
 .letter .in{position:absolute;top:170px;left:60px;right:60px}
-.letter h2{font-weight:800;font-size:54px;line-height:1.35;letter-spacing:-0.035em;margin-bottom:40px}
-.letter p{font-size:31px;line-height:1.75;color:#222;font-weight:500}
+.letter h2{font-weight:800;font-size:60px;line-height:1.35;letter-spacing:-0.035em;margin-bottom:40px}
+.letter p{font-size:36px;line-height:1.72;color:#222;font-weight:500}
 .letter p + p{margin-top:28px}
 .letter b{font-weight:800;color:#111}
 .letter mark{background:linear-gradient(transparent 58%, var(--hl) 58%);color:inherit}
@@ -313,7 +313,7 @@ function cover(s, d, S) {
   ${photo(s.image)}
   <div class="shade"></div>
   ${chips(s.chips, s.stickerSide === 'left')}
-  <div class="top">${logo(1)}<span class="date">${esc(d.dateLabel)} · ${S.slot}</span></div>
+  <div class="top">${logo(1)}<span class="date">${esc(d.dateLabel)} · ${esc(d.slot || S.slot)}</span></div>
   ${s.sticker ? `<div class="sticker ${s.stickerSide === 'left' ? 'left' : ''}">${esc(s.sticker)}</div>` : ''}
   <div class="bottom">
     <span class="badge" style="background:${S.accent}">${S.label} · ${esc(d.category || S.desc)}</span>
@@ -337,7 +337,7 @@ function bodyShell(inner, s, d, S, i, n, noimg) {
 
 function body(s, d, S, i, n) {
   const fig = s.image
-    ? `<figure style="--dp:${S.deep}">${photo(s.image)}${bubbles(s.says)}</figure><figcaption>${credit(s.image)}</figcaption>`
+    ? `<figure style="--dp:${S.deep}${s.image.h ? `;height:${s.image.h}px` : ''}">${photo(s.image)}${bubbles(s.says)}</figure><figcaption>${credit(s.image)}</figcaption>`
     : '';
   const paras = (s.text || []).map((t) => `<p>${rich(t)}</p>`).join('');
   return bodyShell(`${fig}<h2>${rich(s.title)}</h2>${paras}`, s, d, S, i, n, !s.image);

@@ -1,0 +1,151 @@
+{
+  "series": "on",
+  "style": "classic",
+  "dateLabel": "11.23 MON",
+  "category": "글로벌",
+  "caption": "[젠슨 황, 사임 11일 만에 엔비디아 복귀]\n\n엔비디아 이사회가 23일(현지시간) 만장일치로 젠슨 황을 사장·CEO·이사로 즉시 복귀시켰어요.\n불과 6일 전 “복귀 계획 없다”던 결정을 뒤집은 것.\n\n이사회는 미국 정부 고위급 의견까지 듣고 “국가안보 위험 없다”고 판단했지만,\n외국 정보기관 관련 조사는 끝까지 이어져요. 핵심만 정리했어요.\n\nRef. NVIDIA 공식 발표(11/23), AP·CBS, AI타임스\n사진 | NVIDIA Newsroom\n※ 투자 권유가 아닌 정보 제공용입니다\n\n#엔비디아 #젠슨황 #NVIDIA #경제뉴스 #knowish",
+  "commentTags": [
+    "#엔비디아주가",
+    "#젠슨황복귀",
+    "#AI반도체",
+    "#반도체",
+    "#나스닥",
+    "#미국주식",
+    "#해외주식",
+    "#빅테크",
+    "#SK하이닉스",
+    "#삼성전자",
+    "#AI",
+    "#글로벌경제",
+    "#경제공부",
+    "#뉴스요약",
+    "#시사상식",
+    "#재테크",
+    "#카드뉴스"
+  ],
+  "sources": [
+    "https://nvidianews.nvidia.com/news/nvidia-board-reinstates-jensen-huang-as-president-ceo-and-board-director",
+    "https://www.wral.com/news/ap/39d4b-nvidia-board-unanimously-reinstates-jensen-huang-as-ceo/",
+    "https://www.cbsnews.com/news/nvidia-reinstates-jensen-huang-ceo/",
+    "https://www.aitimes.com/news/articleView.html?idxno=217517",
+    "https://www.choicestock.co.kr/stock/news_view/213771?bu=",
+    "https://www.hankyung.com/article/2026111833267"
+  ],
+  "reel": {
+    "fit": "상",
+    "why": "사임 → '복귀 없다' → 6일 만에 번복, 타임라인 반전. 속보라 하루 1개 규칙 예외로 즉시 제작",
+    "make": true
+  },
+  "slides": [
+    {
+      "type": "cover",
+      "sticker": "11일 만",
+      "title": "젠슨 황, 엔비디아로\n==6일 만에 번복==된 복귀",
+      "chips": [
+        {
+          "text": "만장일치",
+          "kind": "hot"
+        },
+        {
+          "text": "속보",
+          "kind": "dot"
+        }
+      ],
+      "image": {
+        "src": "posts/2026-11-23-req-nvidia/images/01-jensen-huang.jpg",
+        "credit": "NVIDIA Newsroom",
+        "license": "기업 공식 보도용 사진",
+        "pos": "center 22%"
+      }
+    },
+    {
+      "type": "body",
+      "title": "무슨 일이야?",
+      "text": [
+        "엔비디아 이사회가 23일(현지시간) ==만장일치==로 젠슨 황을 **사장 겸 CEO, 이사**로 즉시 복귀시켰어요.",
+        "이달 초 **회사 기준에 맞지 않는 개인적 행동**이 공개된 뒤 자진 사임한 지 11일 만이에요."
+      ],
+      "ref": "NVIDIA 공식 발표, AI타임스"
+    },
+    {
+      "type": "points",
+      "title": "11일간의 반전",
+      "points": [
+        {
+          "title": "11/12 · 사임",
+          "text": "개인적 행동 공개 후 자진 사임,\n콜레트 크레스 CFO가 임시 CEO로"
+        },
+        {
+          "title": "11/17 · “복귀 계획 없다”",
+          "text": "존스 의장, 실적 발표 콘퍼런스콜에서 밝혀.\n헤드헌팅 업체 선임해 후임 물색 착수"
+        },
+        {
+          "title": "11/23 · 만장일치 복귀",
+          "text": "면담 끝에 “진정성과 리더십에 만족”\n즉시 CEO·이사로 복귀"
+        }
+      ],
+      "ref": "AI타임스(11/18), NVIDIA 공식 발표(11/23)"
+    },
+    {
+      "type": "compare",
+      "title": "왜 뒤집었고,\n뭐가 남았나",
+      "columns": [
+        {
+          "tag": "이사회 근거",
+          "color": "#0B72C9",
+          "title": "“적임자”",
+          "text": "황과 여러 차례 면담 후\n**진정성·리더십**에 만족.\n美 정부 고위급 의견 듣고\n“**국가안보 위험 없다**”"
+        },
+        {
+          "tag": "남은 것",
+          "color": "#0E0E10",
+          "title": "조사는 계속",
+          "text": "황이 **외국 정보기관 공작**\n대상이 됐다는 의혹 관련\n독립이사 위원회 조사는\n**결론까지 진행**"
+        }
+      ],
+      "note": "황은 “조사를 전적으로 지지하고 협조하겠다”고 밝혔어요.",
+      "ref": "NVIDIA 공식 발표"
+    },
+    {
+      "type": "points",
+      "title": "그 밖에 바뀌는 것",
+      "points": [
+        {
+          "title": "콜레트 크레스 → CFO로",
+          "text": "임시 CEO를 맡았던 크레스는 CFO 업무로 복귀"
+        },
+        {
+          "title": "하비 존스, 의장 유지",
+          "text": "“젠슨이 엔비디아를 이끌 적임자”"
+        },
+        {
+          "title": "국가안보·수출통제위원회 신설",
+          "text": "독립이사로만 구성, 정부 조사에도 계속 협조"
+        }
+      ],
+      "ref": "NVIDIA 공식 발표, 초이스스탁(SEC 공시 분석)"
+    },
+    {
+      "type": "body",
+      "title": "그래서 나한테는?",
+      "image": {
+        "src": "posts/2026-11-23-req-nvidia/images/01-jensen-huang.jpg",
+        "credit": "NVIDIA Newsroom",
+        "license": "기업 공식 보도용 사진",
+        "pos": "center 20%"
+      },
+      "text": [
+        "‘CEO 공백’ 불확실성은 일단 해소. 발표 직후 주가는 ==장 초반 급등== 보도(확정치는 마감 후).",
+        "오늘 코스피 급락 배경이 **AI 투심 위축**이었던 만큼, 내일 국내 반도체주도 관심."
+      ],
+      "ref": "AP, 뉴스1(11/23 코스피 기사)"
+    },
+    {
+      "type": "outro",
+      "title": "황은 돌아왔다,\n==조사 결과==까지가 완결",
+      "text": "독립위원회 조사 결과가 나오면\nKNOW-ISH가 바로 정리해드릴게요."
+    }
+  ],
+  "slot": "속보",
+  "postAt": "즉시(23:28)"
+}
