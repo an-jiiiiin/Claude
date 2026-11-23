@@ -17,6 +17,16 @@ BRAND = {
     "sub": "#8A8A8A",
 }
 
+# 미션 2·3은 제품 패키지 색을 강조색으로 씀 (본문에 @palette 이름 줄로 전환)
+#  main: 글자 강조/소제목 밑줄, deep: 반전 하이라이트 배경, tint: 형광펜·사진 자리
+PALETTES = {
+    "brand":         {"main": "#E5322D", "deep": "#B4231F", "tint": "#FDECEA"},
+    "gel-standard":  {"main": "#4F82C4", "deep": "#3E6FAE", "tint": "#E4EEFA"},  # 젤 스탠다드 하늘색
+    "gel-soothing":  {"main": "#7F9A12", "deep": "#6E8A0C", "tint": "#F1F7D2"},  # 젤 내추럴 수딩 연두
+    "airfit":        {"main": "#2F9C9A", "deep": "#25827F", "tint": "#E1F3F2"},  # 에어핏 민트
+    "extreme":       {"main": "#2E9E48", "deep": "#25853B", "tint": "#E2F5E5"},  # 익스트림 에어핏 초록
+}
+
 ROOT = Path(__file__).parent
 FONT = "font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif;"
 P = f"margin:0;text-align:center;font-size:15px;line-height:1.9;color:{BRAND['ink']};{FONT}"
@@ -31,6 +41,7 @@ def inline(s: str) -> str:
 
 def build(src: Path):
     lines = src.read_text(encoding="utf-8").splitlines()
+    BRAND.update(PALETTES["brand"])
     title = lines[0].removeprefix("@title ").strip()
     out, plain, imgs = [], [], []
     info_rows = []
@@ -55,6 +66,9 @@ def build(src: Path):
         line = raw.rstrip()
         if not line.startswith("INFO "):
             flush_info()
+        if line.startswith("@palette "):
+            BRAND.update(PALETTES[line.split()[1]])
+            continue
         if line == "":
             out.append(f'<p style="{P}">&nbsp;</p>')
             plain.append("")
@@ -93,7 +107,7 @@ def build(src: Path):
         elif line.startswith("!!"):
             t = line[2:]
             out.append(
-                f'<p style="{P}"><span style="background-color:{BRAND["main"]};color:#ffffff;font-weight:700;'
+                f'<p style="{P}"><span style="background-color:{BRAND["deep"]};color:#ffffff;font-weight:700;'
                 f'padding:2px 6px;">{html.escape(t)}</span></p>'
             )
             plain.append(t)
