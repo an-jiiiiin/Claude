@@ -48,38 +48,38 @@ html,body{margin:0;background:${ink}}
 .src{position:absolute;left:70px;right:70px;bottom:90px;font-size:24px;opacity:.55;line-height:1.5}
 `;
 
-// 나흘 종가 (한국거래소)
-const D = [['11/17', 4968.48], ['11/18', 5067.44], ['11/19', 5137.89], ['11/20', 4869.96]];
-const lo = 4780, hi = 5200, cx = (i) => 120 + i * 270, cy = (v) => 60 + (hi - v) / (hi - lo) * 560;
+// 나흘 종가 (한국거래소, 11/23 장 마감 반영)
+const D = [['11/18', 5067.44], ['11/19', 5137.89], ['11/20', 4869.96], ['11/23', 4708.54]];
+const lo = 4620, hi = 5200, cx = (i) => 120 + i * 270, cy = (v) => 60 + (hi - v) / (hi - lo) * 560;
 const PTS = D.map((p, i) => [cx(i), cy(p[1])]);
 const fmt = (v) => v.toLocaleString('en-US', { minimumFractionDigits: 2 });
 
 const body = `<div class="stage">
   <div class="bg"></div><div class="grid"></div>
-  <div class="top"><span class="logo"><span class="kn">KNOW</span><span class="ish">-ish</span></span><span class="d">11.23 MON · KNOW 증시</span></div>
+  <div class="top"><span class="logo"><span class="kn">KNOW</span><span class="ish">-ish</span></span><span class="d">11.23 MON 마감 · KNOW 증시</span></div>
 
   <div class="sc" id="s1">
     <div id="s1img" style="position:absolute;top:240px;left:0;width:1080px;height:1100px;background:url('${coverImg}') 35% center/cover"></div>
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,${ink} 0%,rgba(14,14,16,0) 20%,rgba(14,14,16,0) 40%,rgba(14,14,16,.95) 62%,${ink} 100%)"></div>
-    <div id="s1chips" style="position:absolute;top:260px;left:70px;display:flex;gap:16px"><span class="chip dark">일요일 긴급회의</span><span class="chip"><i style="width:16px;height:16px;border-radius:50%;background:#FF2D2D;box-shadow:0 0 12px #FF2D2D;display:block"></i>금통위 D-3</span></div>
+    <div id="s1chips" style="position:absolute;top:260px;left:70px;display:flex;gap:16px"><span class="chip dark">이틀째 사이드카</span><span class="chip"><i style="width:16px;height:16px;border-radius:50%;background:#FF2D2D;box-shadow:0 0 12px #FF2D2D;display:block"></i>금통위 D-3</span></div>
     <div id="s1stk" style="position:absolute;top:420px;right:70px;transform:rotate(4deg)"><span class="sticker">18년 만</span></div>
     <div style="position:absolute;left:70px;right:70px;top:1060px">
       <div id="s1badge"><span class="badge">KNOW · 증시</span></div>
-      <div class="h1" id="s1t1" style="margin-top:36px">코스피 <span style="color:${mag}">-5.21%</span></div>
-      <div class="h1" id="s1t2">다음 날 꺼낸<br><em>증안펀드</em></div>
+      <div class="h1" id="s1t1" style="margin-top:36px">증안펀드 꺼냈는데</div>
+      <div class="h1" id="s1t2">코스피 <span style="color:${mag}">4,700</span>까지<br><em>또 밀렸다</em></div>
     </div>
     <div class="src" style="bottom:300px">사진 | 재정경제부 제공</div>
   </div>
 
   <div class="sc" id="s2">
-    <div style="position:absolute;top:260px;left:70px;right:70px"><div class="lbl">나흘 동안의 코스피 (종가)</div><div class="h2">역전 마감 하루 만에<br><em style="color:${mag}">5,000 아래</em>로</div></div>
+    <div style="position:absolute;top:260px;left:70px;right:70px"><div class="lbl">나흘 동안의 코스피 (종가)</div><div class="h2">대책 발표 다음 날에도<br><em style="color:${mag}">-3.31%</em></div></div>
     <svg style="position:absolute;top:700px;left:40px" width="1000" height="700" viewBox="0 0 1000 700">
       <line x1="40" x2="980" y1="${cy(5000)}" y2="${cy(5000)}" stroke="${mag}" stroke-width="4" stroke-dasharray="14 12"/>
       <text x="980" y="${cy(5000) - 14}" text-anchor="end" fill="${mag}" font-size="32" font-weight="900" font-family="Pretendard">5,000</text>
       <polyline id="ln" points="${PTS.map((p) => p.join(',')).join(' ')}" fill="none" stroke="${sky}" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/>
       ${PTS.map((p, i) => `<g class="pt" data-k="${i}" opacity="0"><circle cx="${p[0]}" cy="${p[1]}" r="16" fill="${i === 3 ? mag : sky}" stroke="#fff" stroke-width="5"/><text x="${p[0]}" y="${p[1] + (i === 3 ? 64 : -34)}" text-anchor="middle" fill="#fff" font-size="34" font-weight="900" font-family="Pretendard">${fmt(D[i][1])}</text><text x="${p[0]}" y="680" text-anchor="middle" fill="rgba(255,255,255,.6)" font-size="30" font-weight="700" font-family="Pretendard">${D[i][0]}</text></g>`).join('')}
     </svg>
-    <div style="position:absolute;top:1430px;left:70px;right:70px;display:flex;align-items:flex-end;gap:24px"><div class="big" id="cnt" style="color:${mag}">-0.00%</div><div style="font-weight:800;font-size:40px;margin-bottom:16px">하루 만에 (11/20)</div></div>
+    <div style="position:absolute;top:1430px;left:70px;right:70px;display:flex;align-items:flex-end;gap:24px"><div class="big" id="cnt" style="color:${mag}">-0.00%</div><div style="font-weight:800;font-size:38px;margin-bottom:16px;line-height:1.3">11/19 → 11/23<br>두 거래일</div></div>
   </div>
 
   <div class="sc" id="s3">
@@ -95,17 +95,17 @@ const body = `<div class="stage">
     <div class="it" id="i0" style="top:560px"><span class="n">1</span><div><div class="t">증안펀드 가동 준비</div><div class="s">발동 체계 정비, 가동은 상황 보고</div></div></div>
     <div class="it" id="i1" style="top:830px"><span class="n">2</span><div><div class="t">자사주 매수 한도 완화</div><div class="s">24일부터 3개월</div></div></div>
     <div class="it" id="i2" style="top:1100px"><span class="n">3</span><div><div class="t">불법 공매도 특별 감시</div><div class="s">금감원·거래소 3개월 집중</div></div></div>
-    <div id="sb" style="position:absolute;top:1400px;right:70px;transform:rotate(-2deg)"><span class="say">그리고 26일(목) <em>금통위</em>까지</span></div>
+    <div id="sb" style="position:absolute;top:1400px;right:70px;transform:rotate(-2deg)"><span class="say">23일 장중 <em>4,586</em>까지… 이틀째 사이드카</span></div>
   </div>
 
   <div class="sc" id="s5">
     <div style="position:absolute;top:420px;left:70px;right:70px">
       <div class="lbl">KNOW-ISH 한 줄 정리</div>
-      <div class="h2" style="font-size:100px">방패는 준비됐다,<br><em>꺼낼지</em>는<br>시장에 달렸다</div>
-      <div style="margin-top:60px;font-size:38px;line-height:1.6;color:rgba(255,255,255,.75);font-weight:500">증안펀드 실제 가동, 26일 금통위 결과<br>나오면 바로 정리해드릴게요.</div>
+      <div class="h2" style="font-size:96px">방패는 준비됐지만,<br>낙폭은 <em style="color:${mag}">계속</em>.<br>이제 <em>꺼낼지</em>가 관건</div>
+      <div style="margin-top:60px;font-size:38px;line-height:1.6;color:rgba(255,255,255,.75);font-weight:500">외국인 7거래일 연속 순매도 · 26일 금통위<br>증안펀드 실제 가동 여부, 바로 정리해드릴게요.</div>
     </div>
     <div style="position:absolute;bottom:330px;left:70px;display:flex;gap:18px"><span class="chip hot">저장해두고 다시 보기</span><span class="chip" style="background:transparent;color:#fff;border:3px solid rgba(255,255,255,.4);box-shadow:none">@knowish.mag</span></div>
-    <div class="src">자료: 재정경제부·한국거래소(뉴스1·JTBC·아주경제·비즈니스코리아 보도) · 투자 권유가 아닌 정보 제공용입니다</div>
+    <div class="src">자료: 재정경제부·한국거래소(뉴스1·YTN·한국경제·JTBC·아주경제 보도, 11/23 마감 기준) · 투자 권유가 아닌 정보 제공용입니다</div>
   </div>
 </div>
 <script>
@@ -128,7 +128,7 @@ window.setT = (t) => {
   scene($('#s2'), t, 4.0, 9.2);
   ln.style.strokeDashoffset = L * (1 - eo(span(t, 4.5, 7.6)));
   $$('.pt').forEach((g) => { const at = [4.5, 5.5, 6.5, 7.5][+g.dataset.k]; g.setAttribute('opacity', eo(span(t, at, at + 0.3))); });
-  $('#cnt').textContent = '-' + (5.21 * eo(span(t, 7.4, 8.6))).toFixed(2) + '%';
+  $('#cnt').textContent = '-' + (8.36 * eo(span(t, 7.4, 8.6))).toFixed(2) + '%';
 
   scene($('#s3'), t, 9.0, 13.8);
   $('#tl').style.height = (680 * eo(span(t, 9.4, 12.2))) + 'px';
