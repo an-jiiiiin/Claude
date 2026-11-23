@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Christmas Program</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF7F0; --wine:#8B1E2F; --wine-d:#6E1524; --wine-l:#B8475A;
+    --pine:#1F4A38; --pine-l:#2F6550; --gold:#B8955A; --gold-l:#D9C29A;
+    --blush:#F6ECE7; --sage:#EEF2EC; --ink:#3B3330; --muted:#7A6E68;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  @page{size:A4;margin:0}
+  body{background:#e9e4dc;font-family:Pretendard,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .page{position:relative;width:794px;height:1123px;margin:0 auto 24px;background:var(--paper);overflow:hidden;page-break-after:always}
+  @media print{body{background:none}.page{margin:0}}
+
+  /* subtle paper texture */
+  .page::before{content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 15% 8%, rgba(184,149,90,.07), transparent 40%),
+      radial-gradient(circle at 85% 92%, rgba(139,30,47,.05), transparent 40%);
+    pointer-events:none}
+
+  .frame{position:absolute;inset:58px 30px 30px;border:1.6px solid var(--wine);border-radius:44px}
+  .frame::after{content:"";position:absolute;inset:7px;border:1px solid var(--gold-l);border-radius:37px}
+  .corner{position:absolute;width:26px;height:26px;color:var(--gold)}
+  .corner.bl{left:46px;bottom:46px}.corner.br{right:46px;bottom:46px;transform:scaleX(-1)}
+
+  .bow{position:absolute;left:50%;top:18px;transform:translateX(-50%);width:200px;height:125px;z-index:3;filter:drop-shadow(0 3px 4px rgba(110,21,36,.18))}
+
+  .content{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;padding:168px 92px 66px}
+
+  .eyebrow{font-family:"Playfair Display",serif;font-size:11px;letter-spacing:.42em;text-indent:.42em;color:var(--gold);font-weight:500}
+  .org{font-family:"Gowun Batang",serif;font-weight:700;font-size:21px;color:var(--pine);margin-top:8px;letter-spacing:.02em}
+
+  .divider{display:flex;align-items:center;gap:12px;margin:18px 0 12px;color:var(--gold)}
+  .divider i{display:block;width:70px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+  .divider i:last-child{background:linear-gradient(90deg,var(--gold),transparent)}
+
+  .title{font-family:"Playfair Display",serif;font-weight:500;font-size:84px;line-height:1;color:var(--wine);letter-spacing:.04em;text-indent:.04em}
+  .sub{display:flex;align-items:center;gap:14px;margin-top:12px;font-family:"Playfair Display",serif;font-style:italic;font-size:22px;color:var(--pine);letter-spacing:.06em}
+  .sub::before,.sub::after{content:"";width:34px;height:1px;background:var(--pine);opacity:.5}
+
+  .pill{margin-top:20px;background:var(--wine);color:#fff;font-weight:600;font-size:15px;letter-spacing:.5em;text-indent:.5em;padding:9px 30px;border-radius:999px;box-shadow:0 0 0 3px var(--paper),0 0 0 4px var(--wine)}
+
+  .spark{position:absolute;color:var(--gold);z-index:1}
+
+  /* ---------- program ---------- */
+  .list{list-style:none;width:100%;margin-top:34px;position:relative;display:flex;flex-direction:column;gap:15px}
+  .list::before{content:"";position:absolute;left:30px;top:40px;bottom:40px;border-left:1.5px dashed var(--gold-l)}
+  .item{position:relative;display:flex;align-items:center;gap:24px;padding:0}
+  .num{position:relative;flex:none;width:60px;height:60px;border-radius:50%;display:grid;place-items:center;
+       font-family:"Playfair Display",serif;font-weight:600;font-size:22px;color:#fff;background:var(--wine);
+       box-shadow:0 0 0 5px var(--paper),0 0 0 6px var(--gold-l)}
+  .item:nth-child(even) .num{background:var(--pine)}
+  .card{flex:1;display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--blush);border-radius:20px;padding:17px 26px 17px 28px;border:1px solid rgba(139,30,47,.08)}
+  .item:nth-child(even) .card{background:var(--sage);border-color:rgba(31,74,56,.08)}
+  .card h3{font-family:"Gowun Batang",serif;font-weight:700;font-size:23px;color:var(--pine);letter-spacing:-.01em}
+  .item:nth-child(odd) .card h3{color:var(--wine-d)}
+  .card p{margin-top:7px;font-size:15px;color:var(--muted);font-weight:500;display:flex;align-items:center;gap:8px}
+  .card p::before{content:"";width:14px;height:1px;background:currentColor;opacity:.6}
+  .ico{flex:none;width:40px;height:40px;color:var(--wine);opacity:.85}
+  .item:nth-child(even) .ico{color:var(--pine)}
+
+  .footer{margin-top:auto;padding-top:22px;text-align:center;display:flex;flex-direction:column;align-items:center}
+  .holly{width:62px;height:40px}
+  .footer .big{font-family:"Gowun Batang",serif;font-weight:700;font-size:24px;color:var(--wine);margin-top:10px}
+  .footer .small{font-size:15px;color:var(--pine);margin-top:6px;font-weight:500}
+
+  /* ---------- invitation ---------- */
+  .letter{margin-top:38px;text-align:center;font-family:"Gowun Batang",serif;font-size:20px;line-height:1.95;color:var(--pine)}
+  .letter strong{color:var(--wine);font-weight:700}
+  .heart{color:var(--wine);font-size:.9em}
+
+  .when{margin-top:26px;width:100%;display:flex;align-items:stretch;background:#fff;border-radius:22px;overflow:hidden;
+        box-shadow:0 10px 30px -18px rgba(110,21,36,.45);border:1px solid rgba(139,30,47,.12)}
+  .cal{flex:none;width:150px;background:var(--wine);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px 0;position:relative}
+  .cal .m{font-family:"Playfair Display",serif;font-size:14px;letter-spacing:.35em;text-indent:.35em;opacity:.85}
+  .cal .d{font-family:"Playfair Display",serif;font-size:62px;line-height:1;font-weight:500;margin:4px 0 2px}
+  .cal .w{font-size:13px;letter-spacing:.3em;text-indent:.3em;opacity:.9}
+  .info{flex:1;padding:24px 30px;display:flex;flex-direction:column;justify-content:center}
+  .info .date{font-size:15px;color:var(--muted);font-weight:500;letter-spacing:.02em}
+  .info .time{font-family:"Gowun Batang",serif;font-weight:700;font-size:30px;color:var(--wine);margin-top:2px}
+  .info hr{border:0;border-top:1px dashed var(--gold-l);margin:14px 0 12px}
+  .info .note{font-size:14.5px;line-height:1.65;color:var(--ink)}
+  .info .note b{color:var(--pine);font-weight:700}
+
+  .closing{margin-top:auto;text-align:center;font-family:"Gowun Batang",serif}
+  .closing .a{font-size:21px;color:var(--pine);font-weight:700}
+  .closing .b{font-size:26px;color:var(--wine);font-weight:700;margin-top:8px}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="bow" viewBox="0 0 240 150">
+      <!-- tails -->
+      <path d="M112 66 L80 138 L92 131 L100 146 L124 70Z" fill="#7A1828"/>
+      <path d="M128 66 L160 138 L148 131 L140 146 L116 70Z" fill="#8B1E2F"/>
+      <!-- loops -->
+      <path d="M120 58 C96 22 44 6 26 26 C12 42 24 66 52 70 C76 73 102 68 120 62Z" fill="#8B1E2F"/>
+      <path d="M120 60 C98 36 60 24 46 34 C38 42 46 56 64 60 C84 63 104 62 120 60Z" fill="#6E1524"/>
+      <path d="M120 58 C144 22 196 6 214 26 C228 42 216 66 188 70 C164 73 138 68 120 62Z" fill="#8B1E2F"/>
+      <path d="M120 60 C142 36 180 24 194 34 C202 42 194 56 176 60 C156 63 136 62 120 60Z" fill="#6E1524"/>
+      <path d="M40 30 C56 18 84 22 100 34" stroke="#B8475A" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".7"/>
+      <path d="M200 30 C184 18 156 22 140 34" stroke="#B8475A" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".7"/>
+      <!-- knot -->
+      <rect x="106" y="46" width="28" height="28" rx="10" fill="#8B1E2F"/>
+      <rect x="110" y="50" width="20" height="20" rx="7" fill="#7A1828"/>
+      <ellipse cx="116" cy="55" rx="4" ry="2.5" fill="#C9677A" opacity=".8"/>
+    </symbol>
+    <symbol id="star" viewBox="-10 -10 20 20">
+      <path d="M0 -9 Q1.2 -1.2 9 0 Q1.2 1.2 0 9 Q-1.2 1.2 -9 0 Q-1.2 -1.2 0 -9Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="holly" viewBox="0 0 62 40">
+      <g fill="#1F4A38">
+        <path d="M31 18 C27 14 25 10 20 11 C21 7 17 4 13 6 C12 2 7 1 3 3 C5 7 3 11 6 14 C3 17 5 21 10 20 C11 24 16 25 19 22 C22 25 27 23 31 18Z"/>
+        <path d="M31 18 C35 14 37 10 42 11 C41 7 45 4 49 6 C50 2 55 1 59 3 C57 7 59 11 56 14 C59 17 57 21 52 20 C51 24 46 25 43 22 C40 25 35 23 31 18Z"/>
+      </g>
+      <g stroke="#2F6550" stroke-width="1" fill="none" opacity=".8"><path d="M30 17 L8 7"/><path d="M32 17 L54 7"/></g>
+      <circle cx="26" cy="24" r="5" fill="#8B1E2F"/><circle cx="36" cy="24" r="5" fill="#8B1E2F"/><circle cx="31" cy="32" r="5" fill="#A12639"/>
+      <circle cx="24.5" cy="22.5" r="1.4" fill="#fff" opacity=".55"/><circle cx="34.5" cy="22.5" r="1.4" fill="#fff" opacity=".55"/><circle cx="29.5" cy="30.5" r="1.4" fill="#fff" opacity=".55"/>
+    </symbol>
+    <symbol id="corner" viewBox="0 0 26 26"><path d="M2 24 C2 12 12 2 24 2" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="2" cy="24" r="2" fill="currentColor"/><circle cx="24" cy="2" r="2" fill="currentColor"/></symbol>
+  </defs>
+</svg>
+
+<!-- ================= PAGE 1 : PROGRAM ================= -->
+<section class="page" id="program">
+  <div class="frame"></div>
+  <svg class="bow" viewBox="0 0 240 150"><use href="#bow"/></svg>
+  <svg class="spark" style="left:150px;top:226px;width:18px;height:18px"><use href="#star"/></svg>
+  <svg class="spark" style="left:186px;top:204px;width:9px;height:9px;opacity:.6"><use href="#star"/></svg>
+  <svg class="spark" style="right:150px;top:226px;width:18px;height:18px"><use href="#star"/></svg>
+  <svg class="spark" style="right:186px;top:204px;width:9px;height:9px;opacity:.6"><use href="#star"/></svg>
+
+  <div class="content">
+    <div class="eyebrow">SEOUL METRO KIDS</div>
+    <div class="org">서울교통공사어린이집</div>
+    <div class="divider"><i></i><svg width="12" height="12"><use href="#star"/></svg><i></i></div>
+    <div class="title">CHRISTMAS</div>
+    <div class="sub">Event Program</div>
+    <div class="pill">행사순서</div>
+
+    <ol class="list">
+      <li class="item"><div class="num">01</div><div class="card"><div><h3>반짝이는 무대, 우리가 주인공!</h3><p>반별 공연</p></div>
+        <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 5 L24.3 14 L34 15.3 L27 22 L28.8 31.7 L20 27 L11.2 31.7 L13 22 L6 15.3 L15.7 14Z"/></svg></div></li>
+      <li class="item"><div class="num">02</div><div class="card"><div><h3>슈퍼 아빠들의 특별 무대!</h3><p>아빠 공연</p></div>
+        <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="14" y="5" width="12" height="19" rx="6"/><path d="M9 19 C9 26 14 30 20 30 C26 30 31 26 31 19"/><path d="M20 30 V36 M14 36 H26"/></svg></div></li>
+      <li class="item"><div class="num">03</div><div class="card"><div><h3>두근두근 퀴즈 타임!</h3><p>퀴즈 및 경품</p></div>
+        <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="7" y="16" width="26" height="18" rx="2"/><path d="M5 11 H35 V16 H5Z"/><path d="M20 11 V34"/><path d="M20 11 C16 4 9 6 12 10 C13 11 16 11 20 11 C24 11 27 11 28 10 C31 6 24 4 20 11Z"/></svg></div></li>
+      <li class="item"><div class="num">04</div><div class="card"><div><h3>함께 만들고, 함께 즐겨요!</h3><p>요리활동 및 음악활동</p></div>
+        <svg class="ico" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 29 V9 L32 6 V26"/><ellipse cx="11" cy="29" rx="4.5" ry="3.5"/><ellipse cx="28" cy="26" rx="4.5" ry="3.5"/><path d="M15 14 L32 11"/></svg></div></li>
+    </ol>
+
+    <div class="footer">
+      <svg class="holly"><use href="#holly"/></svg>
+      <div class="big">마지막까지 꼭 함께해요!</div>
+      <div class="small">함께할수록 더 반짝이는 크리스마스 <span class="heart">♥</span></div>
+    </div>
+  </div>
+  <svg class="corner bl"><use href="#corner"/></svg><svg class="corner br"><use href="#corner"/></svg>
+</section>
+
+<!-- ================= PAGE 2 : INVITATION ================= -->
+<section class="page" id="invitation">
+  <div class="frame"></div>
+  <svg class="bow" viewBox="0 0 240 150"><use href="#bow"/></svg>
+  <svg class="spark" style="left:150px;top:226px;width:18px;height:18px"><use href="#star"/></svg>
+  <svg class="spark" style="left:186px;top:204px;width:9px;height:9px;opacity:.6"><use href="#star"/></svg>
+  <svg class="spark" style="right:150px;top:226px;width:18px;height:18px"><use href="#star"/></svg>
+  <svg class="spark" style="right:186px;top:204px;width:9px;height:9px;opacity:.6"><use href="#star"/></svg>
+
+  <div class="content">
+    <div class="eyebrow">SEOUL METRO KIDS</div>
+    <div class="org">서울교통공사어린이집</div>
+    <div class="divider"><i></i><svg width="12" height="12"><use href="#star"/></svg><i></i></div>
+    <div class="title">CHRISTMAS</div>
+    <div class="sub">Holiday Invitation</div>
+    <div class="pill">초대장</div>
+
+    <p class="letter">
+      반짝이는 크리스마스,<br>
+      아이들과 가족이 함께 모여<br>
+      특별하고 즐거운 시간을 준비했어요!<br>
+      소중한 추억을 함께 만들어갈<br>
+      <strong>크리스마스 파티</strong>에 여러분을 초대합니다 <span class="heart">♥</span>
+    </p>
+
+    <svg class="holly" style="margin-top:22px"><use href="#holly"/></svg>
+
+    <div class="when">
+      <div class="cal"><div class="m">DEC</div><div class="d">22</div><div class="w">TUE</div></div>
+      <div class="info">
+        <div class="date">2026년 12월 22일 화요일</div>
+        <div class="time">오후 4시</div>
+        <hr>
+        <div class="note">원활한 진행을 위해<br><b>10분 전(오후 3시 50분)</b>까지 참석해 주세요.</div>
+      </div>
+    </div>
+
+    <div class="closing">
+      <div class="a">함께라서 더 반짝일 겨울 오후,</div>
+      <div class="b">꼭 함께해 주세요! <span class="heart">♡</span></div>
+    </div>
+  </div>
+  <svg class="corner bl"><use href="#corner"/></svg><svg class="corner br"><use href="#corner"/></svg>
+</section>
+
+</body>
+</html>
