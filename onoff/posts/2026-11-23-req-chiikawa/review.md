@@ -1,6 +1,6 @@
 # [승인 요청] -ISH · 팝업
 
-- 게시물: `2026-11-23-req-chiikawa` (슬라이드 6장, 게시 예정 12:00 KST)
+- 게시물: `2026-11-23-req-chiikawa` (슬라이드 7장, 게시 예정 12:00 KST)
 - 형식 검사: 통과
 - 실사 이미지: 모두 지정
 - 릴스: 적합도 중 — 일정·규칙 안내형이라 카드로 저장하는 쪽이 유리. 오늘 릴스는 오전 증안펀드로 이미 제작 (이번 회차 없음)
@@ -30,8 +30,12 @@ Ref. 대원미디어 공지(톱스타뉴스 보도)
 - https://www.topstarnews.net/news/articleView.html?idxno=16283185
 - https://www.topstarnews.net/news/articleView.html?idxno=16280064
 - https://m.blog.naver.com/ddyori_/224483454877
+- https://www.popcondplay.com/
 
 ## 이미지
+- 대원미디어 제공 · ©nagano · 보도자료
+- 대원미디어 제공 · ©nagano · 보도자료
+- 대원미디어 제공 · ©nagano · 보도자료
 - 대원미디어 제공 · ©nagano · 보도자료
 - 대원미디어 제공 · ©nagano · 보도자료
 

@@ -26,7 +26,8 @@
   "sources": [
     "https://www.topstarnews.net/news/articleView.html?idxno=16283185",
     "https://www.topstarnews.net/news/articleView.html?idxno=16280064",
-    "https://m.blog.naver.com/ddyori_/224483454877"
+    "https://m.blog.naver.com/ddyori_/224483454877",
+    "https://www.popcondplay.com/"
   ],
   "reel": {
     "fit": "중",
@@ -55,31 +56,74 @@
       }
     },
     {
-      "type": "points",
-      "title": "예약은 언제, 어디서?",
-      "points": [
+      "type": "gallery",
+      "title": "예약은 여기, 팝콘D플레이",
+      "images": [
         {
-          "title": "1차 · 11/23(월) 14시 오픈",
-          "text": "입장 기간 11월 27일 ~ 12월 10일"
+          "src": "posts/2026-11-23-req-chiikawa/images/02-popcondplay-home.png",
+          "credit": "팝콘D플레이 캡처 11/23 10:21",
+          "license": "화면 캡처(정보 안내용)",
+          "pos": "center 78%",
+          "label": "팝콘D플레이 메인",
+          "says": [
+            {
+              "text": "치이카와는 ==14시 오픈==",
+              "x": 4,
+              "y": 58,
+              "rot": -2
+            }
+          ]
         },
         {
-          "title": "2차 · 12/7(월) 14시 오픈",
-          "text": "입장 기간 12월 11일 ~ 2027년 1월 10일"
-        },
-        {
-          "title": "팝콘D플레이 회원만 예약 가능",
-          "text": "만 14세 이상, 국내 휴대전화 본인인증 필수\n(조건 충족하면 외국인도 가능)"
+          "src": "posts/2026-11-23-req-chiikawa/images/02-popcondplay-queue.png",
+          "credit": "팝콘D플레이 캡처 11/23 10:15",
+          "license": "화면 캡처(정보 안내용)",
+          "pos": "center 40%",
+          "label": "오전부터 대기열"
         }
       ],
-      "ref": "대원미디어 공지(톱스타뉴스 보도)"
+      "text": [
+        "오전 10시 15분 접속하니 **대기열 1,495번째**(같은 날 12시엔 다른 팝업 예약도 열려요). ==가입·로그인은 미리!=="
+      ],
+      "ref": "팝콘D플레이(popcondplay.com) 직접 확인"
     },
     {
-      "type": "letter",
-      "label": "에디터의 팝업 노트",
-      "title": "현장 대기는요…?",
+      "type": "body",
+      "title": "예약 일정 & 입장 시간표",
+      "image": {
+        "src": "posts/2026-11-23-req-chiikawa/images/02-notice-reserve-time.jpg",
+        "credit": "대원미디어 제공 · ©nagano",
+        "license": "보도자료",
+        "fit": "contain",
+        "bg": "#ffffff",
+        "h": 640
+      },
       "text": [
-        "==100% 사전예약제==라 원칙적으로 현장 대기·대기열은 불가해요. 취소·미방문으로 자리가 나면 **별도 공지 후** 현장 입장이 열릴 수 있어요.",
-        "입장은 10:30부터 **30분 간격**. 예약 시간보다 ==10분 이상 늦으면== 예약이 취소될 수 있어요."
+        "**1차 11/23(월) 14시** → 11/27~12/10 입장, **2차 12/7(월) 14시** → 12/11~1/10 입장. 10:30부터 30분 간격, ==20회차는 금~일만==."
+      ],
+      "ref": "대원미디어 공지"
+    },
+    {
+      "type": "body",
+      "title": "입장 룰, 꼭 보고 가요",
+      "image": {
+        "src": "posts/2026-11-23-req-chiikawa/images/03-notice-entry-rules.jpg",
+        "credit": "대원미디어 제공 · ©nagano",
+        "license": "보도자료",
+        "fit": "contain",
+        "bg": "#ffffff",
+        "h": 640
+      },
+      "says": [
+        {
+          "text": "==10분== 늦으면 취소 주의",
+          "x": 56,
+          "y": 70,
+          "rot": 2
+        }
+      ],
+      "text": [
+        "==100% 사전예약제==, 현장 대기 원칙적 불가. 만 14세 미만은 보호자 1인과 입장(최대 2인), 퇴장 후 재입장 불가."
       ],
       "ref": "대원미디어 공지(톱스타뉴스 보도)"
     },
@@ -107,23 +151,20 @@
       "ref": "대원미디어 공지(톱스타뉴스 보도)"
     },
     {
-      "type": "points",
-      "title": "팝업 기본 정보",
-      "points": [
-        {
-          "title": "기간",
-          "text": "11/27(금) ~ 2027.1/10(일), 1월 1일은 휴점"
-        },
-        {
-          "title": "장소 · 시간",
-          "text": "더현대 서울 5층 웨이브 서울\n월~목 10:30~20:00 / 금~일 10:30~20:30"
-        },
-        {
-          "title": "알아둘 것",
-          "text": "한정 쇼핑백 500원 판매 · 예약해도\n특정 상품 구매가 보장되진 않아요"
-        }
+      "type": "body",
+      "title": "운영 안내",
+      "image": {
+        "src": "posts/2026-11-23-req-chiikawa/images/06-notice-operation.jpg",
+        "credit": "대원미디어 제공 · ©nagano",
+        "license": "보도자료",
+        "fit": "contain",
+        "bg": "#ffffff",
+        "h": 640
+      },
+      "text": [
+        "11/27(금)~2027.1/10(일), 더현대 서울 **5층 웨이브 서울**. 월~목 10:30~20:00, 금~일 ~20:30. ==1월 1일은 휴점==."
       ],
-      "ref": "대원미디어 공지(톱스타뉴스 보도)"
+      "ref": "대원미디어 공지"
     },
     {
       "type": "outro",

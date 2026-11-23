@@ -337,7 +337,7 @@ function bodyShell(inner, s, d, S, i, n, noimg) {
 
 function body(s, d, S, i, n) {
   const fig = s.image
-    ? `<figure style="--dp:${S.deep}">${photo(s.image)}${bubbles(s.says)}</figure><figcaption>${credit(s.image)}</figcaption>`
+    ? `<figure style="--dp:${S.deep}${s.image.h ? `;height:${s.image.h}px` : ''}">${photo(s.image)}${bubbles(s.says)}</figure><figcaption>${credit(s.image)}</figcaption>`
     : '';
   const paras = (s.text || []).map((t) => `<p>${rich(t)}</p>`).join('');
   return bodyShell(`${fig}<h2>${rich(s.title)}</h2>${paras}`, s, d, S, i, n, !s.image);
