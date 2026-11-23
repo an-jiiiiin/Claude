@@ -19,7 +19,7 @@ BRAND = {
 
 ROOT = Path(__file__).parent
 FONT = "font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif;"
-P = f"margin:0;text-align:center;font-size:16px;line-height:1.9;color:{BRAND['ink']};{FONT}"
+P = f"margin:0;text-align:center;font-size:15px;line-height:1.9;color:{BRAND['ink']};{FONT}"
 
 
 def inline(s: str) -> str:
@@ -65,13 +65,14 @@ def build(src: Path):
         elif line.startswith("IMG|"):
             _, num, cap = line.split("|", 2)
             imgs.append((num, cap))
+            label = f"카드뉴스 {num}" if re.fullmatch(r"\d-\d", num) else num
             out.append(
                 f'<div style="margin:12px auto;max-width:520px;border:2px dashed {BRAND["main"]};border-radius:8px;'
                 f'padding:28px 12px;text-align:center;background:{BRAND["tint"]};{FONT}">'
-                f'<span style="font-size:14px;font-weight:700;color:{BRAND["main"]};">📷 사진 넣는 자리 · 카드뉴스 {num}</span><br>'
+                f'<span style="font-size:14px;font-weight:700;color:{BRAND["main"]};">📷 사진 넣는 자리 · {label}</span><br>'
                 f'<span style="font-size:13px;color:{BRAND["sub"]};">{html.escape(cap)}</span></div>'
             )
-            plain.append(f"[📷 카드뉴스 {num} : {cap}]")
+            plain.append(f"[📷 {label} : {cap}]")
         elif line.startswith("## "):
             t = line[3:]
             out.append(
@@ -132,7 +133,7 @@ def build(src: Path):
 
 
 if __name__ == "__main__":
-    posts = [build(ROOT / "src" / f"post{i}.txt") for i in (1, 2, 3)]
+    posts = [build(ROOT / "src" / f"post{i}.txt") for i in (1, 2, 3, 4, 5)]
     for i, p in enumerate(posts, 1):
         (ROOT / f"post{i}.html").write_text(
             f'<!doctype html><meta charset="utf-8"><title>{html.escape(p["title"])}</title>'

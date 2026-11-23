@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>바른생각 미션 표지</title>
+<style>
+/* Layout: 1080×1350 표지 — 상단 실사 사진(그리드 7행) + 하단 타이틀 패널(5행), 72px 마진 */
+@font-face{font-family:Pretendard;font-weight:500;src:url(fonts/Pretendard-Medium.woff2) format("woff2")}
+@font-face{font-family:Pretendard;font-weight:700;src:url(fonts/Pretendard-Bold.woff2) format("woff2")}
+@font-face{font-family:Pretendard;font-weight:800;src:url(fonts/Pretendard-ExtraBold.woff2) format("woff2")}
+@font-face{font-family:Pretendard;font-weight:900;src:url(fonts/Pretendard-Black.woff2) format("woff2")}
+:root{
+  --brand:#E5322D; --ink:#1E1C1C; --paper:#FFFFFF; --muted:#8C8280;
+  /* 제품 패키지에서 뽑은 컬러 */
+  --gel-standard:#8DB3E2; --gel-soothing:#C9DD4F;
+  --airfit:#5BB5B4; --extreme:#5CC66C;
+  --m:72px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#bbb;font-family:Pretendard,sans-serif;color:var(--ink);word-break:keep-all;-webkit-font-smoothing:antialiased}
+.card{width:1080px;height:1350px;position:relative;overflow:hidden;background:var(--paper);
+  display:grid;grid-template-rows:7fr 5fr;margin-bottom:40px}
+.photo{position:relative;background-size:cover;background-position:center}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.28) 0,rgba(0,0,0,0) 26%)}
+.c-head{position:absolute;top:var(--m);left:var(--m);right:var(--m);z-index:2;display:flex;justify-content:space-between;
+  color:#fff;font-size:26px;font-weight:700;letter-spacing:.02em}
+.c-series{display:flex;align-items:center;gap:14px}
+.c-series i{width:18px;height:18px;border-radius:50%;background:var(--brand);display:block;box-shadow:0 0 0 4px #fff}
+.panel{padding:56px var(--m) var(--m);display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-content:space-between;
+  position:relative}
+.band{position:absolute;top:0;left:0;right:0;height:16px;display:grid;grid-template-columns:1fr 1fr}
+.chips{grid-column:1/-1;display:flex;gap:12px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:12px;padding:12px 24px;border-radius:999px;border:3px solid var(--ink);
+  font-size:26px;font-weight:800}
+.chip i{width:22px;height:22px;border-radius:50%;display:block}
+.chip.solid{background:var(--ink);color:#fff}
+.title{grid-column:1/-1;font-size:100px;font-weight:900;letter-spacing:-.04em;line-height:1.05;margin-top:28px}
+.sub{grid-column:1/-1;font-size:40px;font-weight:700;letter-spacing:-.02em;line-height:1.35;margin-top:14px;color:#3A3535}
+.foot{grid-column:1/-1;display:flex;justify-content:space-between;align-items:end;font-size:22px;font-weight:700;color:var(--muted);
+  border-top:2px solid #EEE6E4;padding-top:22px;margin-top:28px}
+</style>
+</head>
+<body>
+
+<section class="card" id="m2-cover">
+  <div class="photo" style="background-image:url(photos/IMG_6530.jpg);background-position:50% 42%">
+    <div class="c-head"><span class="c-series"><i></i>바른생각 서포터즈 · 미션 2</span><span>REVIEW</span></div>
+  </div>
+  <div class="panel">
+    <div class="band"><span style="background:var(--gel-standard)"></span><span style="background:var(--gel-soothing)"></span></div>
+    <div class="chips">
+      <span class="chip solid">올리브영 마사지젤</span>
+      <span class="chip"><i style="background:var(--gel-standard)"></i>젤 스탠다드</span>
+      <span class="chip"><i style="background:var(--gel-soothing)"></i>젤 내추럴 수딩</span>
+    </div>
+    <h1 class="title">바른생각 젤 2종</h1>
+    <p class="sub">들고 다니는 파우치형과 순한 수딩<br>수용성젤 솔직 후기</p>
+    <div class="foot"><span>BRSG · 바른생각</span><span>파우치형 15개입 · 150ml+50ml</span></div>
+  </div>
+</section>
+
+<section class="card" id="m3-cover">
+  <div class="photo" style="background-image:url(photos/IMG_6540.jpg);background-position:50% 50%">
+    <div class="c-head"><span class="c-series"><i></i>바른생각 서포터즈 · 미션 3</span><span>GUIDE</span></div>
+  </div>
+  <div class="panel">
+    <div class="band"><span style="background:var(--airfit)"></span><span style="background:var(--extreme)"></span></div>
+    <div class="chips">
+      <span class="chip solid">올리브영 콘돔</span>
+      <span class="chip"><i style="background:var(--airfit)"></i>초박형 에어핏</span>
+      <span class="chip"><i style="background:var(--extreme)"></i>극초박형 익스트림</span>
+    </div>
+    <h1 class="title">에어핏 vs<br>익스트림 에어핏</h1>
+    <p class="sub">바른생각 콘돔 종류와 구매처 총정리</p>
+    <div class="foot"><span>BRSG · 바른생각</span><span>편의점 · 올리브영 · 스마트스토어</span></div>
+  </div>
+</section>
+
+</body>
+</html>

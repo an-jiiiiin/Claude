@@ -4,7 +4,7 @@ const path = require('path');
 (async () => {
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1200, height: 1400 }, deviceScaleFactor: 1 });
-  await page.goto('file://' + path.join(__dirname, 'cards.html'));
+  await page.goto('file://' + path.join(__dirname, process.argv[2]||'cards.html'));
   await page.evaluate(() => document.fonts.ready);
   const ids = await page.$$eval('section.card', els => els.map(e => e.id));
   for (const id of ids) {
@@ -14,7 +14,7 @@ const path = require('path');
   console.log('rendered', ids.length, 'cards; fonts loaded:', fonts);
   // overflow check
   const over = await page.$$eval('section.card', els => els.filter(e => {
-    const b = e.querySelector('.c-body'); return b.scrollHeight > b.clientHeight + 1;
+    const b = e.querySelector('.c-body') || e.querySelector('.panel'); return b && b.scrollHeight > b.clientHeight + 1;
   }).map(e => e.id));
   console.log('overflowing:', over);
   await browser.close();

@@ -10,25 +10,49 @@ for i, p in enumerate(posts, 1):
     for num, cap in p["images"]:
         CAPTIONS[num] = cap
 
-EP_NAMES = ["컬처클럽 소개", "브랜드 제대로 알기", "캠페인 연대기"]
+TABS = [("미션 1 · 1회차", "컬처클럽 소개"), ("미션 1 · 2회차", "브랜드 제대로 알기"),
+        ("미션 1 · 3회차", "캠페인 연대기"), ("미션 2", "바른생각 젤"), ("미션 3", "올리브영 콘돔")]
+REVIEWS = json.loads((ROOT / "posts" / "reviews.json").read_text(encoding="utf-8"))
 
 panels, tabs = [], []
 for i, p in enumerate(posts, 1):
     tabs.append(
-        f'<a class="tab" href="#ep{i}" data-ep="ep{i}"><span class="tab-n">{i}회차</span>'
-        f'<span class="tab-t">{EP_NAMES[i-1]}</span></a>'
+        f'<a class="tab" href="#ep{i}" data-ep="ep{i}"><span class="tab-n">{TABS[i-1][0]}</span>'
+        f'<span class="tab-t">{TABS[i-1][1]}</span></a>'
     )
-    cards = "".join(
-        f'<figure class="cn"><img src="png/c{i}-{n}.png" alt="카드뉴스 {i}-{n}: {html.escape(CAPTIONS.get(f"{i}-{n}", ""))}" '
-        f'width="1080" height="1350" loading="lazy"><figcaption><b>{i}-{n}</b> {html.escape(CAPTIONS.get(f"{i}-{n}", ""))}</figcaption></figure>'
-        for n in range(1, 6)
-    )
+    extra = ""
+    if i <= 3:
+        cards = "".join(
+            f'<figure class="cn"><img src="png/c{i}-{n}.png" alt="카드뉴스 {i}-{n}: {html.escape(CAPTIONS.get(f"{i}-{n}", ""))}" '
+            f'width="1080" height="1350" loading="lazy"><figcaption><b>{i}-{n}</b> {html.escape(CAPTIONS.get(f"{i}-{n}", ""))}</figcaption></figure>'
+            for n in range(1, 6)
+        )
+        n_photo = "카드뉴스 5장"
+    else:
+        m = i - 2
+        cards = (f'<figure class="cn"><img src="png/m{m}-cover.png" alt="미션 {m} 표지 카드뉴스" width="1080" height="1350" loading="lazy">'
+                 f'<figcaption><b>표지</b> 글 맨 위 대표 이미지</figcaption></figure>')
+        n_photo = f"표지 1장 + 직접 찍은 사진 {len(p['images']) - 1}장"
+        revs = [r for r in REVIEWS if r["mission"] == m]
+        items = "".join(
+            f'<div class="rv"><div class="rv-head"><div><p class="rv-p">{html.escape(r["product"])}</p>'
+            f'<p class="rv-s" aria-label="별점 {r["stars"]}점">{"★" * r["stars"]}</p></div>'
+            f'<button class="btn ghost" data-copy="review" data-i="{REVIEWS.index(r)}">리뷰 복사</button></div>'
+            f'<p class="rv-t">{html.escape(r["text"]).replace(chr(10), "<br>")}</p>'
+            f'<p class="rv-c">{len(r["text"].replace(chr(10), " "))}자</p></div>'
+            for r in revs
+        )
+        extra = f'''
+  <div class="block">
+    <div class="block-head"><h2>올리브영 앱 리뷰</h2><span class="hint">리뷰 작성 후 캡처해서 제출</span></div>
+    <div class="rv-list">{items}</div>
+  </div>'''
     panels.append(f'''
 <section class="panel" id="panel-ep{i}" data-ep="ep{i}" hidden>
   <div class="meta">
     <span class="pill">공백 포함 {p["chars"]:,}자</span>
     <span class="pill">공백 제외 {p["chars_nospace"]:,}자</span>
-    <span class="pill">사진 5장</span>
+    <span class="pill">{n_photo}</span>
   </div>
   <div class="block">
     <div class="block-head"><h2>제목</h2><button class="btn ghost" data-copy="title" data-i="{i-1}">제목 복사</button></div>
@@ -40,7 +64,7 @@ for i, p in enumerate(posts, 1):
       <button class="btn ghost" data-copy="plain" data-i="{i-1}">텍스트만 복사</button></div>
     </div>
     <div class="paper"><div class="post" id="post-{i-1}">{p["html"]}</div></div>
-  </div>
+  </div>{extra}
   <div class="block">
     <div class="block-head"><h2>카드뉴스</h2><span class="hint">이미지를 길게 눌러 저장하세요</span></div>
     <div class="cn-grid">{cards}</div>
@@ -48,6 +72,7 @@ for i, p in enumerate(posts, 1):
 </section>''')
 
 DATA = json.dumps([{"title": p["title"], "plain": p["plain"]} for p in posts], ensure_ascii=False)
+REV = json.dumps([r["text"] for r in REVIEWS], ensure_ascii=False)
 
 page = f'''<title>바른생각 서포터즈 원고</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -76,7 +101,7 @@ body{{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:15p
 header.top h1{{margin:0;font-size:clamp(24px,5vw,32px);font-weight:800;letter-spacing:-.02em;text-wrap:balance}}
 header.top h1 b{{color:var(--brand)}}
 header.top p{{margin:6px 0 0;color:var(--muted)}}
-.tabs{{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:22px 0 18px}}
+.tabs{{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin:22px 0 18px}}
 .tab{{display:flex;flex-direction:column;gap:2px;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);
   background:var(--surface);color:var(--fg);text-decoration:none;min-width:0}}
 .tab-n{{font-size:12px;font-weight:800;color:var(--brand);letter-spacing:.04em}}
@@ -105,6 +130,13 @@ header.top p{{margin:6px 0 0;color:var(--muted)}}
 .cn img{{width:100%;height:auto;aspect-ratio:4/5;border-radius:8px;border:1px solid var(--line);display:block;max-width:100%}}
 .cn figcaption{{font-size:12px;line-height:1.4;color:var(--muted)}}
 .cn figcaption b{{color:var(--brand)}}
+.rv-list{{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}}
+.rv{{background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}}
+.rv-head{{display:flex;justify-content:space-between;align-items:start;gap:10px}}
+.rv-p{{margin:0;font-weight:800;line-height:1.4}}
+.rv-s{{margin:2px 0 0;color:var(--brand);letter-spacing:2px}}
+.rv-t{{margin:0;line-height:1.75}}
+.rv-c{{margin:0;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}}
 .notes{{margin-top:36px;padding:18px;border-radius:14px;background:var(--surface);border:1.5px solid var(--line);font-size:14px}}
 .notes h3{{margin:0 0 8px;font-size:15px}}
 .notes ul{{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}}
@@ -115,8 +147,8 @@ header.top p{{margin:6px 0 0;color:var(--muted)}}
 </style>
 <div class="wrap">
   <header class="top">
-    <h1><b>바른생각</b> 서포터즈 11월 미션 1</h1>
-    <p>바른생각 컬처클럽 3회 연재 원고 · 카드뉴스 15장</p>
+    <h1><b>바른생각</b> 서포터즈 11월 미션</h1>
+    <p>미션 1 컬처클럽 3회 연재 · 미션 2 바른생각 젤 · 미션 3 올리브영 콘돔 · 업로드 기한 11/30(월) 23:59</p>
   </header>
   <nav class="tabs" aria-label="회차">{"".join(tabs)}</nav>
   {"".join(panels)}
@@ -127,17 +159,21 @@ header.top p{{margin:6px 0 0;color:var(--muted)}}
       <li>점선 박스는 사진 넣는 자리예요. 같은 번호의 카드뉴스로 바꿔 넣으면 돼요.</li>
       <li>필수 키워드: 제목 '바른생각 컬처클럽', 본문 '바른생각 · 바른 도파민 클럽 · 바른생각 컬처클럽'이 세 편 모두 들어 있어요.</li>
       <li>컬처클럽 이전 회차 테마(연기·토크·다이닝)와 브랜드 키컬러는 공식 자료로 한 번 더 확인해 주세요.</li>
+      <li>미션 2 본문 키워드: 올리브영 마사지젤 · 마사지젤 · 마사지젤 추천 · 수용성젤이 들어 있고 '러브젤' '윤활제'는 쓰지 않았어요.</li>
+      <li>미션 3 본문 키워드: 편의점 콘돔 · 올리브영 콘돔 · 초박형 콘돔(에어핏) · 극초박형 콘돔(익스트림 에어핏)이 들어 있어요.</li>
+      <li>올리브영 리뷰는 패키지 문구와 구매 이유 위주로 썼어요. 실제로 써 본 느낌을 한두 줄 더하면 더 자연스러워요.</li>
     </ul>
   </aside>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
 const DATA = {DATA};
+const REV = {REV};
 const toast = document.getElementById("toast");
 let tt;
 function say(msg){{ toast.textContent = msg; toast.classList.add("show"); clearTimeout(tt); tt = setTimeout(()=>toast.classList.remove("show"), 1800); }}
 function show(){{
-  const ep = /^#ep[123]$/.test(location.hash) ? location.hash.slice(1) : "ep1";
+  const ep = /^#ep[1-5]$/.test(location.hash) ? location.hash.slice(1) : "ep1";
   document.querySelectorAll(".panel").forEach(p => p.hidden = p.dataset.ep !== ep);
   document.querySelectorAll(".tab").forEach(t => {{ if (t.dataset.ep === ep) t.setAttribute("aria-current","page"); else t.removeAttribute("aria-current"); }});
 }}
@@ -159,6 +195,7 @@ document.addEventListener("click", async e => {{
   const b = e.target.closest("[data-copy]"); if (!b) return;
   const i = +b.dataset.i, kind = b.dataset.copy; let ok = false;
   if (kind === "title") ok = await copyText(DATA[i].title);
+  else if (kind === "review") ok = await copyText(REV[i]);
   else if (kind === "plain") ok = await copyText(DATA[i].plain);
   else {{
     const el = document.getElementById("post-" + i);
