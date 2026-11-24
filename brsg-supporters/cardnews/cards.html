@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>바른생각 카드뉴스</title>
+<style>
+/* Layout: 1080×1350 (4:5) 카드, 12컬럼 그리드 · 72px 마진 · 24px 거터 */
+@font-face{font-family:Pretendard;font-weight:400;src:url(fonts/Pretendard-Regular.woff2) format("woff2")}
+@font-face{font-family:Pretendard;font-weight:500;src:url(fonts/Pretendard-Medium.woff2) format("woff2")}
+@font-face{font-family:Pretendard;font-weight:600;src:url(fonts/Pretendard-SemiBold.woff2) format("woff2")}
+@font-face{font-family:Pretendard;font-weight:700;src:url(fonts/Pretendard-Bold.woff2) format("woff2")}
+@font-face{font-family:Pretendard;font-weight:800;src:url(fonts/Pretendard-ExtraBold.woff2) format("woff2")}
+@font-face{font-family:Pretendard;font-weight:900;src:url(fonts/Pretendard-Black.woff2) format("woff2")}
+
+:root{
+  /* 바른생각 키컬러 — 브랜드 가이드 값으로 교체하면 15장 전부 바뀝니다 */
+  --brand:#E5322D;
+  --brand-deep:#B4231F;
+  --brand-tint:#FDECEA;
+  --ink:#1E1C1C;
+  --paper:#FFFFFF;
+  --line:#EFE3E1;
+  --muted:#8C8280;
+
+  --m:72px; --g:24px; --r:28px;
+  --t-hero:104px; --t-h1:76px; --t-h2:48px; --t-body:34px; --t-cap:26px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#ccc;font-family:Pretendard,sans-serif;color:var(--ink);word-break:keep-all;-webkit-font-smoothing:antialiased}
+
+/* ── Card shell ───────────────────────── */
+.card{width:1080px;height:1350px;background:var(--paper);position:relative;overflow:hidden;
+  display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:auto 1fr auto;column-gap:var(--g);
+  padding:var(--m);margin:0 0 40px}
+.card.is-brand{background:var(--brand);color:#fff}
+.card.is-tint{background:var(--brand-tint)}
+
+/* ── Header / footer components ───────── */
+.c-head{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;
+  font-size:var(--t-cap);font-weight:700;letter-spacing:.02em}
+.c-series{display:flex;align-items:center;gap:14px}
+.c-series i{width:18px;height:18px;border-radius:50%;background:var(--brand);display:block}
+.is-brand .c-series i{background:#fff}
+.c-page{font-variant-numeric:tabular-nums;color:var(--muted)}
+.is-brand .c-page{color:rgba(255,255,255,.75)}
+.c-foot{grid-column:1/-1;display:flex;justify-content:space-between;align-items:end;
+  font-size:22px;font-weight:600;color:var(--muted);border-top:2px solid var(--line);padding-top:24px}
+.is-brand .c-foot{color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.3)}
+.is-tint .c-foot{border-color:#F4CFCB}
+
+.c-body{grid-column:1/-1;display:grid;grid-template-columns:repeat(12,1fr);column-gap:var(--g);
+  row-gap:var(--g);align-content:center}
+
+/* ── Type components ──────────────────── */
+.chip{grid-column:1/-1;justify-self:start;display:inline-block;padding:12px 26px;border-radius:999px;
+  background:var(--brand);color:#fff;font-size:var(--t-cap);font-weight:800;letter-spacing:.02em}
+.is-brand .chip{background:#fff;color:var(--brand)}
+.chip.ghost{background:transparent;border:3px solid currentColor;color:var(--brand)}
+.is-brand .chip.ghost{color:#fff}
+.hero{grid-column:1/-1;font-size:var(--t-hero);font-weight:900;line-height:1.12;letter-spacing:-.035em}
+.h1{grid-column:1/-1;font-size:var(--t-h1);font-weight:800;line-height:1.2;letter-spacing:-.03em}
+.h1 em,.hero em{font-style:normal;color:var(--brand)}
+.is-brand .h1 em,.is-brand .hero em{color:var(--ink)}
+.lead{grid-column:1/-1;font-size:var(--t-body);font-weight:500;line-height:1.6;color:#4A4544}
+.is-brand .lead{color:rgba(255,255,255,.92)}
+.spacer{grid-column:1/-1;height:24px}
+
+/* ── Cell component (grid tile) ────────── */
+.cell{background:var(--paper);border:3px solid var(--line);border-radius:var(--r);padding:36px 34px;
+  display:flex;flex-direction:column;gap:14px;min-width:0}
+.is-tint .cell{border-color:transparent}
+.cell.fill{background:var(--brand);border-color:var(--brand);color:#fff}
+.cell.dark{background:var(--ink);border-color:var(--ink);color:#fff}
+.cell .k{font-size:24px;font-weight:800;color:var(--brand);letter-spacing:.04em}
+.cell.fill .k,.cell.dark .k{color:rgba(255,255,255,.75)}
+.cell .v{font-size:40px;font-weight:800;line-height:1.3;letter-spacing:-.02em}
+.cell .d{font-size:27px;font-weight:500;line-height:1.55;color:#5B5553}
+.cell.fill .d,.cell.dark .d{color:rgba(255,255,255,.85)}
+.cell .num{font-size:96px;font-weight:900;line-height:1;letter-spacing:-.04em;color:var(--brand);font-variant-numeric:tabular-nums}
+.cell.fill .num{color:#fff}
+.s12{grid-column:span 12}.s8{grid-column:span 8}.s7{grid-column:span 7}.s6{grid-column:span 6}
+.s5{grid-column:span 5}.s4{grid-column:span 4}
+
+/* ── Timeline row component ────────────── */
+.tl{grid-column:1/-1;display:grid;grid-template-columns:230px 1fr;column-gap:36px;padding:34px 0;border-top:3px solid var(--line)}
+.tl:last-child{border-bottom:3px solid var(--line)}
+.tl .y{font-size:56px;font-weight:900;color:var(--brand);letter-spacing:-.03em;line-height:1.05;font-variant-numeric:tabular-nums}
+.tl .y small{display:block;font-size:24px;font-weight:700;color:var(--muted);letter-spacing:0;margin-top:8px}
+.tl .t{font-size:40px;font-weight:800;letter-spacing:-.02em;line-height:1.3}
+.tl .d{font-size:28px;font-weight:500;line-height:1.55;color:#5B5553;margin-top:10px}
+
+/* ── Decorative cover mark ─────────────── */
+.mark{position:absolute;right:-140px;bottom:-160px;width:640px;height:640px;border-radius:50%;
+  border:56px solid rgba(255,255,255,.14);pointer-events:none}
+.mark.inner{right:40px;bottom:40px;width:260px;height:260px;border-width:40px;border-color:rgba(255,255,255,.22)}
+.mark.red{border-color:rgba(229,50,45,.10)}
+.vs{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:var(--g)}
+.vs .cell .v{font-size:44px}
+.list{list-style:none;display:flex;flex-direction:column;gap:12px;font-size:28px;font-weight:600;line-height:1.45}
+.list li::before{content:"";display:inline-block;width:12px;height:12px;border-radius:50%;background:currentColor;margin:0 14px 4px 0;opacity:.6}
+.kw{display:flex;flex-wrap:wrap;gap:14px}
+.kw span{padding:12px 24px;border-radius:999px;border:3px solid rgba(255,255,255,.6);font-size:26px;font-weight:700}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ 1회차 · 바른생각 컬처클럽 ═══════════ -->
+<section class="card is-brand" id="c1-1">
+  <header class="c-head"><span class="c-series"><i></i>바른생각 컬처클럽 #1</span><span class="c-page">01 / 05</span></header>
+  <div class="c-body">
+    <span class="chip">CULTURE CLUB</span>
+    <div class="spacer"></div>
+    <h1 class="hero">바른생각<br>컬처클럽 :<br><em>바른 도파민</em><br>클럽</h1>
+    <div class="spacer"></div>
+    <p class="lead s8">짧고 자극적인 콘텐츠 대신<br>처음 만난 사람과의 대화로 채우는 밤</p>
+  </div>
+  <footer class="c-foot"><span>BRSG · 바른생각</span><span>2026. 11</span></footer>
+  <div class="mark"></div><div class="mark inner"></div>
+</section>
+
+<section class="card" id="c1-2">
+  <header class="c-head"><span class="c-series"><i></i>바른생각 컬처클럽 #1</span><span class="c-page">02 / 05</span></header>
+  <div class="c-body">
+    <span class="chip ghost">WHAT IS</span>
+    <h2 class="h1">바른생각 컬처클럽은<br><em>소비자와 마주 앉는</em><br>오프라인 커뮤니티예요</h2>
+    <p class="lead">2024년부터 쌍방향 소통을 위해 운영 중</p>
+    <div class="spacer"></div>
+    <div class="cell s6"><span class="k">TALK</span><span class="v">토크 모임</span><span class="d">관계에 대해 함께<br>이야기 나누는 자리</span></div>
+    <div class="cell s6"><span class="k">ACTING</span><span class="v">연기 클래스</span><span class="d">몸으로 표현하며<br>마음을 여는 시간</span></div>
+    <div class="cell s6"><span class="k">DINING</span><span class="v">다이닝</span><span class="d">한 테이블에 둘러앉아<br>나누는 식사</span></div>
+    <div class="cell fill s6"><span class="k">NOW</span><span class="v">바른 도파민 클럽</span><span class="d">사람 사이의 만남과<br>교류에 집중</span></div>
+  </div>
+  <footer class="c-foot"><span>매 회차 다른 테마로 진행</span><span>BRSG</span></footer>
+</section>
+
+<section class="card is-tint" id="c1-3">
+  <header class="c-head"><span class="c-series"><i></i>바른생각 컬처클럽 #1</span><span class="c-page">03 / 05</span></header>
+  <div class="c-body">
+    <span class="chip">INFO</span>
+    <h2 class="h1">한눈에 보는<br><em>바른 도파민 클럽</em></h2>
+    <div class="spacer"></div>
+    <div class="cell s7"><span class="k">일시</span><span class="v">11월 27일<br>오후 7시 – 10시</span></div>
+    <div class="cell fill s5"><span class="k">장소</span><span class="v">망원동<br>'책바'</span></div>
+    <div class="cell s5"><span class="k">대상</span><span class="num">10<span style="font-size:44px">명</span></span><span class="d">만 25–35세 성인 남녀</span></div>
+    <div class="cell s7"><span class="k">참가비</span><span class="num">1<span style="font-size:44px">만 원</span></span><span class="d">주류 · 다과 포함</span></div>
+    <div class="cell dark s12"><span class="k">신청</span><span class="v">11월 2일 – 8일 · 바른생각 공식 인스타그램 프로필 링크</span></div>
+  </div>
+  <footer class="c-foot"><span>서울 마포구 망원동</span><span>이번 회차 모집 마감</span></footer>
+</section>
+
+<section class="card" id="c1-4">
+  <header class="c-head"><span class="c-series"><i></i>바른생각 컬처클럽 #1</span><span class="c-page">04 / 05</span></header>
+  <div class="c-body">
+    <span class="chip ghost">CONCEPT</span>
+    <h2 class="h1">도파민도<br><em>바르게</em> 채울 수 있다면?</h2>
+    <div class="spacer"></div>
+    <div class="vs">
+      <div class="cell"><span class="k">빠른 도파민</span><span class="v">스크롤,<br>또 스크롤</span>
+        <ul class="list" style="color:#5B5553"><li>짧고 자극적</li><li>보고 나면 남는 게 없음</li><li>혼자, 화면 앞에서</li></ul></div>
+      <div class="cell fill"><span class="k">바른 도파민</span><span class="v">처음 만난<br>사람과의 대화</span>
+        <ul class="list"><li>천천히, 깊게</li><li>오래 기억에 남는 시간</li><li>함께, 마주 앉아서</li></ul></div>
+    </div>
+    <div class="spacer"></div>
+    <p class="lead">주제는 연애에 한정하지 않고<br><b style="color:var(--ink)">일상 속 건강한 관계 전반</b>으로 넓혔어요</p>
+  </div>
+  <footer class="c-foot"><span>Healthy relationship, everyday</span><span>BRSG</span></footer>
+</section>
+
+<section class="card is-brand" id="c1-5">
+  <header class="c-head"><span class="c-series"><i></i>바른생각 컬처클럽 #1</span><span class="c-page">05 / 05</span></header>
+  <div class="c-body">
+    <h2 class="hero" style="font-size:88px">건강한 관계는<br>좋은 대화에서<br><em>시작돼요</em></h2>
+    <div class="spacer"></div>
+    <p class="lead">다음 컬처클럽 모집 소식은<br>바른생각 공식 인스타그램에서 확인하세요</p>
+    <div class="spacer"></div>
+    <div class="kw s12"><span>#바른생각</span><span>#바른생각컬처클럽</span><span>#바른도파민클럽</span></div>
+  </div>
+  <footer class="c-foot"><span>NEXT · 바른생각은 어떤 브랜드일까?</span><span>→</span></footer>
+  <div class="mark"></div>
+</section>
+
+<!-- ═══════════ 2회차 · 브랜드 ═══════════ -->
+<section class="card is-brand" id="c2-1">
+  <header class="c-head"><span class="c-series"><i></i>바른생각 컬처클럽 #2</span><span class="c-page">01 / 05</span></header>
+  <div class="c-body">
+    <span class="chip">BRAND STORY</span>
+    <div class="spacer"></div>
+    <h1 class="hero">바른생각은<br>어떤<br><em>브랜드</em>일까?</h1>
+    <div class="spacer"></div>
+    <p class="lead s8">콘돔 브랜드에서<br>올바른 성문화를 이끄는 브랜드로</p>
+  </div>
+  <footer class="c-foot"><span>BRSG · 바른생각</span><span>2014 – NOW</span></footer>
+  <div class="mark"></div><div class="mark inner"></div>
+</section>
+
+<section class="card" id="c2-2">
+  <header class="c-head"><span class="c-series"><i></i>바른생각 컬처클럽 #2</span><span class="c-page">02 / 05</span></header>
+  <div class="c-body">
+    <span class="chip ghost">PROFILE</span>
+    <h2 class="h1">바른생각<br><em>기본 프로필</em></h2>
+    <div class="cell fill s5"><span class="k">SINCE</span><span class="num">2014</span><span class="d">콘돔으로 시작</span></div>
+    <div class="cell s7"><span class="k">운영사</span><span class="v">㈜컨비니언스</span><span class="d">섹슈얼 웰니스 · 성문화 브랜드</span></div>
+    <div class="cell s12"><span class="k">출발점</span><span class="v">'올바른 피임 문화'를 외치며 등장</span><span class="d">지금은 관계부터 건강까지, 성을 더 넓은 범위로 바라봐요</span></div>
+    <div class="cell dark s12"><span class="k">SLOGAN · 2023</span><span class="v" style="font-size:52px">올바른 생각이 모여<br>문화가 되다</span></div>
+  </div>
+  <footer class="c-foot"><span>Brand profile</span><span>BRSG</span></footer>
+</section>
+
+<section class="card is-tint" id="c2-3">
+  <header class="c-head"><span class="c-series"><i></i>바른생각 컬처클럽 #2</span><span class="c-page">03 / 05</span></header>
+  <div class="c-body">
+    <span class="chip">VALUE</span>
+    <h2 class="h1">바른생각이<br><em>지켜 온 생각</em></h2>
+    <div class="spacer"></div>
+    <div class="cell s12"><span class="k">STEP 1</span><span class="v">올바른 피임 문화</span><span class="d">남녀가 함께 고르고 함께 책임지는 피임</span></div>
+    <div class="cell s12"><span class="k">STEP 2</span><span class="v">성 시장 양지화 · 인식 개선</span><span class="d">숨겨야 할 것이 아닌, 일상의 이야기로</span></div>
+    <div class="cell fill s12"><span class="k">STEP 3 · 2023 리브랜딩</span><span class="v">올바른 성문화 정착</span><span class="d">왜곡된 인식을 깨고 더 넓은 관점에서 성을 바라보기</span></div>
+  </div>
+  <footer class="c-foot"><span>콘돔 브랜드 → 성문화 브랜드</span><span>BRSG</span></footer>
+</section>
+
+<section class="card" id="c2-4">
+  <header class="c-head"><span class="c-series"><i></i>바른생각 컬처클럽 #2</span><span class="c-page">04 / 05</span></header>
+  <div class="c-body">
+    <span class="chip ghost">EDUCATION</span>
+    <h2 class="h1">수익금의 <em>10%</em>를<br>성교육과 인식 개선에</h2>
+    <div class="spacer"></div>
+    <div class="cell fill s6"><span class="k">2018 –</span><span class="v">유튜브<br>'알성달성'</span><span class="d">구 빨간생각</span></div>
+    <div class="cell s6"><span class="k">2021</span><span class="v">온라인<br>성교육 클래스</span></div>
+    <div class="cell s6"><span class="k">2022</span><span class="v">『알성달성 우리<br>아이 성교육』</span><span class="d">성교육 도서 출간</span></div>
+    <div class="cell dark s6"><span class="k">2025</span><span class="v">고등학교<br>성교육 특강</span></div>
+  </div>
+  <footer class="c-foot"><span>성교육 콘텐츠 · 성 인식 실태 조사</span><span>BRSG</span></footer>
+</section>
+
+<section class="card is-tint" id="c2-5">
+  <header class="c-head"><span class="c-series"><i></i>바른생각 컬처클럽 #2</span><span class="c-page">05 / 05</span></header>
+  <div class="c-body">
+    <span class="chip">PRODUCT</span>
+    <h2 class="h1">콘돔에서<br><em>이너케어</em>까지</h2>
+    <div class="spacer"></div>
+    <div class="cell s6"><span class="k">CONDOM</span><span class="v">콘돔</span><span class="d">에어핏 등<br>바른생각의 시작</span></div>
+    <div class="cell s6"><span class="k">GEL · 2023</span><span class="v">젤 헬시 러브</span><span class="d">관계를 위한 젤</span></div>
+    <div class="cell s12"><span class="k">INNER CARE · 2023</span><span class="v">딥 케어 이너 젤 · 딥 클린 이너 워터</span></div>
+    <div class="cell fill s12"><span class="k">OLIVE YOUNG ONLY · 2025</span><span class="v">러브 앤 세이프 듀오</span><span class="d">에어핏 콘돔 + 젤 헬시 러브를 한 번에</span></div>
+  </div>
+  <footer class="c-foot"><span>NEXT · 바른생각 캠페인 연대기</span><span>→</span></footer>
+</section>
+
+<!-- ═══════════ 3회차 · 캠페인 ═══════════ -->
+<section class="card is-brand" id="c3-1">
+  <header class="c-head"><span class="c-series"><i></i>바른생각 컬처클럽 #3</span><span class="c-page">01 / 05</span></header>
+  <div class="c-body">
+    <span class="chip">CAMPAIGN</span>
+    <div class="spacer"></div>
+    <h1 class="hero">피팅룸부터<br>감각트럭까지,<br><em>캠페인 연대기</em></h1>
+    <div class="spacer"></div>
+    <p class="lead s8">숨기지 않고, 직접 경험하고,<br>함께 이야기해 온 바른생각의 기록</p>
+  </div>
+  <footer class="c-foot"><span>BRSG · 바른생각</span><span>2017 – 2026</span></footer>
+  <div class="mark"></div><div class="mark inner"></div>
+</section>
+
+<section class="card" id="c3-2">
+  <header class="c-head"><span class="c-series"><i></i>바른생각 컬처클럽 #3</span><span class="c-page">02 / 05</span></header>
+  <div class="c-body">
+    <span class="chip ghost">2017 · 2019</span>
+    <h2 class="h1"><em>피팅룸</em> 캠페인</h2>
+    <p class="lead">옷을 입어 보듯, 콘돔도 직접 써 보고<br>나에게 맞는 걸 고르자</p>
+    <div class="spacer"></div>
+    <div class="cell s6"><span class="k">KIT</span><span class="num">7<span style="font-size:44px">종</span></span><span class="d">콘돔 7종 + 여성용 보습젤<br>무료 키트 (2019)</span></div>
+    <div class="cell fill s6"><span class="k">NEW MEMBERS</span><span class="num">20<span style="font-size:44px">만+</span></span><span class="d">캠페인으로 확보한<br>신규 회원</span></div>
+    <div class="cell dark s12"><span class="k">MESSAGE</span><span class="v">피임은 함께 고르는 것</span></div>
+  </div>
+  <footer class="c-foot"><span>Fitting Room Campaign</span><span>BRSG</span></footer>
+</section>
+
+<section class="card" id="c3-3">
+  <header class="c-head"><span class="c-series"><i></i>바른생각 컬처클럽 #3</span><span class="c-page">03 / 05</span></header>
+  <div class="c-body">
+    <span class="chip ghost">2018 – 2022</span>
+    <h2 class="h1">후원, 기부,<br>그리고 <em>요즘 관계</em></h2>
+    <div class="spacer"></div>
+    <div class="tl"><div class="y">2018<small>SPONSOR</small></div><div><p class="t">평창동계올림픽 콘돔 후원</p></div></div>
+    <div class="tl"><div class="y">2020<small>DONATION</small></div><div><p class="t">기부 마라톤 'ㅋㄷㅋㄷ런'</p></div></div>
+    <div class="tl"><div class="y">2022<small>8TH ANNIV.</small></div><div><p class="t">요즘 연애, 요즘 관계</p><p class="d">16인의 섹슈얼 라이프 이야기 · 성적 의사결정<br>능력 테스트 '성장, 톡'</p></div></div>
+  </div>
+  <footer class="c-foot"><span>브랜드 인식이 크게 넓어진 시기</span><span>BRSG</span></footer>
+</section>
+
+<section class="card is-tint" id="c3-4">
+  <header class="c-head"><span class="c-series"><i></i>바른생각 컬처클럽 #3</span><span class="c-page">04 / 05</span></header>
+  <div class="c-body">
+    <span class="chip">2023 – 2024</span>
+    <h2 class="h1">문화가 되기 위해<br><em>밖으로</em> 나오다</h2>
+    <div class="spacer"></div>
+    <div class="cell dark s12"><span class="k">2023 · REBRANDING</span><span class="v">올바른 생각이 모여 문화가 되다</span><span class="d">새 로고 · 슬로건 · 브랜드 필름 공개</span></div>
+    <div class="cell fill s7"><span class="k">2024 · 감각트럭</span><span class="v">성수동 연무장길</span><span class="d">푸드트럭 형태의 체험 공간,<br>취향 테스트 후 제품과 음료 증정</span></div>
+    <div class="cell s5"><span class="k">2024</span><span class="v">워터밤 속초</span><span class="d">현장 참여</span></div>
+    <div class="cell s12"><span class="k">2024 · START</span><span class="v">바른생각 컬처클럽 시작</span></div>
+  </div>
+  <footer class="c-foot"><span>Offline experience</span><span>BRSG</span></footer>
+</section>
+
+<section class="card is-brand" id="c3-5">
+  <header class="c-head"><span class="c-series"><i></i>바른생각 컬처클럽 #3</span><span class="c-page">05 / 05</span></header>
+  <div class="c-body">
+    <span class="chip">2025 – NOW</span>
+    <h2 class="h1">그리고 지금,<br><em>바른 도파민 클럽</em></h2>
+    <div class="spacer"></div>
+    <div class="cell s12" style="color:var(--ink)"><span class="k">2025 · OLIVE YOUNG FESTA</span><span class="v">한강 노들섬 공항 콘셉트 부스</span><span class="d">"건강한 성문화로 떠나는 여행"<br>럭키드로우 · 미니게임 · '요즘 연애, 요즘 관계' 쇼케이스</span></div>
+    <div class="cell dark s12"><span class="k">NOW · CULTURE CLUB</span><span class="v">짧은 자극 대신, 긴 대화</span><span class="d">망원동 '책바'에서 만나는 바른 도파민 클럽</span></div>
+    <div class="spacer"></div>
+    <div class="kw s12"><span>#바른생각</span><span>#바른생각컬처클럽</span><span>#바른도파민클럽</span></div>
+  </div>
+  <footer class="c-foot"><span>숨기지 않고 · 직접 경험하고 · 함께 이야기하기</span><span>BRSG</span></footer>
+  <div class="mark"></div>
+</section>
+
+</body>
+</html>
