@@ -8,6 +8,7 @@ const { chromium } = createRequire(import.meta.url)('playwright');
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { renderDoc } from './render.mjs';
+import { renderMori } from './mori.mjs';
 import { page, SERIES } from './templates.mjs';
 import { validate } from './validate.mjs';
 
@@ -17,13 +18,19 @@ const problems = validate(doc);
 
 // 1) 슬라이드 렌더 (파일명을 01.png 형태로 정리)
 const slidesDir = path.join(dir, 'slides');
-await fs.rm(slidesDir, { recursive: true, force: true });
-const tmp = await renderDoc(path.join(dir, 'content.json'), slidesDir);
 const slides = [];
-for (let i = 0; i < tmp.length; i++) {
-  const f = path.join(slidesDir, `${String(i + 1).padStart(2, '0')}.png`);
-  await fs.rename(tmp[i], f);
-  slides.push(f);
+if (doc.style === 'mori') {
+  // 뽀용·모리 디자인 (기본, 2026-11-26~)
+  const n = await renderMori(dir);
+  for (let i = 0; i < n; i++) slides.push(path.join(slidesDir, `${String(i + 1).padStart(2, '0')}.png`));
+} else {
+  await fs.rm(slidesDir, { recursive: true, force: true });
+  const tmp = await renderDoc(path.join(dir, 'content.json'), slidesDir);
+  for (let i = 0; i < tmp.length; i++) {
+    const f = path.join(slidesDir, `${String(i + 1).padStart(2, '0')}.png`);
+    await fs.rename(tmp[i], f);
+    slides.push(f);
+  }
 }
 
 // 2) 검수 시트: 슬라이드 썸네일 + 캡션 + 출처 + 체크리스트
