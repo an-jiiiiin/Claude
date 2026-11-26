@@ -2,7 +2,7 @@
   "series": "off",
   "style": "mori",
   "theme": "ppo",
-  "cover": "title",
+  "cover": "photo",
   "dateLabel": "11.26 THU",
   "slot": "PM",
   "postAt": "21:00",
@@ -39,7 +39,7 @@
   "slides": [
     {
       "type": "cover",
-      "title": "간호사 된 먼작귀\n==지갑 진료== 시작",
+      "title": "간호사 된 먼작귀\n지갑 진료 시작",
       "sticker": "MD 공개",
       "chips": [
         {
@@ -53,21 +53,23 @@
       ],
       "images": [
         {
-          "src": "posts/2026-11-26-req-chiikawa-md/images/01-mascots.jpg",
+          "src": "posts/2026-11-26-req-chiikawa-md/images/00-cover-photo.jpg",
           "credit": "대원미디어 · ©nagano",
           "license": "공식 공지 이미지",
-          "pos": "center"
+          "pos": "center top"
         }
       ],
       "image": {
-        "src": "posts/2026-11-26-req-chiikawa-md/images/01-mascots.jpg",
+        "src": "posts/2026-11-26-req-chiikawa-md/images/00-cover-photo.jpg",
         "credit": "대원미디어 · ©nagano",
         "license": "공식 공지 이미지",
-        "pos": "center"
+        "pos": "center top"
       },
       "polCaps": [
         "푹 쉬어요 간호사 마스코트 💊"
-      ]
+      ],
+      "tag": "POPUP",
+      "sub": "치이카와 클리닉 MD 라인업 공개 · 내일 더현대 서울 오픈"
     },
     {
       "type": "letter",
