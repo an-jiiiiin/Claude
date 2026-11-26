@@ -38,7 +38,7 @@
     {
       "type": "cover",
       "sticker": "품절 대란",
-      "title": "헬로키티 입은 스벅 굿즈\n리셀가 ==2.2배==?!",
+      "title": "리본 하나 달았을 뿐인데\n리셀가 ==2.2배==",
       "chips": [
         {
           "text": "중고 1536건",
@@ -53,7 +53,7 @@
         "src": "posts/2026-11-26-pm/images/03.png",
         "credit": "스타벅스 코리아",
         "license": "보도자료",
-        "pos": "center 55%"
+        "pos": "center 50%"
       },
       "polCap": "리본 하나에 오픈런 🎀",
       "images": [
@@ -61,32 +61,11 @@
           "src": "posts/2026-11-26-pm/images/03.png",
           "credit": "스타벅스 코리아",
           "license": "보도자료",
-          "pos": "center 55%"
-        },
-        {
-          "src": "posts/2026-11-26-pm/images/02.png",
-          "credit": "스타벅스 코리아",
-          "license": "보도자료",
-          "pos": "center 45%"
-        },
-        {
-          "src": "posts/2026-11-26-pm/images/p-glass.jpg",
-          "credit": "스타벅스 코리아",
-          "license": "보도자료",
-          "pos": "center"
-        },
-        {
-          "src": "posts/2026-11-26-pm/images/p-tumbler.jpg",
-          "credit": "스타벅스 코리아",
-          "license": "보도자료",
-          "pos": "center 30%"
+          "pos": "center 50%"
         }
       ],
       "polCaps": [
-        "리본 오픈런 🎀",
-        "",
-        "",
-        ""
+        "헬로키티 입은 스벅 굿즈 🎀"
       ],
       "minis": [
         "중고 2.2배",
@@ -215,5 +194,5 @@
     }
   ],
   "theme": "ppo",
-  "cover": "busy"
+  "cover": "title"
 }
