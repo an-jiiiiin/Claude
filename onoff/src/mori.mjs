@@ -94,6 +94,24 @@ const mini = (t, x, y, r, bg) => `<div class="d" style="left:${x}px;top:${y}px;t
 
 const confetti = (seed) => (M.linen === '#FFF3F7' ? ['✨', '🎀', '💗', '⭐', '🫧', '🍓'].slice(seed % 3, seed % 3 + 4).map((e, k) => `<div class="d emo" style="left:${[960, 70, 960, 860][k]}px;top:${[150, 1180, 1160, 1215][k]}px;font-size:${[50, 44, 48, 40][k]}px;z-index:9;transform:rotate(${[12, -10, 8, -14][k]}deg)">${e}</div>`).join('') : '');
 const R = {
+  // 사진 집중형(세련): 꽉 찬 사진 + 작은 태그 + 굵은 형광 제목 + 부제 + 작은 로고
+  coverPhoto(s, d) {
+    const im = (s.images || [s.image])[0];
+    const hl = s.hl || '#F4FF7A';
+    return `<div class="mc" style="background:#111">
+      <style>.mc::after{display:none}.mc::before{display:none}.ph-t mark{background:none;color:#fff}</style>
+      <div class="d" style="inset:0;background-image:url('${src(im.src)}');background-size:cover;background-position:${im.pos || 'center'};z-index:1"></div>
+      <div class="d" style="inset:0;background:linear-gradient(180deg,rgba(0,0,0,.28) 0%,rgba(0,0,0,0) 20%,rgba(0,0,0,0) 46%,rgba(0,0,0,.62) 74%,rgba(0,0,0,.82) 100%);z-index:2"></div>
+      <div class="d" style="left:56px;top:54px;z-index:5">${logoA(0.5)}</div>
+      <div class="d" style="left:64px;right:64px;bottom:170px;z-index:5">
+        <span style="display:inline-block;font-weight:800;font-size:26px;letter-spacing:.04em;background:${hl};color:#111;padding:8px 16px;margin-bottom:24px;position:relative">${esc(s.tag || d.category || '')}<i style="position:absolute;left:14px;bottom:-12px;border:8px solid transparent;border-top:10px solid ${hl}"></i></span>
+        <div class="ph-t" style="font-family:'Pretendard';font-weight:900;font-size:92px;line-height:1.16;letter-spacing:-0.045em;color:${hl};text-shadow:0 2px 24px rgba(0,0,0,.35)">${rich(s.title)}</div>
+        ${s.sub ? `<div style="margin-top:22px;font-size:30px;font-weight:600;color:${hl};opacity:.92;letter-spacing:-0.02em">${esc(s.sub)}</div>` : ''}
+      </div>
+      <div class="d" style="right:56px;bottom:56px;z-index:5;font-size:20px;color:rgba(255,255,255,.7)">사진 | ${esc(im.credit || '')}</div>
+      <div class="d" style="left:64px;bottom:56px;z-index:5;font-size:22px;font-weight:700;color:rgba(255,255,255,.8);letter-spacing:.08em">SWIPE →</div>
+    </div>`;
+  },
   // 표지 개선안: 주인공 1 + 조연 2 + 장식 2~3
   coverHero(s, d) {
     const ims = s.images || [s.image];
@@ -261,7 +279,7 @@ export async function renderMori(dir) {
   for (let i = 0; i < n; i++) {
     const s = doc.slides[i];
     const f = path.join(out, '_s.html');
-    await fs.writeFile(f, page(fonts + R[s.type === 'cover' && doc.cover ? { busy: 'coverBusy', hero: 'coverHero', grid: 'coverGrid', title: 'coverTitle' }[doc.cover] || 'cover' : s.type](s, doc, i, n), mkCss()));
+    await fs.writeFile(f, page(fonts + R[s.type === 'cover' && doc.cover ? { busy: 'coverBusy', hero: 'coverHero', grid: 'coverGrid', title: 'coverTitle', photo: 'coverPhoto' }[doc.cover] || 'cover' : s.type](s, doc, i, n), mkCss()));
     await p.goto('file://' + f);
     await p.evaluate(() => document.fonts.ready);
     await p.waitForTimeout(250);
