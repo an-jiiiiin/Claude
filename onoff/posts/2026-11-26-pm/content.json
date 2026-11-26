@@ -1,6 +1,6 @@
 {
   "series": "off",
-  "style": "mag",
+  "style": "mori",
   "dateLabel": "11.26 THU",
   "slot": "PM",
   "postAt": "18:00",
@@ -38,7 +38,7 @@
     {
       "type": "cover",
       "sticker": "품절 대란",
-      "title": "헬로키티 입은 스벅 굿즈,\n리셀가 ==2.2배==",
+      "title": "헬로키티 입은 스벅 굿즈\n리셀가 ==2.2배==?!",
       "chips": [
         {
           "text": "중고 1536건",
@@ -50,11 +50,12 @@
         }
       ],
       "image": {
-        "src": "posts/2026-11-26-pm/images/02.png",
+        "src": "posts/2026-11-26-pm/images/03.png",
         "credit": "스타벅스 코리아",
         "license": "보도자료",
-        "pos": "center 40%"
-      }
+        "pos": "center 55%"
+      },
+      "polCap": "리본 하나에 오픈런 🎀"
     },
     {
       "type": "letter",
@@ -120,7 +121,14 @@
         "강남역R점 안내문 ==‘1인 1회, 품목당 최대 2개’==",
         "25일 앱에선 머그·텀블러 **‘일시 품절’**"
       ],
-      "ref": "뉴스핌(11/25)"
+      "ref": "뉴스핌(11/25)",
+      "image": {
+        "src": "posts/2026-11-26-pm/images/p-tumbler.jpg",
+        "credit": "스타벅스 코리아",
+        "license": "보도자료",
+        "pos": "center 40%"
+      },
+      "polCap": "일시 품절 🥲"
     },
     {
       "type": "letter",
