@@ -255,9 +255,7 @@ const R = {
         <div style="font-size:36px;line-height:1.6;font-weight:600;margin-top:8px">${rich(one)}</div>
       </div>
       <div class="pc" style="left:64px;right:64px;top:770px;height:300px;padding:44px 50px">
-        <div class="chk"><i>✓</i>저장해두고 2차 출시 날 다시 보기</div>
-        <div class="chk"><i>✓</i>굿즈 좋아하는 친구한테 공유</div>
-        <div class="chk"><i>✓</i>@knowish.mag 팔로우하고 내일 소식 받기</div>
+        ${(s.checks || ['저장해두고 필요할 때 다시 보기', '관심 있는 친구한테 공유', '@knowish.mag 팔로우하고 내일 소식 받기']).map((c) => `<div class="chk"><i>✓</i>${esc(c)}</div>`).join('')}
       </div>
       ${dec(flower(M.rose, 100), 870, 1110)}${dec(flower(M.butter, 64), 790, 1180)}${dec(leaf(M.moss, 20), 70, 1100)}
       <div class="swp" style="left:auto;right:66px;bottom:60px">내일 아침 KNOW 편에서 만나요 ☕</div>

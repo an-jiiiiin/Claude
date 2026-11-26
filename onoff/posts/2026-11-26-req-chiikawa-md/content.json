@@ -1,0 +1,210 @@
+{
+  "series": "off",
+  "style": "mori",
+  "theme": "ppo",
+  "cover": "title",
+  "dateLabel": "11.26 THU",
+  "slot": "PM",
+  "postAt": "21:00",
+  "category": "팝업",
+  "caption": "[치이카와 클리닉 MD 라인업 공개 💊]\n\n내일(27일) 더현대 서울에서 문 여는 ‘치이카와 클리닉’ 팝업, 1차 발매 MD가 공개됐어요.\n간호사 마스코트(전 12종)부터 내장 그릇, 하트 가방까지 봉제·잡화·문구·의류 총정리.\n\n15만 원 특전(구급 상자) 맞추는 조합도 계산해 뒀어요 📌 저장해서 매장에서 보세요!\n\n가격은 공지 표기 기준(27.0 = 2만7000원)\nRef. 대원미디어 팝업 공식 X(11/26)\n이미지 출처 | 대원미디어 · ©nagano\n\n#치이카와 #치이카와클리닉 #치이카와굿즈 #더현대 #knowish",
+  "commentTags": [
+    "#치이카와팝업",
+    "#먼작귀",
+    "#먼작귀굿즈",
+    "#하치와레",
+    "#우사기",
+    "#치이카와마스코트",
+    "#더현대서울",
+    "#더현대팝업",
+    "#여의도팝업",
+    "#서울팝업",
+    "#연말팝업",
+    "#팝업스토어",
+    "#캐릭터굿즈",
+    "#굿즈추천",
+    "#카드뉴스",
+    "#트렌드"
+  ],
+  "sources": [
+    "https://x.com/DAEWON_POPUP/status/2125847246084436296",
+    "https://popga.co.kr/popup/17712",
+    "https://www.topstarnews.net/news/articleView.html?idxno=16280064"
+  ],
+  "reel": {
+    "fit": "중",
+    "why": "가격표 나열형이라 카드 저장이 유리. 오늘 릴스는 오전 회차에서 제작",
+    "make": false
+  },
+  "slides": [
+    {
+      "type": "cover",
+      "title": "간호사 된 먼작귀\n==지갑 진료== 시작",
+      "sticker": "MD 공개",
+      "chips": [
+        {
+          "text": "27일 오픈",
+          "kind": "hot"
+        },
+        {
+          "text": "1인 1개",
+          "kind": "dark"
+        }
+      ],
+      "images": [
+        {
+          "src": "posts/2026-11-26-req-chiikawa-md/images/01-mascots.jpg",
+          "credit": "대원미디어 · ©nagano",
+          "license": "공식 공지 이미지",
+          "pos": "center"
+        }
+      ],
+      "image": {
+        "src": "posts/2026-11-26-req-chiikawa-md/images/01-mascots.jpg",
+        "credit": "대원미디어 · ©nagano",
+        "license": "공식 공지 이미지",
+        "pos": "center"
+      },
+      "polCaps": [
+        "푹 쉬어요 간호사 마스코트 💊"
+      ]
+    },
+    {
+      "type": "letter",
+      "label": "에디터의 팝업 노트",
+      "title": "1차 발매 라인업, 8장 공개",
+      "text": [
+        "**11월 27일** 더현대 서울 5층에서 문 여는 ‘치이카와 클리닉’. ==봉제·잡화·문구·랜덤·식기·의류==까지 가격표가 나왔어요.",
+        "규칙은 **1인 1개**(캡슐토이 1인 2회), 입고 일정은 현장 상황에 따라 바뀔 수 있어요."
+      ],
+      "image": {
+        "src": "posts/2026-11-26-req-chiikawa-md/images/02-characters.jpg",
+        "credit": "대원미디어 · ©nagano",
+        "license": "공식 공지 이미지",
+        "pos": "center"
+      },
+      "say": "모두에게 기운을 되찾아 줄게",
+      "ref": "대원미디어 팝업 공식 X(11/26)"
+    },
+    {
+      "type": "meme",
+      "title": "봉제류 가격표",
+      "panels": [
+        {
+          "image": {
+            "src": "posts/2026-11-26-req-chiikawa-md/images/01-mascots.jpg",
+            "credit": "대원미디어 · ©nagano",
+            "license": "공식 공지 이미지",
+            "pos": "center"
+          },
+          "say": "간호사 마스코트(전 12종)",
+          "react": "→ ==2만7000원=="
+        },
+        {
+          "image": {
+            "src": "posts/2026-11-26-req-chiikawa-md/images/03-leave-it.jpg",
+            "credit": "대원미디어 · ©nagano",
+            "license": "공식 공지 이미지",
+            "pos": "center"
+          },
+          "say": "마스코트 우리에게 맡겨주세요(2종)",
+          "react": "→ ==2만7000원=="
+        },
+        {
+          "image": {
+            "src": "posts/2026-11-26-req-chiikawa-md/images/03-goblin.jpg",
+            "credit": "대원미디어 · ©nagano",
+            "license": "공식 공지 이미지",
+            "pos": "center"
+          },
+          "say": "세균 고블린 미니 마스코트(2종 세트)",
+          "react": "→ ==3만3000원=="
+        }
+      ],
+      "ref": "대원미디어 공식 MD 공지"
+    },
+    {
+      "type": "meme",
+      "title": "잡화·가방 가격표",
+      "panels": [
+        {
+          "image": {
+            "src": "posts/2026-11-26-req-chiikawa-md/images/04-medbag.jpg",
+            "credit": "대원미디어 · ©nagano",
+            "license": "공식 공지 이미지",
+            "pos": "center"
+          },
+          "say": "약봉투 파우치",
+          "react": "→ ==2만7000원=="
+        },
+        {
+          "image": {
+            "src": "posts/2026-11-26-req-chiikawa-md/images/04-pill.jpg",
+            "credit": "대원미디어 · ©nagano",
+            "license": "공식 공지 이미지",
+            "pos": "center"
+          },
+          "say": "알약 모양 파우치(전 3종)",
+          "react": "→ ==2만2500원=="
+        },
+        {
+          "image": {
+            "src": "posts/2026-11-26-req-chiikawa-md/images/04-heartbag.jpg",
+            "credit": "대원미디어 · ©nagano",
+            "license": "공식 공지 이미지",
+            "pos": "center 60%"
+          },
+          "say": "하트 가방 (최고가!)",
+          "react": "→ ==6만9000원=="
+        }
+      ],
+      "ref": "대원미디어 공식 MD 공지"
+    },
+    {
+      "type": "body",
+      "title": "4500원부터 가볍게",
+      "text": [
+        "스마트폰 스티커·캔뱃지·반짝이 카드 **4500원**",
+        "랜덤 아크릴 스탠드(전 9종) **5000원**",
+        "카드 케이스·마그넷·손톱깎이 **7500원**"
+      ],
+      "image": {
+        "src": "posts/2026-11-26-req-chiikawa-md/images/05-bowls.jpg",
+        "credit": "대원미디어 · ©nagano",
+        "license": "공식 공지 이미지",
+        "pos": "center"
+      },
+      "polCap": "내장 그릇(전 3종) 3만 원 🫁",
+      "ref": "대원미디어 공식 MD 공지"
+    },
+    {
+      "type": "points",
+      "title": "15만 원 특전 맞추기 예시",
+      "points": [
+        {
+          "title": "하트 가방 + 간호사 마스코트",
+          "text": "6만9000 + 2만7000 = 9만6000원"
+        },
+        {
+          "title": "+ 약봉투 파우치 + 알약 파우치",
+          "text": "2만7000 + 2만2500 → 14만5500원"
+        },
+        {
+          "title": "+ 스마트폰 스티커 = 딱 15만 원",
+          "text": "플라스틱 구급 상자 증정! (분할 결제는 합산 X)"
+        }
+      ],
+      "ref": "공지 가격표로 KNOW-ISH 계산"
+    },
+    {
+      "type": "outro",
+      "title": "귀여움 처방전,\n==지갑==은 알아서…",
+      "text": "아는 척 한 줄: “치이카와 클리닉 마스코트 2만7000원, 하트 가방이 6만9000원으로 제일 비싸고 15만 원 넘으면 구급 상자 준대.”",
+      "checks": [
+        "저장해두고 매장에서 가격표로 보기",
+        "치이카와 좋아하는 친구한테 공유",
+        "@knowish.mag 팔로우하고 2차 예약(12/7) 소식 받기"
+      ]
+    }
+  ]
+}
