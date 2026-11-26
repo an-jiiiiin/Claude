@@ -1,6 +1,9 @@
 {
-  "state": "pending_review",
+  "state": "approved",
   "builtAt": "2026-11-26T08:31:48.883Z",
   "problems": [],
-  "missingImages": 0
+  "missingImages": 0,
+  "approvedAt": "2026-11-26T09:32:19.410369+00:00",
+  "publishMode": "manual (인스타 API 미연결)",
+  "cover": "photo"
 }
