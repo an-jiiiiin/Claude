@@ -1,10 +1,11 @@
 {
-  "state": "pending_review",
+  "state": "approved",
   "builtAt": "2026-11-26T07:39:58.837Z",
   "problems": [],
   "missingImages": 0,
-  "approvedAt": "2026-11-26T07:58:57.320Z",
+  "approvedAt": "2026-11-26T08:10:38.351059+00:00",
   "publishMode": "manual (인스타 API 미연결)",
   "note": "모리걸 스타일로 재디자인(src/mori.mjs), 내용 동일",
-  "restyledAt": "2026-11-26T08:04:29.488243+00:00"
+  "restyledAt": "2026-11-26T08:04:29.488243+00:00",
+  "style": "mori+ppo+busy"
 }
