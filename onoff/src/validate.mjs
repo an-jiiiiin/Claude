@@ -3,7 +3,7 @@ const TYPES = ['cover', 'body', 'compare', 'points', 'outro', 'letter', 'meme', 
 
 export function validate(doc) {
   const p = [];
-  if (doc.style && !['classic', 'mag'].includes(doc.style)) p.push('style 은 classic / mag');
+  if (doc.style && !['classic', 'mag', 'mori'].includes(doc.style)) p.push('style 은 mori(기본) / classic / mag');
   if (!['on', 'off'].includes(doc.series)) p.push('series 는 on(오전 KNOW) / off(오후 -ISH) 중 하나');
   const n = doc.slides?.length || 0;
   const [min, max] = doc.series === 'on' ? [6, 9] : [5, 7];
@@ -30,8 +30,9 @@ export function validate(doc) {
       s.panels?.forEach((pp, k) => { if (!pp.image?.src) p.push(`${at}: ${k + 1}번째 칸 사진 없음`); else if (!pp.image.credit) p.push(`${at}: ${k + 1}번째 칸 출처 없음`); });
     }
     if (s.type === 'cover') {
-      if (s.says) p.push(`${at}: 표지(썸네일)는 고정 — 말풍선 대신 chips 사용`);
+      if (s.says && doc.style !== 'mori') p.push(`${at}: 표지(썸네일)는 고정 — 말풍선 대신 chips 사용`);
       if ((s.chips || []).length > 3) p.push(`${at}: 칩은 최대 3개`);
+      if (doc.style === 'mori' && doc.cover === 'busy' && !(s.images?.length >= 3)) p.push(`${at}: 빼곡 표지(cover:busy)는 images 3~4장`);
       (s.chips || []).forEach((c) => { const t = typeof c === 'string' ? c : c.text; if ([...t].length > 8) p.push(`${at}: 칩은 8자 이내 (${t})`); });
       if (!s.image) p.push(`${at}: 표지는 실사 이미지(image) 필수`);
       if (s.sticker && [...s.sticker].length > 8) p.push(`${at}: 스티커 문구 8자 이내 (${s.sticker})`);
