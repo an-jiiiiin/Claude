@@ -7,6 +7,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { page, rich, BRAND } from './templates.mjs';
+import { logoA, PPO } from './logo-ppo.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const nm = (p) => pathToFileURL(path.join(ROOT, 'node_modules', p)).href;
@@ -17,7 +18,9 @@ export const MORI = {
   linen: '#F4EDE1', paper: '#FFFBF3', kraft: '#D9C3A0', brown: '#6B4A33', bark: '#3F2C20',
   sage: '#A9B99A', moss: '#6F8460', rose: '#E8B7B0', berry: '#C9585A', butter: '#F3E2A9',
 };
-const M = MORI;
+const M = { ...MORI };
+// 뽀용 테마: 밀크 핑크·베이비 블루·라일락·버터
+export const PPO_THEME = { linen: '#FFF3F7', paper: '#FFFDF8', kraft: '#FFD9E8', brown: '#8A6A70', bark: '#5B3F42', sage: '#BFE3FF', moss: '#7DB8F5', rose: '#FFC2DA', berry: '#FF7FAE', butter: '#FFF0A8' };
 
 // 작은 손그림 장식 (SVG)
 const leaf = (c = M.moss, r = 0) => `<svg width="120" height="150" viewBox="0 0 120 150" style="transform:rotate(${r}deg)"><path d="M60 145 C58 100 60 60 64 10" stroke="${c}" stroke-width="4" fill="none" stroke-linecap="round"/>${[30, 55, 80, 105].map((y, i) => `<path d="M62 ${y} C${i % 2 ? 100 : 22} ${y - 18} ${i % 2 ? 108 : 14} ${y + 8} 62 ${y + 14}" fill="${c}" opacity=".85"/>`).join('')}</svg>`;
@@ -25,7 +28,7 @@ const flower = (c = M.rose, s = 70) => `<svg width="${s}" height="${s}" viewBox=
 const mush = (s = 80) => `<svg width="${s}" height="${s}" viewBox="0 0 80 80"><path d="M8 40 C8 14 72 14 72 40 Z" fill="${M.berry}" stroke="${M.bark}" stroke-width="3"/><circle cx="26" cy="30" r="5" fill="#fff"/><circle cx="48" cy="24" r="6" fill="#fff"/><circle cx="58" cy="36" r="4" fill="#fff"/><path d="M30 40 L30 66 Q40 72 50 66 L50 40 Z" fill="${M.paper}" stroke="${M.bark}" stroke-width="3"/></svg>`;
 const sparkle = (c = M.brown, s = 40) => `<svg width="${s}" height="${s}" viewBox="0 0 40 40"><path d="M20 2 L23 17 L38 20 L23 23 L20 38 L17 23 L2 20 L17 17 Z" fill="${c}"/></svg>`;
 
-const css = `
+const mkCss = () => `
 .mc{width:1080px;height:1350px;position:relative;overflow:hidden;background:${M.linen};font-family:'Pretendard';color:${M.bark};letter-spacing:-0.02em;word-break:keep-all}
 .mc::before{content:'';position:absolute;inset:0;opacity:.35;background-image:repeating-linear-gradient(0deg,rgba(107,74,51,.06) 0 2px,transparent 2px 6px),repeating-linear-gradient(90deg,rgba(107,74,51,.05) 0 2px,transparent 2px 7px)}
 .mc::after{content:'';position:absolute;inset:26px;border:3px dashed rgba(107,74,51,.35);border-radius:28px;pointer-events:none}
@@ -53,14 +56,14 @@ const css = `
 .swp{position:absolute;left:66px;bottom:56px;font-family:'Gaegu';font-weight:700;font-size:38px;color:${M.brown};z-index:6}
 .save{position:absolute;right:66px;bottom:96px;z-index:6;font-family:'Jua';font-size:28px;background:${M.butter};border:3px solid ${M.bark};padding:8px 18px 4px;border-radius:10px;transform:rotate(-4deg)}
 .pc{position:absolute;background:${M.paper};border-radius:26px;box-shadow:0 12px 0 rgba(63,44,32,.12);z-index:2}
-.lined{background-image:repeating-linear-gradient(transparent 0 58px, rgba(169,185,154,.5) 58px 60px);background-position:0 26px}
+.lined{background-image:repeating-linear-gradient(transparent 0 58px, ${M.sage}99 58px 60px);background-position:0 26px}
 .h2{font-family:'Jua';font-size:68px;line-height:1.18;color:${M.bark}}
 .h2 mark{background:linear-gradient(transparent 55%, ${M.butter} 55%);color:inherit}
 .lbl{font-family:'Gaegu';font-weight:700;font-size:40px;color:${M.moss};margin-bottom:8px}
 .txt p{font-size:36px;line-height:1.66;font-weight:500;margin:0 0 22px}
 .txt b{color:${M.berry};font-weight:800}
-.mc mark{background:linear-gradient(transparent 58%, rgba(169,185,154,.7) 58%);color:inherit;padding:0 2px}
-.txt mark{background:linear-gradient(transparent 58%, rgba(169,185,154,.7) 58%);color:inherit;padding:0 2px}
+.mc mark{background:linear-gradient(transparent 58%, ${M.rose} 58%);color:inherit;padding:0 2px}
+.txt mark{background:linear-gradient(transparent 58%, ${M.rose} 58%);color:inherit;padding:0 2px}
 .bub{position:absolute;z-index:5;background:#fff;border:4px solid ${M.bark};border-radius:40px;padding:16px 28px 12px;font-family:'Jua';font-size:38px;box-shadow:6px 6px 0 ${M.kraft}}
 .bub::after{content:'';position:absolute;bottom:-28px;left:56px;border:14px solid transparent;border-top:18px solid ${M.bark}}
 .bub mark{background:none;color:${M.berry}}
@@ -78,13 +81,38 @@ const css = `
 .chk i{flex:none;width:50px;height:50px;border:4px solid ${M.bark};border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:38px;color:${M.berry};margin-top:2px}
 `;
 
-const top = (d, i, n, tag) => `<div class="top"><span class="tagk">${esc(tag || (d.series === 'on' ? 'KNOW 노트' : '-ISH 노트') + ' · ' + (d.category || ''))}</span>${i == null ? `<span class="lg"><span class="kn">KNOW</span><span class="ish">-ish</span></span>` : `<span class="pno">${i + 1} / ${n}</span>`}</div>`;
+const top = (d, i, n, tag) => `<div class="top"><span class="tagk">${esc(tag || (d.series === 'on' ? 'KNOW 노트' : '-ISH 노트') + ' · ' + (d.category || ''))}</span>${i == null ? `<span>${logoA(0.62)}</span>` : `<span class="pno">${i + 1} / ${n}</span>`}</div>`;
 const pol = (im, x, y, w, h, rot, cap) => `<div class="pol" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;transform:rotate(${rot}deg)"><div class="pimg" style="background-image:url('${src(im.src)}');background-position:${im.pos || 'center'}"></div>${cap ? `<div class="cp">${esc(cap)}</div>` : ''}</div>`;
 const tape = (x, y, rot, c = '') => `<div class="tape ${c}" style="left:${x}px;top:${y}px;transform:rotate(${rot}deg)"></div>`;
 const dec = (html, x, y) => `<div class="d" style="left:${x}px;top:${y}px">${html}</div>`;
 const refL = (s) => (s.ref || s.image?.credit ? `<div class="ref">${s.image?.credit ? '사진 | ' + esc(s.image.credit) + ' · ' : ''}${s.ref ? 'Ref. ' + esc(s.ref) : ''}</div>` : '');
 
+const heart = (c, s) => `<svg width="${s}" height="${s}" viewBox="0 0 40 36"><path d="M20 34 C6 24 1 17 1 10 A9 9 0 0 1 20 7 A9 9 0 0 1 39 10 C39 17 34 24 20 34Z" fill="${c}"/></svg>`;
+const blob = (x, y, w, h, c, r = 0) => `<div class="d" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;background:${c};border-radius:50% 46% 52% 48%/48% 54% 46% 52%;transform:rotate(${r}deg);z-index:1"></div>`;
+const mini = (t, x, y, r, bg) => `<div class="d" style="left:${x}px;top:${y}px;transform:rotate(${r}deg);z-index:7;font-family:'Jua';font-size:30px;background:${bg};border:3px solid ${M.bark};border-radius:999px;padding:8px 18px 4px;box-shadow:3px 3px 0 ${M.bark}">${t}</div>`;
+
+const confetti = (seed) => (M.linen === '#FFF3F7' ? ['✨', '🎀', '💗', '⭐', '🫧', '🍓'].slice(seed % 3, seed % 3 + 4).map((e, k) => `<div class="d emo" style="left:${[960, 70, 960, 860][k]}px;top:${[150, 1180, 1160, 1215][k]}px;font-size:${[50, 44, 48, 40][k]}px;z-index:9;transform:rotate(${[12, -10, 8, -14][k]}deg)">${e}</div>`).join('') : '');
 const R = {
+  // 복잡·빼곡 콜라주 표지: 사진 여러 장 + 스티커/말풍선 잔뜩 + 큰 제목
+  coverBusy(s, d) {
+    const ims = s.images || [s.image];
+    const ch = (s.chips || []).map((c) => { const o = typeof c === 'string' ? { text: c } : c; return `<span class="chip ${o.kind === 'hot' ? 'hot' : o.kind === 'dark' ? 'dark' : ''}">${esc(o.text)}</span>`; }).join('');
+    const spots = [[60, 190, 470, 470, -6], [520, 160, 500, 400, 5], [600, 520, 410, 330, -3], [40, 610, 380, 300, 4]];
+    return `<div class="mc">
+      ${blob(-60, 120, 520, 460, M.sage + '88', 8)}${blob(560, 420, 560, 520, M.rose + '99', -10)}${blob(300, 900, 420, 260, M.butter, 4)}
+      <div class="top">${`<span>${logoA(0.62)}</span>`}<span class="chips">${ch}</span></div>
+      ${ims.slice(0, 4).map((im, k) => pol(im, ...spots[k].slice(0, 4), spots[k][4], (s.polCaps || [])[k] || '') + tape(spots[k][0] + 140, spots[k][1] - 20, k % 2 ? 6 : -5, ['', 'r', 'y', ''][k])).join('')}
+      ${(s.minis || []).map((m, k) => mini(esc(m), [610, 80, 470, 760][k % 4], [110, 560, 850, 470][k % 4], [4, -6, 3, -4][k % 4], [M.butter, '#fff', M.sage, M.rose][k % 4])).join('')}
+      ${s.sticker ? `<div class="stmp" style="left:420px;top:430px;transform:rotate(-8deg);z-index:8;background:#fff">${esc(s.sticker)}</div>` : ''}
+      ${(s.says || []).map((b, k) => `<div class="bub" style="left:${[90, 640][k % 2]}px;top:${[930, 870][k % 2]}px;transform:rotate(${[-4, 4][k % 2]}deg);z-index:8;font-size:32px">${rich(typeof b === 'string' ? b : b.text)}</div>`).join('')}
+      ${['✨', '🎀', '💗', '⭐', '🫧'].map((e, k) => `<div class="d emo" style="left:${[480, 980, 40, 930, 360][k]}px;top:${[150, 410, 520, 770, 870][k]}px;font-size:${[50, 60, 46, 44, 52][k]}px;z-index:9">${e}</div>`).join('')}
+      <div class="d" style="left:0;right:0;bottom:0;height:330px;background:linear-gradient(transparent, ${M.linen} 38%);z-index:9"></div>
+      <div class="ctitle" style="z-index:10;bottom:120px">${rich(s.title)}</div>
+      <div class="swp" style="z-index:10">넘겨보기 💌</div>
+      <div class="save" style="z-index:10;bottom:120px">📌 저장각</div>
+      <div class="cred" style="z-index:10;bottom:32px">사진 | ${esc((s.image || ims[0])?.credit || '')}</div>
+    </div>`;
+  },
   cover(s, d) {
     const ch = (s.chips || []).map((c) => { const o = typeof c === 'string' ? { text: c } : c; return `<span class="chip ${o.kind === 'hot' ? 'hot' : o.kind === 'dark' ? 'dark' : ''}">${esc(o.text)}</span>`; }).join('');
     return `<div class="mc">
@@ -102,7 +130,7 @@ const R = {
   },
   letter(s, d, i, n) {
     const ps = (s.text || []).map((t) => `<p>${rich(t)}</p>`).join('');
-    return `<div class="mc">${top(d, i, n, s.label)}
+    return `<div class="mc">${confetti(i)}${top(d, i, n, s.label)}
       <div class="pc lined" style="left:64px;right:64px;top:150px;bottom:130px;padding:56px 54px">
         <div class="h2">${rich(s.title)}</div>
         <div class="txt" style="margin-top:34px">${ps}</div>
@@ -117,7 +145,7 @@ const R = {
     const ps = s.panels || [];
     const pos = [[70, 260, -4], [560, 520, 3], [90, 820, -2]];
     const tags = [[600, 300], [120, 640], [600, 900]];
-    return `<div class="mc">${top(d, i, n)}
+    return `<div class="mc">${confetti(i)}${top(d, i, n)}
       <div class="h2" style="position:absolute;left:70px;top:140px;z-index:6">${esc(s.title)} <span class="emo">🏷️</span></div>
       ${ps.map((p, k) => pol(p.image, pos[k][0], pos[k][1], 430, 330, pos[k][2], '') + tape(pos[k][0] + 120, pos[k][1] - 22, pos[k][2] * 2, k % 2 ? 'y' : 'r')).join('')}
       ${ps.map((p, k) => `<div class="ptag" style="left:${tags[k][0]}px;top:${tags[k][1]}px;transform:rotate(${k % 2 ? -3 : 3}deg)"><span class="s">${rich(p.say)}</span>${rich(p.react)}</div>`).join('')}
@@ -127,7 +155,7 @@ const R = {
   },
   body(s, d, i, n) {
     const items = (s.text || []).map((t, k) => `<div class="row"><span class="n">${k + 1}</span><div class="s" style="font-size:40px;line-height:1.45;color:${M.bark};font-weight:600;margin-top:8px">${rich(t)}</div></div>`).join('');
-    return `<div class="mc">${top(d, i, n)}
+    return `<div class="mc">${confetti(i)}${top(d, i, n)}
       <div class="pc" style="left:64px;right:64px;top:150px;bottom:130px;padding:60px 56px">
         <div class="h2">${rich(s.title)} <span class="emo">🧺</span></div>
         <div style="margin-top:56px">${items}</div>
@@ -139,7 +167,7 @@ const R = {
   },
   points(s, d, i, n) {
     const items = s.points.map((p, k) => `<div class="row"><span class="n">${k + 1}</span><div><div class="t">${rich(p.title)}</div><div class="s">${rich(p.text)}</div></div></div>`).join('');
-    return `<div class="mc">${top(d, i, n)}
+    return `<div class="mc">${confetti(i)}${top(d, i, n)}
       <div class="pc" style="left:64px;right:64px;top:150px;bottom:130px;padding:60px 56px;background:${M.paper}">
         <div class="lbl">recipe card</div>
         <div class="h2">${rich(s.title)}</div>
@@ -151,7 +179,7 @@ const R = {
   },
   outro(s, d) {
     const one = (s.text || '').replace(/^아는 척 한 줄:\s*/, '');
-    return `<div class="mc" style="background:#E3E9D8">
+    return `<div class="mc" style="background:${M.linen === '#FFF3F7' ? '#E3F1FF' : '#E3E9D8'}">
       ${top(d, null, 0, 'KNOW-ISH 한 줄 정리')}
       <div class="pc lined" style="left:64px;right:64px;top:160px;height:560px;padding:56px 54px">
         <div class="h2" style="font-size:80px">${rich(s.title)}</div>
@@ -173,6 +201,7 @@ const fonts = `<style>@import url('${nm('@fontsource/gaegu/700.css')}');@import 
 
 export async function renderMori(dir) {
   const doc = JSON.parse(await fs.readFile(path.join(dir, 'content.json'), 'utf8'));
+  Object.assign(M, MORI, doc.theme === 'ppo' ? PPO_THEME : {});
   const out = path.join(dir, 'slides');
   await fs.rm(out, { recursive: true, force: true });
   await fs.mkdir(out, { recursive: true });
@@ -182,7 +211,7 @@ export async function renderMori(dir) {
   for (let i = 0; i < n; i++) {
     const s = doc.slides[i];
     const f = path.join(out, '_s.html');
-    await fs.writeFile(f, page(fonts + R[s.type](s, doc, i, n), css));
+    await fs.writeFile(f, page(fonts + R[s.type === 'cover' && doc.cover === 'busy' ? 'coverBusy' : s.type](s, doc, i, n), mkCss()));
     await p.goto('file://' + f);
     await p.evaluate(() => document.fonts.ready);
     await p.waitForTimeout(250);

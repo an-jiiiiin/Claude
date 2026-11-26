@@ -55,7 +55,49 @@
         "license": "보도자료",
         "pos": "center 55%"
       },
-      "polCap": "리본 하나에 오픈런 🎀"
+      "polCap": "리본 하나에 오픈런 🎀",
+      "images": [
+        {
+          "src": "posts/2026-11-26-pm/images/03.png",
+          "credit": "스타벅스 코리아",
+          "license": "보도자료",
+          "pos": "center 55%"
+        },
+        {
+          "src": "posts/2026-11-26-pm/images/02.png",
+          "credit": "스타벅스 코리아",
+          "license": "보도자료",
+          "pos": "center 45%"
+        },
+        {
+          "src": "posts/2026-11-26-pm/images/p-glass.jpg",
+          "credit": "스타벅스 코리아",
+          "license": "보도자료",
+          "pos": "center"
+        },
+        {
+          "src": "posts/2026-11-26-pm/images/p-tumbler.jpg",
+          "credit": "스타벅스 코리아",
+          "license": "보도자료",
+          "pos": "center 30%"
+        }
+      ],
+      "polCaps": [
+        "리본 오픈런 🎀",
+        "",
+        "",
+        ""
+      ],
+      "minis": [
+        "중고 2.2배",
+        "12/2 2차",
+        "1인 2개까지",
+        "오전 품절"
+      ],
+      "says": [
+        "나만 못 샀어?",
+        "==케이크==도 나와!"
+      ]
     },
     {
       "type": "letter",
@@ -171,5 +213,7 @@
       "title": "리본 하나가\n==오픈런==을 불렀다",
       "text": "아는 척 한 줄: “스벅 헬로키티 굿즈, 첫날 오전에 거의 다 팔리고 중고로 2배까지 붙었대. 12월 2일에 2차 나와.”"
     }
-  ]
+  ],
+  "theme": "ppo",
+  "cover": "busy"
 }
