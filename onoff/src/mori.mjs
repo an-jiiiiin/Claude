@@ -51,6 +51,7 @@ const mkCss = () => `
 .chip.hot{background:${M.rose}}.chip.dark{background:${M.bark};color:${M.paper}}
 .ctitle{position:absolute;left:70px;right:70px;bottom:150px;z-index:6;font-family:'Jua';font-size:96px;line-height:1.13;letter-spacing:-0.03em;color:${M.bark}}
 .mc .ctitle mark{background:linear-gradient(transparent 52%, ${M.rose} 52%);color:${M.berry};padding:0 8px}
+.ttl mark{background:linear-gradient(transparent 52%, ${M.rose} 52%);color:${M.berry};padding:0 8px}
 .ctitle b{font-weight:400;color:${M.moss}}
 .cred{position:absolute;right:66px;bottom:62px;font-size:20px;color:${M.brown};opacity:.7;z-index:6}
 .swp{position:absolute;left:66px;bottom:56px;font-family:'Gaegu';font-weight:700;font-size:38px;color:${M.brown};z-index:6}
@@ -93,6 +94,55 @@ const mini = (t, x, y, r, bg) => `<div class="d" style="left:${x}px;top:${y}px;t
 
 const confetti = (seed) => (M.linen === '#FFF3F7' ? ['✨', '🎀', '💗', '⭐', '🫧', '🍓'].slice(seed % 3, seed % 3 + 4).map((e, k) => `<div class="d emo" style="left:${[960, 70, 960, 860][k]}px;top:${[150, 1180, 1160, 1215][k]}px;font-size:${[50, 44, 48, 40][k]}px;z-index:9;transform:rotate(${[12, -10, 8, -14][k]}deg)">${e}</div>`).join('') : '');
 const R = {
+  // 표지 개선안: 주인공 1 + 조연 2 + 장식 2~3
+  coverHero(s, d) {
+    const ims = s.images || [s.image];
+    const ch = (s.chips || []).slice(0, 3).map((c) => { const o = typeof c === 'string' ? { text: c } : c; return `<span class="chip ${o.kind === 'hot' ? 'hot' : o.kind === 'dark' ? 'dark' : ''}">${esc(o.text)}</span>`; }).join('');
+    return `<div class="mc">
+      ${blob(560, 120, 560, 520, M.rose + '77', -8)}
+      <div class="top"><span>${logoA(0.62)}</span><span class="chips">${ch}</span></div>
+      ${pol(ims[0], 150, 190, 640, 600, -3, (s.polCaps || [])[0] || '')}${tape(380, 168, -5)}
+      ${ims[1] ? pol(ims[1], 750, 300, 270, 250, 7, '') + tape(820, 282, 8, 'r') : ''}
+      ${ims[2] ? pol(ims[2], 730, 600, 270, 230, -5, '') : ''}
+      ${s.sticker ? `<div class="stmp" style="left:60px;top:250px;transform:rotate(-10deg);z-index:8;background:#fff">${esc(s.sticker)}</div>` : ''}
+      ${(s.says || []).slice(0, 1).map((b) => `<div class="bub" style="left:70px;top:760px;transform:rotate(-4deg);z-index:8;font-size:34px">${rich(typeof b === 'string' ? b : b.text)}</div>`).join('')}
+      <div class="d emo" style="left:930px;top:200px;font-size:54px;z-index:9">🎀</div><div class="d emo" style="left:560px;top:820px;font-size:44px;z-index:9">✨</div>
+      <div class="d" style="left:0;right:0;bottom:0;height:330px;background:linear-gradient(transparent, ${M.linen} 36%);z-index:9"></div>
+      <div class="ctitle" style="z-index:10;bottom:120px">${rich(s.title)}</div>
+      <div class="swp" style="z-index:10">넘겨보기 💌</div>
+      <div class="save" style="z-index:10;bottom:120px">📌 저장각</div>
+      <div class="cred" style="z-index:10;bottom:32px">사진 | ${esc((s.image || ims[0])?.credit || '')}</div>
+    </div>`;
+  },
+  // 표지 개선안: 2x2 정리된 스크랩 + 제목 띠
+  coverGrid(s, d) {
+    const ims = (s.images || [s.image]).slice(0, 4);
+    const minis = (s.minis || []).slice(0, 3).map((m, k) => `<span class="chip" style="background:${[M.butter, '#fff', M.sage][k]}">${esc(m)}</span>`).join('');
+    const pos = [[70, 170, -3], [540, 160, 3], [80, 560, 2], [550, 550, -2]];
+    return `<div class="mc">
+      <div class="top"><span>${logoA(0.62)}</span><span class="pno">11.26 · -ISH</span></div>
+      ${ims.map((im, k) => pol(im, pos[k][0], pos[k][1], 450, 350, pos[k][2], '') + (k % 2 ? '' : tape(pos[k][0] + 150, pos[k][1] - 20, -4, k ? 'y' : ''))).join('')}
+      ${s.sticker ? `<div class="stmp" style="left:390px;top:470px;transform:rotate(-8deg);z-index:8;background:#fff">${esc(s.sticker)}</div>` : ''}
+      <div class="pc" style="left:56px;right:56px;bottom:56px;height:330px;padding:34px 44px;z-index:9;box-shadow:0 8px 0 ${M.rose}">
+        <div class="chips" style="margin-bottom:14px">${minis}</div>
+        <div style="font-family:'Jua';font-size:84px;line-height:1.13;letter-spacing:-0.03em" class="ttl">${rich(s.title)}</div>
+      </div>
+      <div class="d emo" style="left:960px;top:900px;font-size:50px;z-index:10">🎀</div>
+    </div>`;
+  },
+  // 표지 개선안: 제목 중심 (위 큰 제목 + 아래 사진 한 장)
+  coverTitle(s, d) {
+    const ims = s.images || [s.image];
+    return `<div class="mc">
+      <div class="top"><span>${logoA(0.62)}</span><span class="chips">${(s.chips || []).slice(0, 2).map((c) => { const o = typeof c === 'string' ? { text: c } : c; return `<span class="chip ${o.kind === 'hot' ? 'hot' : ''}">${esc(o.text)}</span>`; }).join('')}</span></div>
+      <div style="position:absolute;left:70px;right:70px;top:170px;z-index:6;font-family:'Jua';font-size:104px;line-height:1.12;letter-spacing:-0.03em" class="ttl">${rich(s.title)}</div>
+      ${pol(ims[0], 170, 520, 740, 600, 3, (s.polCaps || [])[0] || '')}${tape(450, 500, -4)}
+      ${s.sticker ? `<div class="stmp" style="left:720px;top:470px;transform:rotate(8deg);z-index:8;background:#fff">${esc(s.sticker)}</div>` : ''}
+      <div class="d emo" style="left:90px;top:1080px;font-size:58px;z-index:9">🎀</div>
+      <div class="swp" style="z-index:10;bottom:46px">넘겨보기 💌</div>
+      <div class="save" style="z-index:10;bottom:50px">📌 저장각</div>
+    </div>`;
+  },
   // 복잡·빼곡 콜라주 표지: 사진 여러 장 + 스티커/말풍선 잔뜩 + 큰 제목
   coverBusy(s, d) {
     const ims = s.images || [s.image];
@@ -211,7 +261,7 @@ export async function renderMori(dir) {
   for (let i = 0; i < n; i++) {
     const s = doc.slides[i];
     const f = path.join(out, '_s.html');
-    await fs.writeFile(f, page(fonts + R[s.type === 'cover' && doc.cover === 'busy' ? 'coverBusy' : s.type](s, doc, i, n), mkCss()));
+    await fs.writeFile(f, page(fonts + R[s.type === 'cover' && doc.cover ? { busy: 'coverBusy', hero: 'coverHero', grid: 'coverGrid', title: 'coverTitle' }[doc.cover] || 'cover' : s.type](s, doc, i, n), mkCss()));
     await p.goto('file://' + f);
     await p.evaluate(() => document.fonts.ready);
     await p.waitForTimeout(250);
