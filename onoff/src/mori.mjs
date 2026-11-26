@@ -97,7 +97,7 @@ const R = {
   // 사진 집중형(세련): 꽉 찬 사진 + 작은 태그 + 굵은 형광 제목 + 부제 + 작은 로고
   coverPhoto(s, d) {
     const im = (s.images || [s.image])[0];
-    const hl = s.hl || '#F4FF7A';
+    const hl = s.hl || '#FFE3F0'; // 기본: 연핑크(로고 톤). 형광 노랑은 '#F4FF7A'
     return `<div class="mc" style="background:#111">
       <style>.mc::after{display:none}.mc::before{display:none}.ph-t mark{background:none;color:#fff}</style>
       <div class="d" style="inset:0;background-image:url('${src(im.src)}');background-size:cover;background-position:${im.pos || 'center'};z-index:1"></div>

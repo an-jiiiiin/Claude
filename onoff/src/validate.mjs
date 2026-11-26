@@ -32,7 +32,8 @@ export function validate(doc) {
     if (s.type === 'cover') {
       if (s.says && doc.style !== 'mori') p.push(`${at}: 표지(썸네일)는 고정 — 말풍선 대신 chips 사용`);
       if ((s.chips || []).length > 3) p.push(`${at}: 칩은 최대 3개`);
-      if (doc.style === 'mori' && doc.cover === 'busy' && !(s.images?.length >= 3)) p.push(`${at}: 빼곡 표지(cover:busy)는 images 3~4장`);
+      if (doc.style === 'mori' && ['busy', 'hero'].includes(doc.cover) && !(s.images?.length >= 3)) p.push(`${at}: ${doc.cover} 표지는 images 3장 이상`);
+      if (doc.style === 'mori' && doc.cover === 'photo' && !s.sub) p.push(`${at}: 사진 집중형 표지는 부제(sub) 필요`);
       (s.chips || []).forEach((c) => { const t = typeof c === 'string' ? c : c.text; if ([...t].length > 8) p.push(`${at}: 칩은 8자 이내 (${t})`); });
       if (!s.image) p.push(`${at}: 표지는 실사 이미지(image) 필수`);
       if (s.sticker && [...s.sticker].length > 8) p.push(`${at}: 스티커 문구 8자 이내 (${s.sticker})`);
