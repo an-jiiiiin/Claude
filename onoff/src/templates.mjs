@@ -32,15 +32,17 @@ export const rich = (s = '') =>
     .replace(/==(.+?)==/g, '<mark>$1</mark>')
     .replace(/\n/g, '<br>');
 
-// 가로형 스티커 로고 (KNOW 하늘 블록 + -ish 마젠타 스티커)
+// 공식 로고: 말캉 스티커 (하늘 젤리 know + 핑크 하트 ish♡, 흰 테두리 다이컷) — 2026-11-26 확정
+// size 1 ≈ 가로 300px. 같은 디자인이 src/logo-ppo.mjs 의 logoA 와 brand/logo-final*.png 에 있음
 export const logo = (size = 1) => `
-<span class="logo" style="--s:${size}"><span class="kn">KNOW</span><span class="ish">-ish</span></span>`;
+<span class="logo" style="--s:${size * 0.62}"><span class="kn">know</span><span class="ish">ish♡</span></span>`;
 
 const css = `
 @import url('${nm('pretendard/dist/web/static/pretendard.css')}');
 @import url('${nm('@fontsource/black-han-sans/index.css')}');
 @import url('${nm('@fontsource/permanent-marker/index.css')}');
 @import url('${nm('@fontsource/nanum-gothic-coding/index.css')}');
+@import url('${nm('@fontsource/jua/index.css')}');
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{background:#888}
 .card{width:1080px;height:1350px;position:relative;overflow:hidden;
@@ -49,14 +51,10 @@ html,body{background:#888}
 b{font-weight:800}
 
 /* ---------- logo ---------- */
-.logo{display:inline-flex;align-items:center;line-height:1;white-space:nowrap;padding:calc(4px*var(--s)) calc(10px*var(--s)) calc(8px*var(--s)) 0}
-.logo .kn{display:inline-block;background:${BRAND.sky};color:${BRAND.ink};font-weight:900;letter-spacing:-0.05em;
-  font-size:calc(30px*var(--s));padding:calc(6px*var(--s)) calc(10px*var(--s)) calc(4px*var(--s));transform:rotate(-3deg);
-  box-shadow:calc(3px*var(--s)) calc(3px*var(--s)) 0 ${BRAND.ink}, calc(3px*var(--s)) calc(3px*var(--s)) 0 calc(1px*var(--s)) #fff}
-.logo .ish{display:inline-block;background:${BRAND.mag};color:#fff;font-weight:900;font-style:italic;letter-spacing:-0.03em;
-  font-size:calc(26px*var(--s));padding:calc(5px*var(--s)) calc(10px*var(--s)) calc(4px*var(--s));margin-left:calc(-4px*var(--s));
-  border:calc(2px*var(--s)) solid #fff;border-radius:calc(5px*var(--s));transform:rotate(6deg) translateY(calc(4px*var(--s)));
-  box-shadow:calc(3px*var(--s)) calc(3px*var(--s)) 0 ${BRAND.ink}}
+.logo{display:inline-flex;align-items:center;white-space:nowrap;line-height:1;padding:calc(6px*var(--s)) calc(8px*var(--s)) calc(10px*var(--s)) calc(4px*var(--s))}
+.logo .kn{font-family:'Jua';font-size:calc(60px*var(--s));color:#5B3F42;background:#CFE6FF;padding:calc(10px*var(--s)) calc(26px*var(--s)) calc(4px*var(--s));border-radius:999px;border:calc(5px*var(--s)) solid #fff;box-shadow:0 0 0 calc(3px*var(--s)) #5B3F42,0 calc(6px*var(--s)) 0 calc(3px*var(--s)) #5B3F42}
+.logo .ish{font-family:'Jua';font-size:calc(50px*var(--s));color:#fff;background:#FF8FB7;padding:calc(8px*var(--s)) calc(20px*var(--s)) calc(3px*var(--s));border-radius:999px;margin-left:calc(-14px*var(--s));transform:rotate(-8deg) translateY(calc(-10px*var(--s)));border:calc(5px*var(--s)) solid #fff;box-shadow:0 0 0 calc(3px*var(--s)) #5B3F42,0 calc(6px*var(--s)) 0 calc(3px*var(--s)) #5B3F42}
+
 
 /* ---------- photo / placeholder ---------- */
 .photo{position:absolute;inset:0;background-size:cover;background-position:center}

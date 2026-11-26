@@ -46,6 +46,11 @@
 - 분량: KNOW **6~9장**, -ISH **5~7장** (인스타 API 최대 10장)
 - 표지(`cover`): 스티커 8자 이내, 제목 2줄(최대 3줄), 핵심 단어 1개만 `==강조==`. 2EZ식 후킹.
 
+### 로고 (2026-11-26 확정: 말캉 스티커)
+- 하늘 젤리 `know` + 핑크 하트 `ish♡`, 흰 테두리 다이컷. 카드 템플릿은 `templates.mjs` 의 `logo()`, 모리/뽀용 렌더러는 `logo-ppo.mjs` 의 `logoA` 를 쓴다(같은 디자인).
+- 릴스(`reels/*/reel.mjs`)에 로고를 넣을 땐 직접 그리지 말고 `import { logo } from '../../src/templates.mjs'` 의 `logo()` 를 쓴다.
+- 파일: `brand/profile-knowish.png`(프로필), `brand/logo-final-light|dark|transparent.png`.
+
 ### 썸네일 고정 (모든 게시물 공통)
 표지는 **항상 같은 틀**이다: 꽉 찬 실사 사진 + 왼쪽 위 로고 + 오른쪽 위 날짜 + 기울어진 스티커 + 시리즈 배지 + 굵은 2줄 제목(핵심 단어 시리즈색). 스타일(classic/mag)과 무관하게 바꾸지 않는다.
 허용되는 변형은 **어그로 칩(`chips`)** 하나뿐이다.
